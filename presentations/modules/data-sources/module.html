@@ -1,0 +1,214 @@
+<section>
+	<h1>Experimental techniques</h1>
+	<ul>
+		<li><highlight>Xray crystallography</highlight></li>
+		<li>“Gold standard” for structure determination</li>
+		<li class="fragment" data-fragment-index="2">Pros:</li>
+		<ul class="fragment" data-fragment-index="2">
+			<li>High resolution</li>
+		</ul>
+		<li class="fragment" data-fragment-index="2">Cons:</li>
+		<ul class="fragment" data-fragment-index="2">
+			<li>Not all proteins can be crystallized</li>
+			<li>Protein contacts can distort proteins</li>
+			<li>Proteins are not in solution</li>
+			<li>Only see one conformation</li>
+		</ul>
+	</ul>
+	<div style="position: absolute; top:0px; left: 0px" class="fragment fade-in" data-fragment-index="1">
+		<img class="fragment fade-out" src="modules/data-sources/xray.png" data-fragment-index="2">
+	</div>
+<aside class="notes">
+	Speaker's notes
+</aside>
+</section>
+
+<section>
+	<h1>Experimental techniques</h1>
+	<ul>
+		<li style="color: gray">Xray crystallography</li>
+		<li><highlight>NMR</highlight></li>
+		<li class="fragment" data-fragment-index="2">Pros:</li>
+		<ul class="fragment" data-fragment-index="2">
+			<li>High resolution</li>
+			<li>No crystal</li>
+			<li>Proteins can be flexible</li>
+		</ul>
+		<li class="fragment" data-fragment-index="2">Cons:</li>
+		<ul class="fragment" data-fragment-index="2">
+			<li>Requires high concentration</li>
+		</ul>
+	</ul>
+	<div style="position: absolute; top:0px; left: 0px" class="fragment fade-in" data-fragment-index="1">
+		<img class="fragment fade-out" src="modules/data-sources/NMR.png" data-fragment-index="2">
+	</div>
+<aside class="notes">
+	Speaker's notes
+</aside>
+</section>
+
+<section>
+	<h1>Experimental techniques</h1>
+	<ul>
+		<li style="color: gray">Xray crystallography</li>
+		<li style="color: gray">NMR</li>
+		<li><highlight>CryoEM</highlight></li>
+		<li class="fragment" data-fragment-index="2">Pros:</li>
+		<ul class="fragment" data-fragment-index="2">
+			<li>High resolution</li>
+			<li>No need for crystal</li>
+			<li>No need for high concentrated solution</li>
+			<li>No need for protein modification</li>
+		</ul>
+		<li class="fragment" data-fragment-index="2">Cons:</li>
+		<ul class="fragment" data-fragment-index="2">
+			<li>Complex measurement and data analysis</li>
+			<li>Hard for small proteins</li>
+		</ul>
+	</ul>
+	<div style="position: absolute; top:0px; left: 0px">
+		<img class="fragment" src="modules/data-sources/CryoEM.png">
+	</div>
+<aside class="notes">
+	Speaker's notes
+</aside>
+
+</section>
+
+<section>
+	<h1>Experimental techniques</h1>
+	<ul>
+		<li style="color: gray">Xray crystallography</li>
+		<li style="color: gray">NMR</li>
+		<li style="color: gray">CryoEM</li>
+		<li><highlight>Small Angle X-ray scattering (SAXS)</highlight></li>
+		<li class="fragment" data-fragment-index="2">Pros:</li>
+		<ul class="fragment" data-fragment-index="2">
+			<li>Curves easy to predict computationally</li>
+		</ul>
+		<li class="fragment" data-fragment-index="2">Cons:</li>
+		<ul class="fragment" data-fragment-index="2">
+			<li>No high-resolution information</li>
+		</ul>
+	</ul>
+	<div style="position: absolute; top:0px; left: 0px">
+		<img class="fragment" src="modules/data-sources/SACS.png" data-fragment-index="1">
+	</div>
+<aside class="notes">
+	Speaker's notes
+</aside>
+</section>
+
+<section>
+	<h1>Experimental techniques</h1>
+	<ul>
+		<li style="color: gray">Xray crystallography</li>
+		<li style="color: gray">NMR</li>
+		<li style="color: gray">CryoEM</li>
+		<li style="color: gray">Small Angle X-ray scattering (SAXS)</li>
+		<li><highlight>Cross-linking with mass spec</highlight></li>
+		<ul>
+			<li>Gives low resolution structural information</li>
+			<li>Very useful for contracts in a complex</li>
+			<li>Also useful to confirm computational results</li>
+		</ul>
+	</ul>
+<aside class="notes">
+	Speaker's notes
+</aside>
+</section>
+
+<section>
+	<h1>Computational approaches</h1>
+	<ul>
+		<li><highlight>Threading (I-TASSER)</highlight></li>
+	</ul>
+	<div style="position: absolute; top:0px; left: 0px">
+		<img class="fragment" src="modules/data-sources/SACS.png">
+	</div>
+
+<aside class="notes">
+	Speaker's notes
+</aside>
+</section>
+
+<section>
+	<h1>Computational approaches</h1>
+Threading
+Homology modeling (MODELLER, HHPRED)
+Gives reasonable models if:
+Homology with template is good
+Depends on consistent fold for sequences
+(no chameleons)
+
+
+<aside class="notes">
+	Speaker's notes
+</aside>
+</section>
+
+<section>
+	<h1>Computational approaches</h1>
+Threading
+Homology modeling
+Ab Initio (template-free) approaches
+AMBER (Molecular dynamics)
+ROSETTA (Monte Carlo)
+
+<aside class="notes">
+	Speaker's notes
+</aside>
+</section>
+
+<section>
+	<h1>Computational approaches</h1>
+Protein-ligand docking
+DockBlaster
+
+<aside class="notes">
+	Speaker's notes
+</aside>
+</section>
+
+<section>
+	<h1>Computational approaches</h1>
+Protein-ligand docking
+Protein-peptide docking
+FlexPepDock
+
+<aside class="notes">
+	Speaker's notes
+</aside>
+</section>
+
+<section>
+	<h1>Computational approaches</h1>
+Protein-ligand docking
+Protein-peptide docking
+Protein-protein docking
+ClusPRO
+HADDOCK
+Integrative modeling (IMP)
+Use variety of data sources
+Solver that satisfies constraints
+<aside class="notes">
+	Speaker's notes
+</aside>
+
+</section>
+
+<section>
+	<h1>Repositories</h1>
+PDB
+Electron Density Server (EDS)
+Electron Microscopy Data Bank (EMDB)
+EMDataBank
+ModBase
+VIPERdb
+PDBePISA
+
+<aside class="notes">
+	Speaker's notes
+</aside>
+
+</section>
