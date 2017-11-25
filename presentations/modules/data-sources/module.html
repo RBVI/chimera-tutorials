@@ -66,8 +66,8 @@
 			<li>Hard for small proteins</li>
 		</ul>
 	</ul>
-	<div style="position: absolute; top:0px; left: 0px">
-		<img class="fragment" src="modules/data-sources/CryoEM.png">
+	<div style="position: absolute; top:0px; left: 0px" class="fragment fade-in" data-fragment-index="1">
+		<img class="fragment fade-out" src="modules/data-sources/CryoEM.png" data-fragment-index="2">
 	</div>
 <aside class="notes">
 	Speaker's notes
@@ -91,8 +91,8 @@
 			<li>No high-resolution information</li>
 		</ul>
 	</ul>
-	<div style="position: absolute; top:0px; left: 0px">
-		<img class="fragment" src="modules/data-sources/SACS.png" data-fragment-index="1">
+	<div style="position: absolute; top:0px; left: 0px" class="fragment fade-in" data-fragment-index="1">
+		<img class="fragment fade-out" src="modules/data-sources/SACS.png" data-fragment-index="2">
 	</div>
 <aside class="notes">
 	Speaker's notes
@@ -124,7 +124,7 @@
 		<li><highlight>Threading (I-TASSER)</highlight></li>
 	</ul>
 	<div style="position: absolute; top:0px; left: 0px">
-		<img class="fragment" src="modules/data-sources/SACS.png">
+		<img class="fragment" src="modules/data-sources/itasser.png">
 	</div>
 
 <aside class="notes">
@@ -134,13 +134,94 @@
 
 <section>
 	<h1>Computational approaches</h1>
-Threading
-Homology modeling (MODELLER, HHPRED)
-Gives reasonable models if:
-Homology with template is good
-Depends on consistent fold for sequences
-(no chameleons)
+	<ul>
+		<li style="color: gray">Threading</li>
+		<li><highlight>Homology modeling (MODELLER, HHPRED)</highlight></li>
+		<ul class="fragment" data-fragment-index="2">
+			<li>Gives reasonable models if:</li>
+			<ul>
+				<li>Homology with template is good</li>
+			</ul>
+			<li>Depends on consistent fold for sequences</li>
+			<ul>
+				<li>(no chameleons)</li>
+			</ul>
+		</ul>
+	</ul>
+	<div class="fragment fade-in" data-fragment-index="1" style="position: absolute; top:0px; left: 0px">
+		<img class="fragment fade-out" data-fragment-index="2" src="modules/data-sources/homology-modeling.png">
+	</div>
+	<aside class="notes">
+		<ol>
+			<li>Template recognition and initial alignment</li>
+			<li>Alignment correction</li>
+			<li>Backbone generation</li>
+			<li>Loop modeling</li>
+			<li>Side-chain modeling</li>
+			<li>Model optimization</li>
+			<li>Model validation</li>
+		</ol>
+	</aside>
+</section>
 
+<section>
+	<h1>Computational approaches</h1>
+	<ul>
+		<li style="color: gray">Threading</li>
+		<li style="color: gray">Homology modeling</li>
+		<li><highlight>Ab Initio (template-free) approaches</highlight></li>
+		<ul>
+			<li>AMBER (Molecular dynamics)</li>
+			<li>ROSETTA (Monte Carlo)</li>
+		</ul>
+	</ul>
+	<aside class="notes">
+		Speaker's notes
+	</aside>
+</section>
+
+<section>
+	<h1>Computational approaches</h1>
+	<ul>
+		<li style="color: gray">Threading</li>
+		<li style="color: gray">Homology modeling</li>
+		<li style="color: gray">Ab Initio (template-free) approaches</li>
+		<li><highlight>Protein-ligand docking</highlight></li>
+		<ul>
+			<li><a href="http://blaster.docking.org/" _target="blank">DockBlaster</a></li>
+		</ul>
+	</ul>
+
+	<div class="fragment fade-in" data-fragment-index="1" style="position: absolute; top:200px; left: 125px">
+		<img class="fragment fade-out" data-fragment-index="2" src="modules/data-sources/protein-ligand-1.png">
+	</div>
+	<div class="fragment fade-in" data-fragment-index="2" style="position: absolute; top:0px; left: 100px">
+		<img class="fragment fade-out" data-fragment-index="3" src="modules/data-sources/protein-ligand-2.png">
+	</div>
+
+	<aside class="notes">
+		<ul>
+			<li>Molecular docking</li>
+			<li>Virtual screening</li>
+		</ul>
+	</aside>
+</section>
+
+<section>
+	<h1>Computational approaches</h1>
+	<ul>
+		<li style="color: gray">Threading</li>
+		<li style="color: gray">Homology modeling</li>
+		<li style="color: gray">Ab Initio (template-free) approaches</li>
+		<li style="color: gray">Protein-ligand docking</li>
+		<li><highlight>Protein-peptide docking</highlight></li>
+		<ul>
+			<li><a href="http://flexpepdock.furmanlab.cs.huji.ac.il/" _target="blank">FlexPepDock</a></li>
+		</ul>
+	</ul>
+	<div class="fragment fade-in" data-fragment-index="1" style="position: absolute; top:400px; left: 0px">
+		<img src="modules/data-sources/flexpepdock.png">
+	</div>
 
 <aside class="notes">
 	Speaker's notes
@@ -149,66 +230,43 @@ Depends on consistent fold for sequences
 
 <section>
 	<h1>Computational approaches</h1>
-Threading
-Homology modeling
-Ab Initio (template-free) approaches
-AMBER (Molecular dynamics)
-ROSETTA (Monte Carlo)
-
-<aside class="notes">
-	Speaker's notes
-</aside>
-</section>
-
-<section>
-	<h1>Computational approaches</h1>
-Protein-ligand docking
-DockBlaster
-
-<aside class="notes">
-	Speaker's notes
-</aside>
-</section>
-
-<section>
-	<h1>Computational approaches</h1>
-Protein-ligand docking
-Protein-peptide docking
-FlexPepDock
-
-<aside class="notes">
-	Speaker's notes
-</aside>
-</section>
-
-<section>
-	<h1>Computational approaches</h1>
-Protein-ligand docking
-Protein-peptide docking
-Protein-protein docking
-ClusPRO
-HADDOCK
-Integrative modeling (IMP)
-Use variety of data sources
-Solver that satisfies constraints
-<aside class="notes">
-	Speaker's notes
-</aside>
+	<ul>
+		<li style="color: gray">Threading</li>
+		<li style="color: gray">Homology modeling</li>
+		<li style="color: gray">Ab Initio (template-free) approaches</li>
+		<li style="color: gray">Protein-ligand docking</li>
+		<li style="color: gray">Protein-peptide docking</li>
+		<li><highlight>Protein-protein docking</highlight></li>
+		<ul>
+			<li><a href="https://cluspro.bu.edu/login.php" _target="blank">ClusPRO</li>
+			<li><a href="http://www.bonvinlab.org/software/haddock2.2/" _target="blank">HADDOCK</a></li>
+		</ul>
+		<li><highlight>Integrative modeling (<a href="https://integrativemodeling.org/" _target="blank">IMP</a>)</highlight></li>
+		<ul>
+			<li>Use variety of data sources</li>
+			<li>Solver that satisfies constraints</li>
+		</ul>
+	</ul>
+	<aside class="notes">
+		Speaker's notes
+	</aside>
 
 </section>
 
 <section>
 	<h1>Repositories</h1>
-PDB
-Electron Density Server (EDS)
-Electron Microscopy Data Bank (EMDB)
-EMDataBank
-ModBase
-VIPERdb
-PDBePISA
+	<ul>
+		<li><a _target="blank" href="http://www.pdb.org">PDB</a></li>
+		<li><a _target="blank" href="http://eds.bmc.uu.se/eds/index.html">Electron Density Server (EDS)</a></li>
+		<li><a _target="blank" href="https://www.ebi.ac.uk/pdbe/emdb/">>Electron Microscopy Data Bank (EMDB)</a></li>
+		<li><a _target="blank" href="http://www.emdatabank.org/">EMDataBank</a></li>
+		<li><a _target="blank" href="http://modbase.compbio.ucsf.edu/">ModBase</a></li>
+		<li><a _target="blank" href="http://viperdb.scripps.edu/">VIPERdb</a></li>
+		<li><a _target="blank" href="http://www.ebi.ac.uk/msd-srv/prot_int/cgi-bin/piserver">PDBePISA</a></li>
+	</ul>
 
-<aside class="notes">
-	Speaker's notes
-</aside>
+	<aside class="notes">
+		Speaker's notes
+	</aside>
 
 </section>

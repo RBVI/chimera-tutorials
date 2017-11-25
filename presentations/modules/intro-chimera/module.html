@@ -1,0 +1,360 @@
+<section>
+	<h1>UCSF Chimera</h1>
+	<ul>
+		<li>Target audience</li>
+		<ul>
+			<li>Scientists who need to analyze and model molecular <br/>systems in some detail</li>
+			<li>Scientists who want to develop new analytical methods</li>
+			<li>Scientists or educators who wish to communicate <br/>biological concepts visually</li>
+		</ul>
+		<li>Organization</li>
+		<ul>
+			<li>Core features</li>
+			<li>Additional tools</li>
+		</ul>
+	</ul>
+	<aside class="notes">
+	</aside>
+</section>
+
+<section>
+	<h1>Chimera Core Features</h1>
+	<ul>
+		<li>Concepts</li>
+		<ul>
+			<li>Graphical manipulation</li>
+			<li>Chemical knowledge</li>
+			<ul>
+				<li>Hierarchy: Model&rarr;Chain&rarr;Residue&rarr;Atom</li>
+				<li>Attributes available at model, residue, and atom levels</li>
+			</ul>
+			<li>Selection - Action</li>
+			<li>GUI/Command-line equivalence</li>
+			<ul>
+				<li>For core, not necessarily extensions</li>
+			</ul>
+		</ul>
+	</ul>
+	<aside class="notes">
+	</aside>
+</section>
+
+<section>
+	<h1>Core Features (cont.)</h1>
+	<ul>
+		<li>Using the mouse</li>
+		<ul>
+			<li>Pointer over atom</li>
+			<ul><li>“Tooltip” with atom and residue information</li></ul>
+			<li>Left-button</li>
+			<ul>
+				<li>X-Y Rotation (on virtual sphere)</li>
+				<li>Z Rotation (outside of virtual sphere)</li>
+			</ul>
+			<li>Middle-button</li>
+			<ul><li>X-Y Translation</li></ul>
+			<li>Right-button</li>
+			<ul><li>Scale</li></ul>
+			<li>Control+</li>
+			<ul>
+				<li>Left-button: select (click or drag)</li>
+				<li>Middle-button: Z translation</li>
+			</ul>
+		</ul>
+	</ul>
+	<aside class="notes">
+	</aside>
+</section>
+
+<section>
+	<h1>Core Features (cont.)</h1>
+	<ul style="font-size: 90%">
+		<li>Selection methods</li>
+		<ul>
+			<li>Using mouse</li>
+			<ul>
+				<li>Control-click and control-drag</li>
+				<li>Shift-control-click and shift-control-drag to add to selection</li>
+			</ul>
+			<li>By atom and residue names and types</li>
+			<li>By higher order structure</li>
+			<ul><li>e.g., chains, ligands, solvent</li></ul>
+			<li>By spatial location</li>
+			<ul><li>e.g., within some distance of another selection</li></ul>
+			<li>By attribute values</li>
+			<ul><li>e.g., temperature factor, occupancy</li></ul>
+			<li>Can extend any selection with up-arrow: &uarr;</li>
+			<li>NOTE: by default, if nothing is selected, everything is selected</li>
+		</ul>
+	</ul>
+	<aside class="notes">
+	</aside>
+</section>
+
+<section>
+	<h1>Core Features (cont.)</h1>
+	<ul>
+		<li>Actions</li>
+		<ul>
+			<li>Hide/show/delete parts of structure</li>
+			<li>Change representations</li>
+			<li>Change colors</li>
+			<li>Display labels</li>
+			<li>Show molecular surfaces</li>
+			<li>Focus on parts of interest</li>
+		</ul>
+	</ul>
+	<aside class="notes">
+	</aside>
+</section>
+
+<section>
+	<h1>Core Features (cont.)</h1>
+	<ul>
+		<li>Useful tools</li>
+		<ul>
+			<li>Side View</li>
+			<ul>
+				<li>Helps locate model in Z direction</li>
+				<li>Provides access to hither-and-yon clipping planes</li>
+			</ul>
+		</ul>
+	</ul>
+	<div style="position: absolute; top:100px; left: 0px; width: 80%" data-autoslide="2000" class="fragment fade-in">
+		<img class="plain" src="modules/intro-chimera/sv1.png">
+	</div>
+	<div style="position: absolute; top:130px; left: 750px" class="fragment fade-in">
+		<img class="plain" src="modules/intro-chimera/sv2.png">
+	</div>
+	<aside class="notes">
+	</aside>
+</section>
+
+
+<section>
+	<h1>Core Features (cont.)</h1>
+	<ul>
+		<li>Useful tools</li>
+		<ul>
+			<li style="color: lightblue">Side View</li>
+			<li>Selection Inspector</li>
+			<ul>
+				<li>Provides information about currently selected:</li>
+				<ul>
+					<li>atom</li>
+					<li>residue</li>
+					<li>model </li>
+					<li>bond</li>
+					<li>pseudo-bond</li>
+					<li>surface</li>
+				</ul>
+				<li>Short-cut to changing representation of selected item</li>
+			</ul>
+		</ul>
+	</ul>
+	<div style="position: absolute; top:100px; left: 0px; width: 80%" class="fragment fade-in">
+		<img class="plain" src="modules/intro-chimera/si1.png">
+	</div>
+	<div style="position: absolute; top:130px; left: 800px" data-autoslide="5000" class="fragment fade-in">
+		<img class="plain" width="90%" src="modules/intro-chimera/si2.png">
+	</div>
+	<div style="position: absolute; top:130px; left: 800px" data-autoslide="5000" class="fragment fade-in">
+		<img class="plain" width="90%" src="modules/intro-chimera/si3.png">
+	</div>
+	<div style="position: absolute; top:130px; left: 800px" data-autoslide="5000" class="fragment fade-in">
+		<img class="plain" width="90%" src="modules/intro-chimera/si4.png">
+	</div>
+	<div style="position: absolute; top:130px; left: 800px" class="fragment fade-in">
+		<img class="plain" width="90%" src="modules/intro-chimera/si5.png">
+	</div>
+	<aside class="notes">
+	</aside>
+</section>
+
+
+<section>
+	<h1>Core Features (cont.)</h1>
+	<ul>
+		<li>Useful tools</li>
+		<ul>
+			<li style="color: lightblue">Side View</li>
+			<li style="color: lightblue">Selection Inspector</li>
+			<li>Model Panel</li>
+			<ul>
+				<li>Access to several attributes and actions of currently open models</li>
+				<li>Allows selective display of models</li>
+				<li>Allows selection of models that will respond to mouse motion <br/>(useful to move one model in relation to another)</li>
+			</ul>
+		</ul>
+	</ul>
+	<div style="position: absolute; top:100px; left: 0px; width: 80%" data-autoslide="2000" class="fragment fade-in">
+		<img class="plain" src="modules/intro-chimera/modelpanel1.png">
+	</div>
+	<div style="position: absolute; top:130px; left: 800px" class="fragment fade-in">
+		<img class="plain" src="modules/intro-chimera/modelpanel2.png">
+	</div>
+	<aside class="notes">
+	</aside>
+</section>
+
+
+<section>
+	<h1>Core Features (cont.)</h1>
+	<ul>
+		<li>Useful tools</li>
+		<ul>
+			<li style="color: lightblue">Side View</li>
+			<li style="color: lightblue">Selection Inspector</li>
+			<li style="Color: lightblue">Model Panel</li>
+			<li>Sequence</li>
+			<ul>
+				<li>Displays sequence of currently loaded structures</li>
+				<li>Selection linked to structure</li>
+				<li>Can display alignments</li>
+				<li>Access to several sequence-related tools:</li>
+				<ul>
+					<li>CDD &amp; Uniprot annotations</li>
+					<li><highlight>BLAST PDB</highlight></li> 
+					<li>sequence alignment calculations</li> 
+					<li>modeling </li>
+				</ul>
+			</ul>
+		</ul>
+	</ul>
+	<div style="position: absolute; top:0px; left: 0px;" data-fragment-index="1" data-autoslide="2000" class="fragment fade-in">
+		<img class="plain" src="modules/intro-chimera/sequence1.png">
+	</div>
+	<div style="position: absolute; top:40px; left: 0px; " data-fragment-index="2" data-autoslide="2000" class="fragment fade-in">
+		<img class="plain" src="modules/intro-chimera/sequence2.png">
+	</div>
+	<div style="position: absolute; top:40px; left: 0px;" data-fragment-index="3" data-autoslide="2000" class="fragment fade-in">
+		<img class="plain fragment fade-out" data-fragment-index="5" src="modules/intro-chimera/sequence3.png">
+	</div>
+	<div style="position: absolute; top:135px; left: 80px;" data-fragment-index="4" data-autoslide="2000" class="fragment fade-in">
+		<img class="plain fragment fade-out" width="75%" data-fragment-index="5" src="modules/intro-chimera/sequence4.png">
+	</div>
+	<div style="position: absolute; top:40px; left: 0px;" data-fragment-index="5" data-autoslide="2000" class="fragment fade-in">
+		<img class="plain" src="modules/intro-chimera/sequence5.png">
+	</div>
+	<div style="position: absolute; top:135px; left: 230px; width: 90%" data-fragment-index="6" data-autoslide="2000" class="fragment fade-in">
+		<img class="plain" width="35%" src="modules/intro-chimera/sequence6.png">
+	</div>
+	<div style="position: absolute; top:400px; left: 0px;" data-fragment-index="7" data-autoslide="2000" class="fragment fade-in">
+		<img class="plain" src="modules/intro-chimera/sequence7.png">
+	</div>
+	<div style="position: absolute; top:100px; left: 0px;" data-fragment-index="8" class="fragment fade-in">
+		<img class="plain" src="modules/intro-chimera/sequence8.png">
+	</div>
+	<aside class="notes">
+	</aside>
+</section>
+
+<section>
+	<h1>Core Features (cont.)</h1>
+	<ul>
+		<li>Useful tools</li>
+		<ul>
+			<li style="color: lightblue">Side View</li>
+			<li style="color: lightblue">Selection Inspector</li>
+			<li style="color: lightblue">Model Panel</li>
+			<li style="color: lightblue">Sequence</li>
+			<li>Animation Tool</li>
+			<ul>
+				<li>Easy keyframe-based animation</li>
+				<li>Take "snapshots" of current scene</li>
+				<li>Drop scenes on timeline to reorder and set timing</li>
+				<li>Tool interpolates color, position, etc. between scenes</li>
+			</ul>
+		</ul>
+	</ul>
+	<div style="position: absolute; top:0px; left: 0px;" class="fragment fade-in">
+		<img class="plain" src="modules/intro-chimera/animation1.png">
+	</div>
+	<div style="position: absolute; top:200px; left: 400px;" class="fragment fade-in">
+		<img class="plain" src="modules/intro-chimera/animation2.png">
+	</div>
+	<div style="position: absolute; top:0px; left: 0px;" class="fragment fade-in">
+		<img class="plain" src="modules/intro-chimera/animation3.png">
+	</div>
+	<div style="position: absolute; top:200px; left: 400px;" class="fragment fade-in">
+		<img class="plain" src="modules/intro-chimera/animation4.png">
+	</div>
+	<div style="position: absolute; top:0px; left: 0px;" class="fragment">
+		<video data-autoplay src="modules/intro-chimera/animation.mp4">
+	</div>
+	<aside class="notes">
+	</aside>
+</section>
+
+<section>
+	<h1>Commonly used tools</h1>
+	<ul>
+		<li>Depictions</li>
+		<ul>
+			<li>Nucleotides</li>
+			<li>Rainbow coloring</li>
+		</ul>
+		<li>Structure analysis</li>
+		<ul>
+			<li>FindHBond</li>
+			<li>Sequence</li>
+			<li>Distances</li>
+		</ul>
+		<li>Utilities</li>
+		<ul>
+			<li>2D Labels</li>
+			<li>Reply Log</li>
+			<li>Movie Recorder</li>
+		</ul>
+	</ul>
+	<aside class="notes">
+	</aside>
+</section>
+
+
+<section>
+	<h1>Extending Chimera</h1>
+	<ul>
+		<li>Incorporating user data </li>
+		<li>Scripting </li>
+		<li style="color: lightblue">Python extensions</li>
+	</ul>
+	<aside class="notes">
+	</aside>
+</section>
+
+<section>
+	<h1>Incorporating user data</h1>
+	<ul>
+		<li>Chimera supports user-defined attributes for atoms, <br/>residues and molecules</li>
+		<li>Once defined, these attributes may be used for selection <br/>and rendering using the “Render by Attribute” extension</li>
+	</ul>
+	<div style="position: absolute; top:130px; left: 50px" class="fragment fade-in">
+		<img src="modules/intro-chimera/renderbyattribute.png">
+	</div>
+	<aside class="notes">
+	</aside>
+</section>
+
+
+<section>
+	<h1>Scripting</h1>
+	<ul>
+		<li>Scripting is executing a set of commands from a file</li>
+		<ul>
+			<li>Useful for repetitive tasks</li>
+			<li>Can serve as documentation</li>
+			<li>Available in most visualization packages</li>
+		</ul>
+		<li>Chimera commands may be read in from a file or typed directly <br/>in the command line interface</li>
+		<li>Chimera “Demo” extension combines scripting with simple <br/>hypertext to create illustrations</li>
+	</ul>
+	<div style="position: absolute; top:130px; left: 50px" class="fragment fade-in">
+		<img src="modules/intro-chimera/scripting.png">
+	</div>
+	<aside class="notes">
+	</aside>
+</section>
+
+
+
