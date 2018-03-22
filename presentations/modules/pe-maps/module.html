@@ -1,0 +1,81 @@
+<section data-transition="slide-in fade-out">
+	<h1>pE-MAPs</h1>
+	<ul>
+		<li><highlight>Point mutant epistatic miniarray profile</highlight>
+			<ul>
+				<li>genetic interactions between point mutants and gene knockouts/knockdowns</li>
+			</ul>
+		</li>
+		<li>Nucleosome (Histone 3 and Histone 4) pE-MAP
+			<ul>
+				<li>351 point mutants X 1374 gene deletions</li>
+			</ul>
+		</li>
+	</ul>
+	<aside class="notes" data-markdown>
+	Add speaker notes here...
+	</aside>
+</section>
+
+<section data-transition="fade-in slide-out">
+	<img class="plain" src="modules/pe-maps/genetic-interaction.png" width="1200px" height="720px"/>
+
+	<aside class="notes" data-markdown>
+	Add speaker notes here...
+	</aside>
+</section>
+
+<section>
+	<h1>Visualization Challenge</h1>
+	<ul>
+		<li>Typical visualization for E-MAPs:
+			<ul>
+				<li>Clustered heatmap</li>
+			</ul>
+			<div class="fragment fade-in" data-fragment-index="1" style="position: absolute; top: 100px; left: 100px">
+				<img class="plain fragment fade-out" data-fragment-index="2" src="modules/pe-maps/heatmap.png"/>
+			</div>
+		</li>
+		<li class="fragment" data-fragment-index="2">Issues:
+			<ul>
+				<li>No visual tie to structure</li>
+				<li>Difficult to explore data</li>
+			</ul>
+		</li>
+	</ul>
+</section>
+
+<section>
+	<h1>Exploratory Visualization</h1>
+	<ul>
+		<li>Utilize network representation that combines
+			<ul>
+				<li>Clustered genes
+					<ul>
+						<li>Organized to match the hierarchical cluster</li>
+					</ul>
+				</li>
+				<li>Residue Interaction Network (RIN)</li>
+				<li>Edges represent interactions between them</li>
+			</ul>
+		</li>
+		<div class="fragment fade-in" data-fragment-index="1" style="position: absolute; top: 100px; left: 100px">
+			<img class="plain fragment fade-out" data-fragment-index="2" src="modules/pe-maps/pe-network.png"/>
+		</div>
+		<li class="fragment" data-fragment-index="2">Integrate with 3D structural view</li>
+			<div class="fragment fade-in" data-fragment-index="3" style="position: absolute; top: -30px; left: 150px">
+				<img class="plain fragment fade-out" data-fragment-index="4" src="modules/pe-maps/chimerax.png" width="85%"/>
+			</div>
+		<li class="fragment" data-fragment-index="4">Provide interactive tools to explore data:
+			<ul>
+				<li><highlight>Search</highlight> interface for gene or residue</li>
+				<li><highlight>Filter</highlight> by the number of interactions</li>
+				<li><highlight>Brushing and linking</highlight> between views</li>
+			</ul>
+		</li>
+	</ul>
+	<div class="fragment fade-in" data-fragment-index="5" style="position: absolute; top: 150px; left: -120px; width: 120%">
+		<img class="plain" src="modules/pe-maps/chimerax.png" width="42%"/>
+		<img class="plain" src="modules/pe-maps/pe-network.png" width="58%" style="float:right"/>
+	</div>
+</section>
