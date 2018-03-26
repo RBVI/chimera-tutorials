@@ -36,12 +36,43 @@
 				<img class="plain fragment fade-out" data-fragment-index="2" src="modules/pe-maps/heatmap.png"/>
 			</div>
 		</li>
-		<li class="fragment" data-fragment-index="2">Issues:
+		<li class="fragment" data-fragment-index="2">Previous approach:
 			<ul>
-				<li>No visual tie to structure</li>
+				<li>Python script that generated image for each complex of interest</li>
+			</ul>
+		</li>
+		<li class="fragment" data-fragment-index="3">Issues:
+			<ul>
+				<li>No visual tie between genes and structure</li>
 				<li>Difficult to explore data</li>
 			</ul>
 		</li>
+	</ul>
+</section>
+
+<section>
+	<h1>Approach</h1>
+	<ul>
+		<li>Utilize tools already familiar to researchers
+			<ul>
+				<li>Cytoscape -- network visualization and analysis</li>
+				<li>UCSF ChimeraX -- structural visualization</li>
+			</ul>
+		</li>
+		<li>Combine with existing apps:
+			<ul>
+				<li>clusterMaker2: hierarchical cluster visualization</li>
+				<li>RINalyzer: 2D network representation of structure</li>
+				<li>structureVizX: link between Cytoscape and UCSF ChimeraX</li>
+				<li>setsApp: ability to select "sets" of nodes</li>
+			</ul>
+		</li>
+		<li>Write new app (StEMAP) to provide additional functionality (filtering, filtered heatmap)</li>
+		<li>Supports use of additional tools:
+		<ul>
+			<li>UCSF ChimeraX point mutation modeling</li>
+			<li>Cytoscape enrichment analysis and access to PPI databases (e.g. STRING)</li>
+		</ul>
 	</ul>
 </section>
 
@@ -59,23 +90,37 @@
 				<li>Edges represent interactions between them</li>
 			</ul>
 		</li>
-		<div class="fragment fade-in" data-fragment-index="1" style="position: absolute; top: 100px; left: 100px">
+		<div class="fragment fade-in" data-fragment-index="1" style="position: absolute; top: 30px; left: -20px; width: 110%">
+			<!-- Update this -->
 			<img class="plain fragment fade-out" data-fragment-index="2" src="modules/pe-maps/pe-network.png"/>
 		</div>
 		<li class="fragment" data-fragment-index="2">Integrate with 3D structural view</li>
-			<div class="fragment fade-in" data-fragment-index="3" style="position: absolute; top: -30px; left: 150px">
+			<div class="fragment fade-in" data-fragment-index="3" style="position: absolute; top: 30px; left: 150px">
 				<img class="plain fragment fade-out" data-fragment-index="4" src="modules/pe-maps/chimerax.png" width="85%"/>
 			</div>
-		<li class="fragment" data-fragment-index="4">Provide interactive tools to explore data:
+			<li class=fragment data-fragment-index="4">Include capability to optionally view the original heatmap</li>
+			<div class="fragment fade-in" data-fragment-index="5" style="position: absolute; top: 0px; left: -120px; width: 120%">
+				<img class="plain fragment fade-out" data-fragment-index="6" src="modules/pe-maps/heatmap.png"/>
+			</div>
+		<li class="fragment" data-fragment-index="6">Provide interactive tools to explore data:
 			<ul>
 				<li><highlight>Search</highlight> interface for gene or residue</li>
-				<li><highlight>Filter</highlight> by the number of interactions</li>
+				<li><highlight>Filter</highlight> by the number of interactions or complex</li>
 				<li><highlight>Brushing and linking</highlight> between views</li>
 			</ul>
 		</li>
 	</ul>
-	<div class="fragment fade-in" data-fragment-index="5" style="position: absolute; top: 150px; left: -120px; width: 120%">
+	<div class="fragment fade-in" data-fragment-index="7" style="position: absolute; top: 10px; left: -120px; width: 120%">
 		<img class="plain" src="modules/pe-maps/chimerax.png" width="42%"/>
+		<!-- Update this -->
 		<img class="plain" src="modules/pe-maps/pe-network.png" width="58%" style="float:right"/>
 	</div>
 </section>
+
+<!--section>
+	<h1>Results</h1>
+	<ul>
+		<li>Researcher was able to quickly find ares of interest</li>
+		<li>Tool was actively used until researcher moved on</li>
+	</ul>
+</section-->
