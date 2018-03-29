@@ -26,7 +26,7 @@
 </section>
 
 <section>
-	<h1>Visualization Challenge</h1>
+	<h1>pE-MAPS</h1>
 	<ul>
 		<li>Typical visualization for E-MAPs:
 			<ul>
@@ -36,30 +36,32 @@
 				<img class="plain fragment fade-out" data-fragment-index="2" src="modules/pe-maps/heatmap.png"/>
 			</div>
 		</li>
-		<li class="fragment" data-fragment-index="2">Previous approach:
-			<ul>
-				<li>Python script that generated image for each complex of interest</li>
-			</ul>
-		</li>
-		<li class="fragment" data-fragment-index="3">Issues:
+		<li class="fragment" data-fragment-index="2">Issues:
 			<ul>
 				<li>No visual tie between genes and structure</li>
 				<li>Difficult to explore data</li>
+			</ul>
+		</li>
+		<li class="fragment" data-fragment-index="3">Previous approach:
+			<ul>
+				<li>Python script that generated image for each complex of interest</li>
 			</ul>
 		</li>
 	</ul>
 </section>
 
 <section>
-	<h1>Approach</h1>
+	<h1>pE-MAPS</h1>
+			<ul>
+				<li>Chewing gum and bailing wire approach
 	<ul>
-		<li>Utilize tools already familiar to researchers
+		<li class="fragment">Utilize tools already familiar to researchers
 			<ul>
 				<li>Cytoscape -- network visualization and analysis</li>
 				<li>UCSF ChimeraX -- structural visualization</li>
 			</ul>
 		</li>
-		<li>Combine with existing apps:
+		<li class="fragment">Combine with existing Cytoscape apps:
 			<ul>
 				<li>clusterMaker2: hierarchical cluster visualization</li>
 				<li>RINalyzer: 2D network representation of structure</li>
@@ -67,13 +69,15 @@
 				<li>setsApp: ability to select "sets" of nodes</li>
 			</ul>
 		</li>
-		<li>Write new app (StEMAP) to provide additional functionality (filtering, filtered heatmap)</li>
-		<li>Supports use of additional tools:
+		<li class="fragment">Write new app (StEMAP) to provide "glue" and additional functionality (filtering, filtered heatmap)</li>
+		<li class="fragment">Supports use of additional tools:
 		<ul>
 			<li>UCSF ChimeraX point mutation modeling</li>
 			<li>Cytoscape enrichment analysis and access to PPI databases (e.g. STRING)</li>
 		</ul>
 	</ul>
+		</li>
+			</ul>
 </section>
 
 <section>
@@ -107,6 +111,7 @@
 				<li><highlight>Search</highlight> interface for gene or residue</li>
 				<li><highlight>Filter</highlight> by the number of interactions or complex</li>
 				<li><highlight>Brushing and linking</highlight> between views</li>
+				<li><highlight>Overview+detail</highlight> local heatmap/network overview</li>
 			</ul>
 		</li>
 	</ul>

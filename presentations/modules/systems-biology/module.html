@@ -1,4 +1,4 @@
-<section>
+<section data-transition="slide-in fade-out">
 	<h1>Systems Biology</h1>
 	<blockquote style="width:90%; font-size: 90%">
 		Systems biology...is about putting together rather than taking 
@@ -6,29 +6,48 @@
 		of thinking about integration that are as rigorous as our reductionist 
 		programmes, but different....It means changing our philosophy, in the full 
 		sense of the term (Denis Noble).
+	</blockquote>
+	<aside class="notes" data-markdown>
+  * Noble, Denis (2006). The music of life: Biology beyond the genome. Oxford: Oxford University Press
+	</aside>
+</section>
+
+<section data-transition="fade-in slide-out">
+	<h1>Systems Biology</h1>
+	<blockquote style="width:90%; font-size: 90%">
+		Systems biology...is about putting together rather than taking 
+		apart, <highlight>integration</highlight> rather than reduction. It requires that we develop ways 
+		of thinking about <highlight>integration</highlight> that are as rigorous as our reductionist 
+		programmes, but different....It means changing our philosophy, in the full 
+		sense of the term (Denis Noble).
 		</blockquote>
 </section>
+
 <section>
 	<h1>Systems Biology</h1>
 	<ul>
-		<li>Data-driven
+		<li>Computationally driven
+			<ul>
+				<li>Modeling of biological systems</li>
+			</ul>
+		</li>
+		<li class="fragment">Data-driven
 			<ul>
 				<li>Heavy use of high-throughput techniques</li>
-			</ul>
-		</li>
-		<li>Data (observation) drives hypotheses</li>
-		<li>Holistic vs reductionist
-			<ul>
-				<li>Looks for emergent properties</li>
-			</ul>
-		</li>
-		<li>Visualizations and analytical tools are more exploratory than explanatory
-			<ul>
-				<li>Although explanatory tools are still needed to publish/present results</li>
+				<li>Data drives hypotheses</li>
+				<li>Holistic vs reductionist
+				<ul>
+					<li>Looks for emergent properties</li>
+				</ul>
+			<li>Requirements for visualizations and analytical tools are more exploratory than explanatory
+				<ul>
+					<li>Although explanatory tools are still needed to publish/present results</li>
+				</ul>
 			</ul>
 		</li>
 	</ul>
 </section>
+
 <section>
 	<h1>Systems Biology</h1>
 	<ul>
@@ -55,6 +74,10 @@
 				<li>Epigenetics:
 					<ul>
 						<li>CHiP-seq</li>
+					</ul>
+				</li>
+				<li>Chromatin interactions:
+					<ul>
 						<li>3C,4C,5C, and Hi-C</li>
 					</ul>
 				</li>
@@ -66,4 +89,37 @@
 			</ul>
 		</li>
 	</ul>
+</section>
+
+<section>
+	<h1>Systems Biology</h1>
+	<ul>
+		<li>Data growth
+			<ul>
+				<li>Scale for experiments of a given type (e.g. RNA expression) are growing dramatically
+					<ul>
+						<li>Split Pool Ligation-based Transcriptome sequencing (SPLiT-seq): ~100,000 cells</li>
+					</ul>
+				</li>
+				<li>The number of types of experiments are also growing</li>
+				<li>Starting to look at time-dependent and condition-dependent data</li>
+				<li>There is an increasing demand for integration
+					<ul>
+						<li>Protein-protein interaction + expression</li>
+						<li>Transcriptomics + proteomics</li>
+						<li>Epigenetics + chromatin interactions</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li>What tools do we have to cope with this growth?
+			<ul>
+				<li class="fragment">Computational approaches: machine learning</li>
+				<li class="fragment" style="list-style-type: none">&rarr; Exploratory visualizations</li>
+			</ul>
+		</li>
+	</ul>
+	<aside class="notes" data-markdown>
+  * SPLiT-seq from Georg Seelig @ UW
+	</aside>
 </section>
