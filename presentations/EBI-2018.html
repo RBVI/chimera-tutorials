@@ -1,0 +1,345 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  	<title>ChimeraX &amp; Cytoscape Coming Attractions</title>
+
+		<link rel="stylesheet" href="http://www.rbvi.ucsf.edu/reveal.js/css/reveal.css"/>
+
+		<!-- Theme is one of beige|black|blood|league|moon|night|serif|simple|sky|solarized|white -->
+		<link rel="stylesheet" href="http://www.rbvi.ucsf.edu/reveal.js/css/theme/simple.css" id="theme"/>
+
+		<!-- For syntax highlighting of code -->
+		<link rel="stylesheet" href="http://www.rbvi.ucsf.edu/reveal.js/lib/css/zenburn.css"/>
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../css/print/pdf.css' : '../css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+  <!-- Change default behavior for a few things... -->
+  <style>
+	.reveal h1,
+	.reveal h2,
+	.reveal h3 {
+		-webkit-hyphens: none;
+		-moz-hyphens: none;
+		hyphens: none;
+		word-wrap: normal;
+	}
+	.reveal h1 { font-size: 2em; font-weight: bold; }
+	.reveal ul ul { list-style-type: circle; font-size: 0.9em; }
+	.reveal ul ul ul { list-style-type: none; font-size: 0.8em; }
+	.reveal small { font-size: 0.8em; line-height: 1.6em; }
+	.reveal tiny { font-size: 0.6em; line-height: 1.2em; }
+	.reveal table { border: 2px solid black; border-collapse: collapse; }
+	.reveal th,
+	.reveal td { border: 2px solid black; }
+
+	/* Change default behavior for tables per https://github.com/hakimel/reveal.js/issues/894 - tef 18nov14 */
+    /* (Should not be necessary in 3.1.0 and later) */
+	.reveal table {
+		margin: auto;
+		border-collapse: collapse;
+		border-spacing: 0;
+	}
+	.reveal table th {
+		font-weight: bold;
+	}
+	.reveal table th,
+	.reveal table td {
+		text-align: left;
+		padding: 0.1em 0.5em 0.1em 0.5em;
+		border-bottom: 1px solid;
+	}
+	.reveal .footer {
+		position: absolute;
+		bottom: 1em;
+		left: 1em;
+		font-size: 0.35em;
+	}
+  	blockquote, p { text-align: left; }
+  </style>
+	</head>
+
+	<body>
+		<div class="reveal">
+			<div class="footer">Visualizing &amp; Analyzing Biological Molecules and Interactions, June 2018</div>
+
+			<div class="slides"> 
+
+				<section style="top: 295.5px; display: block;" class="present">
+					<h1>Visualizing and Analyzing Biological Molecules and their Interactions</h1>
+					<h3>UCSF ChimeraX and Cytoscape Coming Attractions</h3>
+				</section>
+
+				<section style="top: 348px; display: block;" class="future" aria-hidden="true" hidden="">
+					<p style="text-align:center; font-weight: bold; font-size: 40pt">
+						This slide deck available at:<br>
+						www.rbvi.ucsf.edu/home/scooter/talks/EBI2018.html<br>
+					</p>
+				</section>
+
+				<section id="intro-rbvi" data-external="modules/intro-rbvi/module.html"></section>
+				<section id="chimerax-motivation" data-external="modules/chimerax-motivation/module.html"></section>
+				<section id="chimerax-enhancements" data-external="modules/chimerax-enhancements/module.html"></section>
+				<section id="intro-cytoscape" data-external="modules/intro-cytoscape/module.html"></section>
+
+				<section>
+					<section>
+						<h1>Cytoscape updates</h1>
+						<div style="position: absolute; left: 50px; top: 150px;">
+						<ul>
+							<li>Key 3.6 features:
+								<ul>
+									<li>Automation</li>
+									<li>Network search panel</li>
+									<li>Starter panel</li>
+									<li>New Core apps:
+										<ul>
+											<li>New yFiles layouts</li>
+											<li>Diffusion</li>
+											<li>Copy layouts between networks (copyCatLayout)</li>
+											<li>CyBrowser</li>
+											<li>NDEx Integration</li>
+										</ul>
+									</li>
+									<li>JVM installation</li>
+								</ul>
+							</li>
+						</ul>
+						</div>
+						<div style="position: absolute; left: 50px; top: 150px;" class="fragment">
+						<ul>
+							<li>Key 3.6 features:
+								<ul>
+									<li style="color:orange">Automation</li>
+									<li style="color:orange">Network search panel</li>
+									<li style="color:orange">Starter panel</li>
+									<li>New Core apps:
+										<ul>
+											<li>New yFiles layouts</li>
+											<li>Diffusion</li>
+											<li>Copy layouts between networks (copyCatLayout)</li>
+											<li>CyBrowser</li>
+											<li>NDEx Integration</li>
+										</ul>
+									</li>
+									<li>JVM installation</li>
+								</ul>
+							</li>
+						</ul>
+						</div>
+					</section>
+
+					<section>
+						<h1>Cytoscape automation</h1>
+						<div style="float:right;width:50%">
+							<img src="images/swagger.png" width="500px" class="plain"/>
+						</div>
+						<div style="float:left; width:50%">
+						<ul>
+							<li style="list-style-type: none">Major focus for Cytoscape 3.6
+								<ul>
+							<li>Additional CyREST and Command functionality</li>
+							<li>Commands and CyREST interfaces are more consistently documented</li>
+							<li>Now provide Swagger web pages for both 
+								<a target="_blank" href="http://localhost:1234/v1/swaggerUI/swagger-ui/index.html?url=http%3A%2F%2Flocalhost%3A1234%2Fv1%2Fswagger.json">CyREST</a> and 
+								<a target="_blank" href="http://localhost:1234/v1/swaggerUI/swagger-ui/index.html?url=http%3A%2F%2Flocalhost%3A1234%2Fv1%2Fcommands%2Fswagger.json">Commands</a></li>
+							<li>Released new versions of RCy3 and py2cytoscape
+								<ul>
+									<li>See 
+										<a href="https://github.com/cytoscape/cytoscape-automation">https://github.com/cytoscape/cytoscape-automation</a> for examples and workflows</li>
+								</ul>
+							</li>
+								</ul></li>
+						</ul>
+						</div>
+					</section>
+
+					<section>
+						<h1>Network Search Bar</h1>
+						<div style="float:right;width:50%">
+							<img src="images/NetworkSearch.png" width="500px" class="plain"/>
+						</div>
+						<div style="float:left; width:50%">
+							<ul>
+								<li>Eases access to network and pathway repositories</li>
+								<li>Users can type or paste queries directly in search bar</li>
+								<li>New API provides easy access to functionality for Apps</li>
+								<li>Currently supported by:
+									<ul>
+										<li>stringApp</li>
+										<li>GeneMania</li>
+										<li>PSIQUIC</li>
+										<li>WikiPathways</li>
+										<li>NDEx</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</section>
+
+					<section>
+						<h1>Starter Panel</h1>
+							<p>Easy access to previous sessions and example starter sessions</p>
+							<img src="images/StarterPanel.png" width="800px" class="plain"/>
+					</section>
+
+					<section>
+						<h1>Cytoscape updates</h1>
+						<ul>
+							<li>Planned 3.7 features:
+								<ul>
+									<li>Performance
+										<ul>
+											<li>Significantly improved startup performance</li>
+											<li>Improved CyTable size and performance</li>
+											<li>Crash logging</li>
+										</ul>
+									</li>
+									<li>User Interface
+										<ul>
+											<li>Improved UI for preference settings</li>
+											<li>Improved UI for command execution</li>
+											<li>Support for color palettes (e.g. Brewer colors)</li>
+											<li>Modal interface to support improved annotations interface</li>
+											<li>Better CyBrowser integration</li>
+										</ul>
+									</li>
+									<li>Automation
+										<ul>
+											<li>Improved cyREST coverage</li>
+											<li>REST (and command) interface to filters</li>
+										</ul>
+									</li>
+									<li>Java 9 (10?, 11?) compatibility</li>
+									<li>Improved app updating</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+
+				</section>
+
+				<section>
+					<h1>Bringing it all together: pE-MAP<h1>
+				</section>
+				<section id="pe-maps" data-external="modules/pe-maps/module.html"></section>
+
+				<section>
+					<h1>Acknowledgements</h1>
+					<div style="font-size: 80%; width: 45%; float: left">
+					<dl>
+						<dd>Krogran lab @ UCSF
+						<dl>
+							<dd><highlight>Stefan Bohn</highlight></dd>
+						</dl>
+						</dd>
+					</dl>
+					<dl>
+						<dd>Chimera Team @ UCSF
+						<dl>
+							<dd>Tom Ferrin</dd>
+							<dd>Conrad Huang</dd>
+							<dd>Greg Couch</dd>
+							<dd>Eric Pettersen</dd>
+							<dd>Tom Goddard</dd>
+							<dd>Elaine Meng</dd>
+						</dl>
+						</dd>
+					</dl>
+					</div>
+					<div style="font-size: 80%; width: 45%; float: left">
+						<dl>
+							<dd>Cytoscape team
+							<dl>
+								<dd>Ideker lab @ UCSD
+								<dl>
+									<dd>Barry Demchak</dd>
+									<dd>Kei Ono</dd>
+									<dd>Brett Settle</dd>
+									<dd>David Otasek</dd>
+								</dl>
+								</dd>
+								<dd>Bader lab @ UToronto
+								<dl>
+									<dd>Christian Lopes</dd>
+									<dd>Mike Kucera</dd>
+									<dd>Max Franz</dd>
+								</dl>
+								</dd>
+								<dd>
+								<dd>Gladstone Institutes 
+								<dl>
+									<dd>Alex Pico</dd>
+									<dd>Kristina Hanspers</dd>
+									<dd>Adam Triester</dd>
+									</dl>
+								</dd>
+							</dl>
+
+					</div>
+				</section>
+
+				<section>
+					<h1>Thank you for your attention!</h1>
+				</section>
+
+    </section>
+
+
+			</div>
+		</div>
+
+		<script src="../lib/js/head.min.js"></script>
+		<script src="../js/reveal.js"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-155159-15', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+				controls: true,
+				progress: true,
+				slideNumber: "c",
+				touch: true,
+				fragments: true,
+				help: true,
+				showNotes: false,
+				previewLinks: false,
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				width: 1200,
+				height: 860,
+				autoSlide: 0,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+				{ src: '../plugin/markdown/marked.js' },
+				{ src: '../plugin/markdown/markdown.js' },
+				{ src: '../plugin/markdown/zoom.js', async: true, condition: function(){ return !!document.body.classList; } },
+				{ src: '../plugin/zoom-js/zoom.js', async: true, condition: function(){ return !!document.body.classList; } },
+				{ src: '../plugin/notes/notes.js', async: true },
+				{ src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+				{ src: '../plugin/external/external.js', condition: function() { return !!document.querySelector( '[data-external]' ); } }
+				]
+				});
+			</script>
+		</body>
+	</html>
