@@ -1,0 +1,116 @@
+<section>
+	<h1>Chemical Cross-linking + Mass Spectrometry</h1>
+	<ul>
+		<li>What is it?
+			<ol>
+				<li>Protein cross-linking reaction where there are a number of different
+linker types available including the ones with stable isotopes to enable
+detection and quantification</li>
+				<li>Isolating/separating the cross-linked
+					proteins from non-cross-linked to reduce the false positive rate</li>
+				<li>Digestion of proteins into peptides by enzymes or chemical reagents</li>
+				<li>Cross-linked peptide enrichment by physio-chemical properties</li>
+				<li>MS method optimization for cross-linked peptide detection</li>
+				<li>Data processing to map cross-linked sites</li>
+			</ol></li>
+	</ul>
+	<div style="position: absolute; top:100px; left: 0px; height: 850px" class="fragment fade-in" data-fragment-index="1">
+		<img src="modules/crosslinking/CrossLink.jpg" />
+		<br/><span style="margin-top: -50px;margin-left: 300px; font-size: 40%"><i>B.Q. Tran et al. / Biochimica et Biophysica Acta 1864 (2016)</i></span>
+	</div>
+</section>
+
+<section>
+	<h1>Chemical Cross-linking + Mass Spectrometry</h1>
+	<ul>
+		<li class="fragment" data-fragment-index="2">What is it used for?
+			<ul>
+				<li>Determine binding poses of complexes.</li>
+				<li>Stabilize (possibly transient or semi-stable) protein tertiary and quaternary structure for analysis.</li>
+				<li>Capture and identify unknown protein interactors or interaction domains.</li>
+				<li>Conjugate an enzyme or tag to an antibody or other purified protein.</li>
+				<li>Immobilize antibodies or other proteins for assays or affinity-purification.</li>
+				<li>Attach peptides to larger "carrier" proteins to facilitate handling/storage.</li>
+			</ul>
+		</li>
+	</ul>
+</section>
+
+<section>
+	<h1>Chemical Cross-linking in Chimera</h1>
+	<h5>XLinkAnalyzer</h5>
+	<p><a href="http://www.beck.embl.de/XlinkAnalyzer.html">XLinkAnalyzer</a> is a tool developed by Jan Kosinski at
+	EMBL that extends UCSF Chimera with a number of useful features for analyzing and visualizing crosslink results</p>
+	<div style="position: absolute; top:100px; left: 0px; height: 850px" class="fragment fade-in" data-fragment-index="1">
+		<img src="modules/crosslinking/XLinkAnalyzer.jpg" />
+	</div>
+</section>
+
+<section>
+	<h1>Chemical Cross-linking in Chimera</h1>
+	<!-- Description of steps -->
+	<ol>
+		<li>Open a structure</li>
+		<li>Define a project</li>
+		<li>Add subunits</li>
+		<li>Add cross-linking data</li>
+		<li>Add sequence data (optional)</li>
+		<li>Visualize and explore the data</li>
+	</ol>
+	<div style="position: absolute; top: 130px; left: 0px; height: 850px" class="fragment fade-in" data-fragment-index="1">
+		<img src="modules/crosslinking/PolCXMS.png" />
+	</div>
+</section>
+
+<section>
+	<h1>Chemical Cross-linking in Chimera</h1>
+	<h5>Demo</h5>
+	<!-- Walk-through -->
+</section>
+
+<section>
+	<h1>Chemical Cross-linking in Chimera</h1>
+	<!-- Installation and data -->
+	<h5>Installation</h5>
+	<ol style="font-size: 80%">
+		<li>Download <a href="http://www.beck.embl.de/downloads/XlinkAnalyzer.v1.1.1.zip">XLinkAnalyzer</a> and unzip it somewhere
+			<ul>
+				<li>You can also download the <a href="http://www.beck.embl.de/downloads/XlinkAnalyzer_documentation.v1.1.1.zip">documentation</a>, if desired</li>
+			</ul>
+		</li>
+		<li>Start Chimera</li>
+		<li>Go to Menu <b>Favorites&rarr;Preferences...&rarr;Category: Tools</b></li>
+		<li><b>Add...</b> button, which is on the bottom of the window, and browse for directory of Xlink Analyzer.
+			<ul>
+				<li>So if your unzipped Xlink Analyzer has path: /user/Desktop/XlinkAnalyzer/, add /user/Desktop/XlinkAnalyzer. A line similar to “XlinkAnalyzer - /user/Desktop/” should appear in Locations section of the Tools window</li>
+			</ul>
+		</li>
+		<li>Click <b>Save</b></li>
+		<li>Close. This configuration will persist and you don't need to repeat it.
+			<b>NOTE: Do not remove the XlinkAnalyzer directory</b></li>
+	</ol>
+
+</section>
+
+<section>
+	<h1>Chemical Cross-linking in Chimera</h1>
+	<!-- Exercise -->
+	<ol>
+		<li>Download <a href="http://www.beck.embl.de/downloads/XlinkAnalyzerDB/bovineRNAPolII.zip">bovineRNAPolII.zip</a>
+			<ul>
+				<li style="font-size:80%">This is a data set from <a href="https://www.nature.com/articles/nature16482">
+						Structure of transcribing mammalian RNA polymerase II
+					</a>, an effort that combined use of a 3.4&#8491; Cryo-EM map with chemical cross-linking to explore the structure of bovine RNA Polymerase II</li>
+			</ul>
+		</li>
+		<li>Unzip the file in a convenient directory</li>
+		<li>Open the PDB structure (5FLM)</li>
+		<li>Load the project ("bovineRNAPolII.json") into XLinkAnalyzer</li>
+		<li>Explore the structure and hypothesize about the violated constraints</li>
+	</ol>
+</section>
+
+<section>
+	<h1>Questions?</h1>
+</section>
+
