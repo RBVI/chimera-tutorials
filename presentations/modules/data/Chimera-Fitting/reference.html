@@ -1,0 +1,110 @@
+<html>
+<title>Chimera Fitting Quick Reference</title>
+<body>
+<h2>Chimera Quick Reference for HIV and ParM Tutorials</h2>
+
+HIV and ParM <a href="emfit.html">tutorial notes</a>.
+Chimera <a href="http://www.cgl.ucsf.edu/chimera/">web site</a> and
+<a href="http://www.cgl.ucsf.edu/chimera/download.html">download</a>,
+Documentation:
+<a href="http://www.cgl.ucsf.edu/chimera/tutorials/volumetour/volumetour.html">volume data guide</a> and
+<a href="chimera-1.4/share/chimera/helpdir/UsersGuide/framecontrib.html">tools</a> and
+<a href="chimera-1.4/share/chimera/helpdir/UsersGuide/framecommand.html">commands</a>
+
+<table>
+<tr><td>
+
+<table>
+<tr>
+<td valign=top>
+<h2 style="margin-bottom: 0;">Maps</h2>
+
+<table>
+<tr><td>Volume dialog <td> Tools / Volume Data / <a href="http://www.cgl.ucsf.edu/chimera/docs/ContributedSoftware/volumeviewer/framevolumeviewer.html">Volume Viewer</a>
+<tr><td>Fitting dialog <td> Tools / Volume Data / <a href="http://www.cgl.ucsf.edu/chimera/docs/ContributedSoftware/fitmaps/fitmaps.html">Fit in Map</a>
+<tr><td>Fit only selected atoms <td> <a href="http://www.cgl.ucsf.edu/chimera/docs/ContributedSoftware/fitmaps/fitmaps.html">fit dialog</a>, fit "selected atoms", option "Move whole molecules" false
+<tr><td>Correlation value <td> <a href="http://www.cgl.ucsf.edu/chimera/docs/ContributedSoftware/fitmaps/fitmaps.html">Fit dialog</a>, Options "use simulated map"
+<tr><td>Simulated map calculation <td> "<a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/molmap.html">molmap</a> #3,4 17"
+<tr><td>Freeze map motion <td> Active models checkbuttons beneath <a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/chimerawindow.html#emulator">command-line</a>.<br>Or "activate all" and "activate only" buttons in <a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/modelpanel.html">Model Panel</a>.
+<tr><td>Determine map symmetry axis <td> <a href="http://www.cgl.ucsf.edu/chimera/docs/ContributedSoftware/volumeviewer/framevolumeviewer.html">volume dialog</a> File / Duplicate, rotate map copy, fit,<br>axis reported in <a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/reply.html">reply log</a>
+<tr><td>Color surface <td> <a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/selection.html#pickselect">select</a> surface with ctrl-click, the Actions / Color / blue
+<tr><td>Transparent surface <td> click color button, adjust <a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/colortool.html">opacity slider</a>
+<tr><td>Fade surface <td> "<a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/surftransparency.html">surftransparency</a> 100 #0 25"
+<tr><td>Single transparent layer <td> <a href="http://www.cgl.ucsf.edu/chimera/docs/ContributedSoftware/volumeviewer/framevolumeviewer.html">volume dialog</a>, Features / Surface and Mesh Options, one transparent layer
+<tr><td>Color map to match atoms <td> Tools / Volume Data / <a href="http://www.cgl.ucsf.edu/chimera/docs/ContributedSoftware/colorzone/colorzone.html">Color Zone</a>
+<tr><td>Volume outline box <td> <a href="http://www.cgl.ucsf.edu/chimera/docs/ContributedSoftware/volumeviewer/framevolumeviewer.html">volume dialog</a>, Features / Data Display Options,<br>or command "<a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/volume.html">volume</a> #0 showoutline true"
+<tr><td>Morph between maps <td> Tools / Volume Data / <a href="http://www.cgl.ucsf.edu/chimera/docs/ContributedSoftware/morphmap/morphmap.html">Morph Map</a>, or command "<a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/vop.html">vop</a> morph #0,1"
+<tr><td>Map grid change <td> "<a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/vop.html">vop</a> resample #2 ongrid #0"
+<tr><td>Save map <td> <a href="http://www.cgl.ucsf.edu/chimera/docs/ContributedSoftware/volumeviewer/framevolumeviewer.html">volume dialog</a>, File / Save Map As...
+<tr><td>Difference map <td> "<a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/vop.html">vop</a> subtract #2 #5 minRMS true"
+<tr><td>Flip handedness of map <td> "<a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/vop.html">vop</a> zflip #2"
+
+<tr><td height=10>
+<tr>
+<td colspan=2 valign=bottom>
+<h2 style="margin-bottom: 0;">Visualization Environment</h2>
+
+<tr><td>Command-line <td> Favorites / <a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/chimerawindow.html#emulator">Command-line</a>
+<tr><td>Text results <td> Favorites / <a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/reply.html">Reply Log</a>
+<tr><td>Command help <td> "<a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/help.html">help</a> sym"
+<tr><td>Center and zoom <td> Actions / <a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/focus.html">Focus</a>
+<tr><td>Move in/out of screen <td> ctrl key + middle <a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/mouse.html">mouse button</a>
+<tr><td>Save image <td> File / <a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/print.html">Save Image</a>
+<tr><td>Background color <td> "<a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/set.html">set</a> bg_color white"
+<tr><td>Silhouette edges <td> Tools / Viewing Controls / <a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/sideview.html#effects">Effects</a>, silhouettes.
+<tr><td>High quality lighting <td> Tools / Viewing Controls / <a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/sideview.html#lighting">Lighting</a>, quality "glossy"
+<tr><td>Raytraced image (shadows) <td> File / <a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/print.html">Save Image</a>, Raytrace with POV-Ray -> true
+<tr><td>Record movie <td> "<a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/movie.html">movie</a> record", ...,<br>"movie encode output ~/Desktop/movie.avi"
+<tr><td>Pause before executing<br> next command <td> "<a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/wait.html">wait</a> 50"
+<tr><td>Toolbar buttons <td> Favorites / <a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/preferences.html#preftool">Preferences</a>, category Tools,<br>check "On Toolbar" buttons
+
+</table>
+
+<td valign=top>
+<table>
+<tr>
+<td>
+<h2 style="margin-bottom: 0;">Molecules</h2>
+
+<table>
+<tr><td>Color PDB chains <td> command "<a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/rainbow.html">rainbow</a> chain"
+<tr><td>Display atoms <td> <a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/menu.html#actdisplay">Actions / Atoms</a> / show.
+<tr><td>Select waters <td> <a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/menu.html#menuselect">Select</a> / Residue / HOH
+<tr><td>Delete atoms <td> <a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/menu.html#menuactions">Actions</a> / Atoms / delete
+<tr><td>Select one chain <td> Select / Chain / G
+<tr><td>Select specific residues <td> "<a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/select.html">select</a> #1:163-307", "select :33,34,36,40"
+<tr><td>Invert selection <td> Select / Invert, or right-arrow keyboard key
+<tr><td>Hide ribbon <td> <a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/menu.html#menuactions">Actions</a> / Ribbon / hide
+<tr><td>Red-to-blue color one chain <td> command "<a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/rainbow.html">rainbow</a>"
+<tr><td>Measure rotation <td> command "<a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/measure.html">measure</a> rotation #1 #3 showslab true"
+<tr><td>Align molecular models <td> Tools / Structure Comparison / <a href="http://www.cgl.ucsf.edu/chimera/docs/ContributedSoftware/matchmaker/matchmaker.html">Match Maker</a>
+<tr><td>Symmetric molecule copies <td> "<a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/sym.html">sym</a> #1 group c3 coordinateSystem #0<br>center 205,205,205"
+<tr><td>Ellipsoid representation of molecule <td> "<a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/measure.html">measure</a> inertia #1:.G"
+<tr><td>Move only selected atoms <td>   Tools / Movement / <a href="http://www.cgl.ucsf.edu/chimera/docs/ContributedSoftware/movemode/movemode.html">Movement Mouse Mode</a>,<br> move selection
+<tr><td>Calculate domain rotation angle <td> "<a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/match.html">match</a> move false showmatrix true<br>#1:163-307 #7:163-307"
+<tr><td>Align molecules with identical sequences <td> "<a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/match.html">match</a> #1:1-162 #7:1-162"
+<tr><td>Morph molecules <td> Tools / Structure Comparison / <a href="http://www.cgl.ucsf.edu/chimera/docs/ContributedSoftware/morph/morph.html">Morph Conformations</a>, command "<a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/coordset.html">coordset</a> #4 1,41"
+<tr><td>Show only backbone atoms <td> <a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/menu.html#menuactions">Actions</a> / Atoms / backbone only
+<tr><td>Show bond length <td> mouse over bond to see popup balloon
+<tr><td>Energy minimization <td> Tools / Structure Editing / <a href="http://www.cgl.ucsf.edu/chimera/docs/ContributedSoftware/minimize/minimize.html">Minimize Structure</a>
+<tr><td>Helix molecule copies <td> "<a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/sym.html">sym</a> #3 group h,1,-24.3,-165.4,6 coord #2"
+<tr><td>Color multiple molecules <td> "<a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/rainbow.html">rainbow</a> models #3,4,5"
+<tr><td>Steric clashes <td> "<a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/findclash.html">findclash</a> #4.2 intersubmodel true select true"
+
+<tr><td height=10>
+<tr><td colspan=2>
+<h2 style="margin-bottom: 0;">Maps or Molecules</h2>
+
+<tr><td>Model Panel <td> Favorites / <a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/modelpanel.html">Model Panel</a>
+<tr><td>Hide map or molecule <td> Favorites / <a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/modelpanel.html">Model Panel</a>,<br>checkbuttons in s (shown) column
+<tr><td>Rotate by specified angle <td> "<a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/turn.html">turn</a> z 120 center 207.9,204.9,0 coord #0"
+<tr><td>Shift my specified vector <td> "<a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/move.html">move</a> 207.9,204.9,0 model #0 coord #0"
+<tr><td>Fly movie motion <td> "<a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/savepos.html">savepos</a> bound", "savepos far", "<a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/reset.html">reset</a> bound 50".
+<tr><td>Undisplay map or molecule <td> "<a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/modeldisplay.html">~modeldisplay</a> #0", "modeldisp #2"
+<tr><td>Align coordinate axes <td> "<a href="http://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/matrixcopy.html">matrixcopy</a> #1 #7"
+</table>
+
+</table>
+
+</body>
+</html>
