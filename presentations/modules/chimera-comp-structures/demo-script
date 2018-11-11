@@ -1,0 +1,250 @@
+--------------------------------------------------------------------------
+demo for Chimera workshop Oct 2012 "structure analysis & comparison"
+using Chimera version 1.7 
+
+demo files 
+  prefs.class1 - Chimera preferences file to use for this demo
+    (Conrad, you will need to edit fetch dir and location of 1hxx.pdb)
+  2gbp (PDB, pre-fetched) - E. coli periplasmic binding protein/glucose
+  2fw0 (PDB, pre-fetched) - same protein but open/unbound state
+  morph.mp4 - H.264 movie previously recorded in Chimera
+  1hxx.pdb (PDB local file) - E. coli porin OmpF mutant Y106F
+--------------------------------------------------------------------------
+
+In this session, we'll get into protein structure analysis: 
+looking at hydrogen bonds, contacts, and sidechain conformations; 
+mapping properties to structures; and comparing different structures.
+
+I plan to present for about 20 minutes.  The demo will cover some important
+general concepts and tips for using Chimera, and preview some of the tools 
+you will be using in the hands-on part.
+--------------------------------------------------------------------------
+
+You can start Chimera by clicking the icon.  For demos, I like to use an
+alias that goes to my demo directory and uses a certain set of preferences.
+
+[mac Terminal]%  class1
+(alias class1 "cd [file-location]; \cp -f prefs.class1 preferences; [chimera-install-dir]/Chimera.app/Contents/MacOS/chimera")
+
+Recent versions of Chimera start up showing the Rapid Access interface
+to recently used data files, etc. [resize window].  Opening any data will
+switch to the normal graphics window, but you can toggle in and out of
+Rapid Access at any time by clicking the lighting-bolt icon (show).
+
+The window and other startup behaviors can be customized with Preferences, 
+which I'll show in a moment. This is uncustomized.
+
+In Chimera, most things can be done with either the menu or commands; 
+I'll show examples of both approaches.  Here's the command line:
+> Favorites... Command Line
+
+Local files can be opened with File... Open, unsurprisingly enough;
+mainly I wanted to show that Chimera knows a huge number of formats. 
+A few are for atomic coordinates, but there are also several for
+sequence alignments, density maps, etc. (Close).
+Fetch by ID allows getting files over the web from various databases 
+(explain caching of fetched files; open PDB 2gbp, previously cached).
+The "open" command serves both purposes, remote fetching and 
+opening local files.
+
+This is glucose-binding protein, dumbbell-shaped with glucose in the middle.
+The default initial display is ribbon, with atomic detail near any bound
+ligands and ions.  An easy way to show all atoms is with a preset:
+> Presets... Interactive 2
+
+First, a brief review of how to move things around.  A mouse is not 
+required, but I brought a 3-button mouse and will explain that first.
+(functions of mouse 1,2,3; can reassign in Prefs; for single-click mouse or
+touchpad, the option,clover keys simulate 2,3 on Mac; other computers similar)
+Another way to scale interactively is with the Side View.
+> Favorites... Side View  [scale, clip, then turn off clipping]
+
+Holding the cursor over an atom or bond shows info in a "balloon." 
+Picking, selection from the graphics window, is done with Ctrl-click 
+(pick a protein atom).
+The selection is indicated with green outline and reported in the status line.
+(hit up arrow to broaden the selection, down arrow to narrow it back down).
+
+There are many other ways to select, such as with the Select menu
+(entries in Chain, Chemistry, Residue, Structure; 
+atoms are automatically classified as solvent, ligand, etc.).
+> Select... Structure... solvent  (now 214 atoms are selected)
+When something is selected, the Actions only apply to what is selected.
+> Actions... Atoms/Bonds... delete (now nothing is selected)
+When nothing is selected, the Actions apply to everything.
+> Actions... Atoms/Bonds... hide then show again
+
+You can customize the environment with Preferences.
+> Favorites... Preferences  (explain Tools category checkbox columns)
+  [set to autostart Command Line, show toolbar icons SideView, FindHBond, 
+   Render by Attribute] 
+Changes are not saved automatically, so to have them apply to your next
+use of Chimera, remember to click Save. [Close preferences]
+
+Next I want to take a closer look at this binding site.
+> Select... Structure... ligand  (or Select... Residue... BGC)
+> Select... Zone...  [4.0 A, residues]
+> Actions... Focus
+> Actions... Atoms/Bonds... show only
+> Actions... Atoms/Bonds... stick
+(Ctrl-click in space to clear the selection)
+
+Often you will want to measure a distance.
+Ctrl-click selects one atom. Shift-Ctrl-click adds another atom to the 
+selection instead of replacing it, or toggles it back to unselected,
+and doubleclick instead of click shows the option to measure distance
+(show while talking, e.g., measure distance BGC O6 <-> ASN OD1).
+There are less clicky ways to do this. For example, I could have selected
+the two atoms and then used the command "distance sel".
+
+*click FindHBond icon
+FindHBond uses the atom types, distances, and angles to identify hydrogen
+bonds.  The geometric criteria were based on a survey of very
+high-resolution small molecule structures, and for structures from the PDB
+we typically add tolerances to these cutoffs.
+[turn off relax criteria; linewidth 4; explain color wells, change color, OK]
+
+In the command line, tilde stands for "the opposite of" or "not". The
+command "distance" could have been used to show the distance, and ~distance
+(or ~dist for short, commands can be truncated) can be used to remove
+the measurement.
+> ~dist
+Similarly, although we used the FindHBond GUI, there is a "findhbond" command, 
+and these lines can be removed with ~findhbond:
+> ~findhb
+
+If you know a command exists but aren't sure of the syntax,
+you can show its manual page in a browser using the "help" command.
+> help findhbond
+
+The documentation is included with a Chimera download, so you don't need
+to be on the web to use it. It can also be accessed from the Help menu or
+by clicking Help buttons on the various dialogs.
+> Help... User's Guide
+There are three main sections, each with its own index: Basic Functions
+(also show commands index), Tools, Tutorials (also point out the Quick Ref, 
+a 2-page PDF that lists most of the commands).
+
+You can also search for specific terms:
+> Help... Search Documentation (search for "element colors")
+That gives a series of links and you can click what looks promising
+(click the top hit).
+
+Commands are powerful and concise because you can say both
+(a) what you want to do and (b) what you want to do it to.
+With the menu, you'd have to make the selection, which might take
+several steps, perform the action, and then maybe clear the selection 
+depending on what you were going to do next.  Examples:
+> rep bs :asn
+> color yellow :1-100
+
+The Quick Ref includes examples of command-line specification and tables 
+that explain the special symbols, : for residue, @ for atom name, etc.
+--------------------------------------------------------------------------
+
+Now for some structure comparison.  We have been looking at the closed,
+glucose-bound structure of the protein.  Another structure of this protein
+has been solved in the open, unbound state.
+> open 2fw0 (example of command-line PDB fetch, but also pre-cached) 
+
+The first structure was opened as model 0 and this one is opened as
+model 1 (point out active model numbers below Command Line; structure 
+is probably out of view).  
+> focus
+I'll use a preset to go back to showing the whole proteins as ribbons
+in their model colors:
+> Presets... Interactive 1 (ribbons)
+
+Obviously the structures are not superimposed; these are just the
+coordinates straight from the PDB.
+I'll superimpose them with matchmaker, which first aligns the sequences,
+then uses the pairing in the sequence alignment to fit the structures.  
+I'll use the command, but there is also a graphical interface.
+> mm #0 #1
+> focus
+In this case, aligning the sequences is trivial because these are just
+different conformations of the same protein.  Matchmaker also works on 
+different but related proteins.  
+
+Next I'll morph between the open and closed conformations.
+> start Morph Conformations  
+(command line is yet another way to start a tool)
+[Add... doubleclick lines to add 1 0 1, Close; 
+ set "Action on Create" to "Hide Conformations," click Create]
+(use MD Movie to play the morph trajectory in continuous loop)
+
+Morphing creates a trajectory.
+This MD Movie tool is also used to view MD trajectories and other ensembles.
+The initial display of the morph trajectory mimics that of the input 
+structures (mostly just ribbon), but all of the atoms in common are present.  
+You could show them all, or some subset:
+> disp
+> show aromatic
+(if asked, could show ligand with: modeldisp #0; ~ribb #0; show ligand)
+
+You can easily record trajectories as a movie
+(in MD Movie dialog, pause playback and show File... Record a Movie dialog).
+
+You would probably want to make it look nicer first, for example:
+> Presets... Publication 1
+and text could be added with 2D Labels (assuming time is limited,
+show menu entry under Tools... Utilities, but don't start tool; if
+lots of time, show tool and type one label as example, close tool).
+
+Instead of doing the recording now, I'll step over to the oven and get the 
+already baked delicious pie...
+[in Terminal, open previously recorded movie morph.mp4]
+
+You can save and restore sessions. 
+Close Session gets rid of whatever is present and shows Rapid Access.
+> File... Close Session
+--------------------------------------------------------------------------
+
+Finally, I'd like to talk about attributes, properties of atoms and residues.
+
+> from Rapid Access, open 1hxx.pdb
+> Presets... Interactive 1 (ribbons)
+> ~disp
+This is a transmembrane protein, a porin.
+
+*click Render by Attribute icon
+Render by Attribute shows histograms of attribute values 
+and allows mapping them to visual cues such as color.
+
+Attributes of atoms named bfactor and occupancy were created 
+when the input PDB file was read.  I want to color the ribbon, which requires
+using an attribute of residues rather than atoms.
+[res avg bfactor, Colors; move red to middle, change white to yellow, Apply]
+This shows the loops have higher B-factors.
+
+Also assigned automatically for amino acid residues are various torsion
+angle values and hydrophobicity on the Kyte-Doolittle scale.
+[residue kdHydrophobicity, Worms, Apply]
+To show regular ribbons later, it is necessary to render again with 
+Worm style = non-worm [OK]
+
+Attributes can also be used in the command line, for example:
+> disp :/kdHydrophobicity>4
+
+You can create your own custom attributes by reading in text files
+in a simple format; the User's Guide includes several examples.
+
+New attributes are also created by various operations in Chimera. 
+For example, showing a surface creates surface area attributes, and
+opening an associated sequence alignment assigns conservation values 
+to residues. You'll learn more about that in the next session.
+--------------------------------------------------------------------------
+
+** Quit/restart Chimera or Close session before starting the exercises!! **
+
+- main tutorial: 
+Structure Analysis and Comparison (takes at least an hour)
+
+- secondary tutorials (in terms of topic; I doubt there would be time):
+Attributes
+Model Panel and Ensembles
+Trajectory and Ensemble Analysis
+
+These tutorials are included with the Chimera download, so you could do 
+them at any time, if not today.  You can get to them from the Help menu.
+--------------------------------------------------------------------------

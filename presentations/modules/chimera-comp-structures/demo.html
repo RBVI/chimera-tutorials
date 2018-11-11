@@ -1,0 +1,97 @@
+<html>
+	<body>
+	<p> demo files:
+	<ul>
+		<li>2gbp (PDB, pre-fetched) - E. coli periplasmic binding protein/glucose</li>
+		<li>2fw0 (PDB, pre-fetched) - same protein but open/unbound state</li>
+		<li>morph.mp4 - H.264 movie previously recorded in Chimera</li>
+		<li>1hxx.pdb (PDB local file) - E. coli porin OmpF mutant Y106F</li>
+	</ul>
+
+	<p>In this session, we'll get into protein structure analysis:</p>
+	<ul>
+		<li>looking at hydrogen bonds</li> 
+		<li>contacts</li>
+		<li>sidechain conformations</li> 
+		<li>mapping properties to structures</li>
+		<li>comparing different structures.</li>
+	</ul>
+
+	<ol>
+		<li>Start the command line: <b>Favorites&rarr; Command Line</b></li>
+		<li>Open 2gbp<br/>
+			<i>This is glucose-binding protein, dumbbell-shaped with glucose in the middle.</i>
+		</li>
+		<li>Show all atoms: <b>Presets&rarr; Interactive 2</b></li>
+		<li>Do <b>File&rarr;Open</b> and show all of the formats<br/>
+			<i>Talk about formats and cacheing</i>
+		</li>
+		<li>Enable side view (<b>Favorites&rarr;Side View</b>)</li>
+		<li>Show atom "baloons"</li>
+		<li>Show various selection modes</li>
+		<li>Look at binding site
+			<ol>
+				<li><b>Select&rarr;Structure&rarr;ligand</b>  (or <b>Select&rarr;Residue&rarr;BGC</b>)</li>
+				<li><b>Select&rarr;Zone&rarr;</b>  [4.0 A, residues]</li>
+				<li><b>Actions&rarr;Focus</b></li>
+				<li><b>Actions&rarr;Atoms/Bonds&rarr;show only</b></li>
+				<li><b>Actions&rarr; Atoms/Bonds&rarr;stick</b></li>
+			</ol>
+		</li>
+		<li>Measure distances between two atoms (e.g.BGC O6 <-> ASN OD1).</li>
+		<li>Use FindHBond (<b>Tools&rarr;Structure Analysis&rarr;FindHBond</b><br/>
+			[turn off relax criteria; linewidth 4; explain color wells, change color, OK]</li>
+		<li>Turn off the distances and hbonds with <b>~dist</b> and <b>~hbond</b> in the command line</li>
+		<li>Show help: <b>Help&rarr;User's Guide</b></li>
+	</ol>
+	<p>Now for some structure comparison.  We have been looking at the closed,
+glucose-bound structure of the protein.  Another structure of this protein
+has been solved in the open, unbound state.</p>
+	<ol>
+		<li><b>open 2fw0</b></li>
+		<li><b>focus</b></li>
+		<li><b>Presets&rarr;Interactive 1 (ribbons)</b></li>
+
+		<li>Align using MatchMaker (show <b>Tools&rarr;Structure Comparison&rarr;MatchMaker</b>, but use <b>mm #0 #1</b> in the command line</li>
+		<li><b>focus</b></li>
+		<li>Bring up Morph: <b>Tools&rarr;Structure Comparison&rarr;Morph Conformations</b><br/>
+			Make sure to click "Hide Conformations"
+		</li>
+		<li>Show how to selectively show some atoms (e.g. <b>show aromatic</b>)<br/>
+			(if asked, could show ligand with: modeldisp #0; ~ribb #0; show ligand)</li>
+		</li>
+		<li><b>File&rarr;Close Session</b></li>
+	</ol>
+	<p>Finally, I'd like to talk about attributes, properties of atoms and residues.</p>
+	<ol>
+		<li>open 1hxx.pdb</li>
+		<li>Presets&rarr; Interactive 1 (ribbons)</li>
+		<li>~disp<br/>
+			This is a transmembrane protein, a porin.</li>
+		<li><b>Tools&rarr;Structure Analysis&rarr;Render by Attribute</b></li>
+		<li>[<b>res avg bfactor</b>, Colors; move red to middle, change white to yellow, Apply]</li>
+		<li>[residue kdHydrophobicity, Worms, Apply]<br/>
+To show regular ribbons later, it is necessary to render again with 
+Worm style = non-worm [OK]</li>
+
+		<p>You can create your own custom attributes by reading in text files
+		in a simple format; the User's Guide includes several examples.</p>
+
+		<p>New attributes are also created by various operations in Chimera. 
+For example, showing a surface creates surface area attributes, and
+opening an associated sequence alignment assigns conservation values 
+to residues. You'll learn more about that in the next session.</p>
+
+** Quit/restart Chimera or Close session before starting the exercises!! **
+
+- main tutorial: 
+Structure Analysis and Comparison (takes at least an hour)
+
+- secondary tutorials (in terms of topic; I doubt there would be time):
+Attributes
+Model Panel and Ensembles
+Trajectory and Ensemble Analysis
+
+These tutorials are included with the Chimera download, so you could do 
+them at any time, if not today.  You can get to them from the Help menu.
+--------------------------------------------------------------------------

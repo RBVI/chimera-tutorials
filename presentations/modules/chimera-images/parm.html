@@ -1,0 +1,188 @@
+<html>
+<title>ParM Chimera Tutorial</title>
+<body>
+
+<h1>Chimera Tutorial:<br>
+Fitting Molecular Models in Single-Particle EM Maps</h2>
+
+<p>
+Tom Goddard<br>
+July 12, 2012
+</p>
+
+<img src="images/1mwk_5129_diff.png" align=right>
+<img src="images/1mwk_5129_fit.png" align=right>
+
+<h2>Topics</h2>
+
+<ul>
+<li>Fitting molecules in maps with global search.
+<li>Calculating map symmetry and creating symmetric molecule copies.
+<li>Symmetric fitting to avoid molecular clashes.
+<li>Calculating and displaying difference maps.
+</ul>
+
+<h2>What does ParM do?</h2>
+
+<ul>
+<li>The ParM protein forms filaments that segregates DNA plasmids
+prior to cell division.
+<li>To partition low copy number DNA plasmids in E coli evenly during
+cell division between the two daughter cells, a plasmid is attached to each
+end of a growing ParM filament that pushes them to opposite sides of the
+mother cell.
+<li>ParM filaments look similar to actin filaments.
+<li>Filament growth is driven by ATP and filaments have dynamic instability
+like microtubles.
+</ul>
+
+<h2>Modeling a ParM Filament</h2>
+
+<ul>
+<li>ParM monomers bind ATP and can have the binding cleft open or closed.
+<li>We'll build a model of the open state filament with the ATP binding site
+empty using x-ray structure
+<a href="http://www.rcsb.org/pdb/explore.do?structureId=1MWK">1mwk</a>
+and cryoEM map EMDB
+<a href="http://emsearch.rutgers.edu/atlas/5129_summary.html">5129</a> (19 Angstroms).
+<li>Closed state data is also available: x-ray model
+<a href="http://www.rcsb.org/pdb/explore.do?structureId=1MWM">1mwm</a>
+and map EMDB
+<a href="http://emsearch.rutgers.edu/atlas/5129_summary.html">5128</a>
+(17 Angstroms).  Won't have time to look at those.
+</ul>
+
+<h2>Analysis Steps</h2>
+
+
+<table>
+<tr>
+<th align=left>Show Molecule and Map
+<th colspan=2 align=left>Fit Molecule in Map
+<tr>
+<td><img src="images/1mwk_5129.png" height=250>
+<td><img src="images/1mwk_5129_fit2.png" height=250>
+<td><img src="images/fitdialog.png" height=250>
+<tr>
+<td>
+<ol>
+<li>Open PDB 1mwk, EMDB 5129.
+<li>Show Command Line (Favorites menu).
+<li>Deactivate map (model 0) below command-line to move 1mwk away from map.
+<li>Command "rainbow chain" to color two ParM monomers.
+<li>Delete chain B.  Use menu Select / Chains / B, then menu Actions / Atoms / Delete.
+</ol>
+<td colspan=2>
+<ol start=6>
+<li>Fit 1mwk in map.
+<li>Move 1mwk into map.
+<li>Press Fit button in Fit in Map dialog (volume dialog Tools menu).
+<li>Fit using correlation: Fit dialog Options button, enable "Use map
+simulated from atoms..." resolution 19.  Press Fit.
+<li>Show simulated map (Volume dialog eye icon) as mesh.
+<li>Correlation depends on domain of calculation.  Change simulated map threshold and press Update in Fit dialog.
+<li>Spend a few minutes trying alternative fit positions.
+</ol>
+</table>
+
+<table>
+<tr>
+<th align=left>Global Fit Search
+<th align=left>Calculate Map Symmetry
+<th align=left>Fit Asymmetric Unit
+<tr>
+<td><img src="images/1mwk_5129_search.png" height=250>
+<td><img src="images/sym.png" height=250>
+<td><img src="images/fit_asym.png" height=250>
+<tr>
+<td>
+<ol start=13>
+<li>Search for best fit using 30 tries with command "fit #1 #0 search 30"
+<li>Fits appear all along filament, many are equivalent due to symmetry
+of the filament.
+</ol>
+<td>
+<ol start=15>
+<li>Determine map symmetry to eliminate equivalent fits.
+<li>Command "measure symmetry #0 helix 20,180,opt minimumCorrelation 0.95".
+<li>The "helix" option gives Chimera a hint about helical parameters.
+<li>The "minimumCorrelation" option accounts for this unusual map where
+the helix does not extend to the edges of the volume box.
+<li>View symmetry copies of molecule with command "sym #1 group #0 surf true".
+<li>Remove symmetry copies with "~sym #1" (note leading tilde character
+which means "undo" in Chimera commands).
+</ol>
+<td>
+<ol start=21>
+<li>Clear fit list.
+<li>Rerun previous fitting command "fit #1 #0 search 50".
+<li>Clear fit list.
+<li>Use correlation optimization "fit #1 #0 search 50 res 19".
+</ol>
+</table>
+
+<table>
+<tr>
+<th align=left>Make Filament Model
+<th align=left>Reduce Molecular Clashes
+<th align=left>Calculate Predicted Map
+<tr>
+<td><img src="images/filament.png" height=250>
+<td><img src="images/fit_sym.png" height=250>
+<td><img src="images/mol_map.png" height=250>
+<tr>
+<td>
+<ol start=25>
+<li>Show symmetric molecule copies for best fit.
+Command "sym #1 group #0 update true".
+<li>Color molecules distinctly.  Command "rainbow model".
+</ol>
+<td>
+<ol start=27>
+<li>Inspect clashes between adjacent ParM molecules.
+<li>Fit asymmetric unit including all overlapped symmetric molecules.
+Command "fit #1 #0 sym true res 19"
+<li>Note increased space between molecules.
+</ol>
+<td>
+<ol start=30>
+<li>Compute difference map between experimental map and predicted map
+for molecular model.
+<li>First delete extra ParM molecules outside experimental map.
+Ctrl-drag mouse to select outside molecules. Press up-arrow key to extend
+selection to full molecules.  Menu Actions / Atoms / Delete to delete.
+<li>Calculate predicted map.  Command "molmap #1,2, 19"
+</ol>
+</table>
+
+<table>
+<tr>
+<th align=left>Difference Map
+<th colspan=2 align=left>Compare "Open" and "Closed" Filaments.
+<tr>
+<td><img src="images/diff.png" height=250>
+<td><img src="images/compare.png" height=250>
+<td>
+<embed src="images/morph_map_big.mov" width="202" height="262" bgcolor=white autoplay="false" loop="true" scale="tofit">
+<tr>
+<td>
+<ol start=33>
+<li>Subtract two maps, scaling the second to minimize difference.
+Command "vop subtract #0 #3 minRMS true"
+<li>Adjust difference map contour level.  Add negative contour with
+ctrl-click on histogram.  Adjust contour colors.
+<li>Hide molecular models with Model Panel (menu Favorites).
+</ol>
+<td colspan=2>
+<ol start=36>
+<li>Load "closed" filament (GDP bound), EMDB 5128, menu File / Open...
+<li>Flip closed map 180 degrees and fit to open map.
+<li>Compute closed map on same grid as open map.
+Command "vop resample #5 onGrid #0"
+<li>Use Morph Map (Tools menu of volume dialog) to morph between maps.
+<a href="images/morph_map_big.mov">Movie.</a>
+</ol>
+</table>
+
+</body>
+</html>

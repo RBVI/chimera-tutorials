@@ -1,0 +1,304 @@
+<section>
+	<h1 style="font-size: 150%">Visualizing and Exploring Density Maps</h1>
+	<div style="height:850px">
+		<!-- Visualizing and Exploring Density Maps -->
+		<p>Chimera has a large number of tools and features for visualizing density maps (and other 3d image data), including:
+		<ul style="font-size:80%">
+			<li>Read a variety of <a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/filetypes.html#volume">3D image formats</a>, 
+				including:
+				<ul style="font-size: 80%">
+					<li>Amira mesh, BRIX or DSN6, CCP4, Chimera, XPLOR, DOCK grid, EDS, EMAN HDF5, Gaussian cube grid, gOpenMol grid, Image stack, 
+						IMAGIC, IMOD, MacMolPlt grid, MRC, NetCDF, Priism data, Priism time series, PROFEC grid, Purdue image format, 
+						Situs, SPIDER, Tom toolbox, and VTK PolyData</li>
+				</ul>
+			</li>
+			<li>Display and adjust an isosurface using simple sliders</li>
+			<li>Color surfaces by volume data values, color zones, and measure and color blobs</li>
+			<li>Add markers within the volume data</li>
+			<li>Create maps from atomic structures</li>
+		</ul>
+		</p>
+	</div>
+	<aside class="notes">
+	</aside>
+</section>
+
+<section>
+	<h1 style="font-size: 150%">Visualizing and Exploring Density Maps</h1>
+	<div style="height:850px">
+		<!-- Fitting Structures-->
+		<p>Chimera also has a number of tools that have analytical capabilities, including:
+		<ul>
+			<li>Fit atoms into a map</li>
+			<li>Segment maps using Segger</li>
+			<li>Filter volume data</li>
+		</ul>
+		</p>
+	</div>
+	<aside class="notes">
+May need more than one slide here to talk about map visualization and map fitting
+as separate steps
+	</aside>
+</section>
+
+<section>
+	<h1 style="font-size: 150%">Visualizing and Exploring Density Maps</h1>
+	<div style="height:850px">
+		<!-- Morphing maps -->
+		<p>Chimera also has a number of tools for comparing maps and other data, including:
+		<ul>
+			<li>Create maps from atomic structures</li>
+			<li>MorphMap</li>
+			</ul>
+	</div>
+	<aside class="notes">
+	</aside>
+</section>
+
+<section>
+	<h1 style="font-size: 150%">Visualizing and Exploring Density Maps</h1>
+	<div style="height:850px">
+		<p>...and <a href="https://www.cgl.ucsf.edu/chimera/docs/ContributedSoftware/volumeviewer/framevolumeviewer.html">much, much more</a></p>
+	</div>
+</section>
+
+<section>
+	<h1 style="font-size: 150%">Visualizing and Exploring Density Maps</h1>
+	<div style="height:850px">
+		<p><highlight>Demo</highlight></p>
+	</div>
+	<aside class="notes">
+		<a href="http://www.cgl.ucsf.edu/chimera/data/hsp90-em-dec2017/hsp90em.html">Docking HSP90 in Negative-Stain Electron Microscopy</a>
+	</aside>
+</section>
+
+<section>
+	<h1 style="font-size: 150%">Visualizing and Exploring Density Maps</h1>
+	<div style="height:850px">
+<img class="plain" src="modules/chimera-maps/1mwk_5129_diff.png" align="right" style="padding-right: 20px"/>
+<img class="plain" src="modules/chimera-maps/1mwk_5129_fit.png" align="right" style="padding-right: 40px"/>
+	<p><highlight>Chimera Tutorial:
+	Fitting Molecular Models in Single-Particle EM Maps</highlight></p>
+	</div>
+</section>
+
+<section>
+	<p><highlight>Topics</highlight></p>
+
+<ul>
+<li>Fitting molecules in maps with global search.
+<li>Calculating map symmetry and creating symmetric molecule copies.
+<li>Symmetric fitting to avoid molecular clashes.
+<li>Calculating and displaying difference maps.
+</ul>
+</section>
+
+<section>
+	<p><highlight>
+What does ParM do?
+</highlight></p>
+
+<ul>
+<li>The ParM protein forms filaments that segregates DNA plasmids
+	prior to cell division.</li>
+<li>To partition low copy number DNA plasmids in E coli evenly during
+cell division between the two daughter cells, a plasmid is attached to each
+end of a growing ParM filament that pushes them to opposite sides of the
+mother cell.</li>
+<li>ParM filaments look similar to actin filaments.</li>
+<li>Filament growth is driven by ATP and filaments have dynamic instability
+	like microtubles.</li>
+</ul>
+</section>
+
+<section>
+	<p><highlight>
+Modeling a ParM Filament
+</highlight></p>
+
+<ul>
+	<li>ParM monomers bind ATP and can have the binding cleft open or closed.</li>
+<li>We'll build a model of the open state filament with the ATP binding site
+empty using x-ray structure
+<a href="http://www.rcsb.org/pdb/explore.do?structureId=1MWK">1mwk</a>
+and cryoEM map EMDB</li>
+<a href="http://emsearch.rutgers.edu/atlas/5129_summary.html">5129</a> (19 Angstroms).
+<li>Closed state data is also available: x-ray model</li>
+<a href="http://www.rcsb.org/pdb/explore.do?structureId=1MWM">1mwm</a>
+and map EMDB</li>
+<a href="http://emsearch.rutgers.edu/atlas/5129_summary.html">5128</a>
+(17 Angstroms).  Won't have time to look at those.</li>
+</ul>
+</section>
+
+<section>
+	<p><highlight> Analysis Step </highlight></p>
+<img class="plain" src="modules/chimera-maps/1mwk_5129.png" align="right" style="padding-right: 20px"/>
+<div style="width: 800px">
+<h5>Show Molecule and Map</h5>
+<ol style="font-size: 80%">
+	<li>Open PDB 1mwk, EMDB 5129.</li>
+	<li>Show Command Line (Favorites menu).</li>
+	<li>Deactivate map (model 0) below command-line to move 1mwk away from map.</li>
+	<li>Command "rainbow chain" to color two ParM monomers.</li>
+	<li>Delete chain B.  Use menu Select / Chains / B, then menu Actions / Atoms / Delete.</li>
+</ol>
+</div>
+</section>
+
+<section>
+	<p><highlight> Analysis Step </highlight></p>
+<div style="float: right; width: 400px">
+<img class="plain" src="modules/chimera-maps/1mwk_5129_fit2.png" style="width: 400px"/>
+<br/>
+<img class="plain" src="modules/chimera-maps/fitdialog.png" style="width: 400px"/>
+</div>
+<div style="width: 800px">
+<h5>Fit Molecule in Map</h5>
+<ol style="font-size: 80%" start=6>
+	<li>Fit 1mwk in map.</li>
+	<li>Move 1mwk into map.</li>
+	<li>Press Fit button in Fit in Map dialog (volume dialog Tools menu).</li>
+<li>Fit using correlation: Fit dialog Options button, enable "Use map
+	simulated from atoms..." resolution 19.  Press Fit.</li>
+<li>Show simulated map (Volume dialog eye icon) as mesh.</li>
+<li>Correlation depends on domain of calculation.  Change simulated map threshold and press Update in Fit dialog.</li>
+<li>Spend a few minutes trying alternative fit positions.
+</ol>
+</div>
+</section>
+
+<section>
+	<p><highlight> Analysis Step </highlight></p>
+<img class="plain" src="modules/chimera-maps/1mwk_5129_search.png" style="float:right;width: 300px"/>
+<div style="width: 800px">
+<h5>Global Fit Search</h5>
+<ol style="font-size: 80%" start=13>
+	<li>Search for best fit using 30 tries with command "fit #1 #0 search 30"</li>
+<li>Fits appear all along filament, many are equivalent due to symmetry
+	of the filament.</li>
+</ol>
+</div>
+</section>
+
+<section>
+	<p><highlight> Analysis Step </highlight></p>
+<img class="plain" src="modules/chimera-maps/sym.png" style="float:right;width: 300px"/>
+<div style="width: 900px">
+<h5>Calculate Map Symmetry</h5>
+<ol style="font-size: 70%" start=15>
+	<li>Determine map symmetry to eliminate equivalent fits.</li>
+	<li>Command "measure symmetry #0 helix 20,180,opt minimumCorrelation 0.95".</li>
+	<li>The "helix" option gives Chimera a hint about helical parameters.</li>
+<li>The "minimumCorrelation" option accounts for this unusual map where
+	the helix does not extend to the edges of the volume box.</li>
+	<li>View symmetry copies of molecule with command "sym #1 group #0 surf true".</li>
+	<li>Remove symmetry copies with "~sym #1" (note leading tilde character
+		which means "undo" in Chimera commands).</li>
+</ol>
+</div>
+</section>
+
+<section>
+	<p><highlight> Analysis Step </highlight></p>
+<img class="plain" src="modules/chimera-maps/fit_asym.png" style="float:right;width: 300px"/>
+<div style="width: 800px">
+<h5>Fit Asymmetric Unit</h5>
+<ol style="font-size: 80%" start=21>
+	<li>Clear fit list.</li>
+	<li>Rerun previous fitting command "fit #1 #0 search 50".</li>
+	<li>Clear fit list.</li>
+	<li>Use correlation optimization "fit #1 #0 search 50 res 19".</li>
+</ol>
+</div>
+</section>
+
+<section>
+	<p><highlight> Analysis Step </highlight></p>
+<img class="plain" src="modules/chimera-maps/filament.png" style="float:right;width: 300px"/>
+<div style="width: 800px">
+<h5>Make Filament Model</h5>
+<ol style="font-size: 80%" start=25>
+<li>Show symmetric molecule copies for best fit.
+	Command "sym #1 group #0 update true".</li>
+<li>Color molecules distinctly.  Command "rainbow model".</li>
+</ol>
+</div>
+</section>
+
+<section>
+	<p><highlight> Analysis Step </highlight></p>
+<img class="plain" src="modules/chimera-maps/fit_sym.png" style="float:right;width: 300px"/>
+<div style="width: 800px">
+	<h5>Reduce Molecular Clashes</h5>
+<ol style="font-size: 80%" start=27>
+	<li>Inspect clashes between adjacent ParM molecules.</li>
+<li>Fit asymmetric unit including all overlapped symmetric molecules.
+	Command "fit #1 #0 sym true res 19"</li>
+<li>Note increased space between molecules.</li>
+</ol>
+</div>
+</section>
+
+<section>
+	<p><highlight> Analysis Step </highlight></p>
+<img class="plain" src="modules/chimera-maps/mol_map.png" style="float:right;width: 300px"/>
+<div style="width: 800px">
+	<h5>Calculate Predicted Map</h5>
+<ol style="font-size: 80%" start=30>
+<li>Compute difference map between experimental map and predicted map
+	for molecular model.</li>
+<li>First delete extra ParM molecules outside experimental map.
+Ctrl-drag mouse to select outside molecules. Press up-arrow key to extend
+selection to full molecules.  Menu Actions / Atoms / Delete to delete.</li>
+<li>Calculate predicted map.  Command "molmap #1,2, 19"</li>
+</ol>
+</div>
+</section>
+
+<section>
+	<p><highlight> Analysis Step </highlight></p>
+<img class="plain" src="modules/chimera-maps/diff.png" style="float:right;width: 300px"/>
+<div style="width: 800px">
+<h5>Difference Map</h5>
+<ol style="font-size: 80%" start=33>
+<li>Subtract two maps, scaling the second to minimize difference.
+	Command "vop subtract #0 #3 minRMS true"</li>
+<li>Adjust difference map contour level.  Add negative contour with
+	ctrl-click on histogram.  Adjust contour colors.</li>
+<li>Hide molecular models with Model Panel (menu Favorites).</li>
+</ol>
+</div>
+</section>
+
+<section>
+	<p><highlight> Analysis Step </highlight></p>
+<img class="plain" src="modules/chimera-maps/compare.png" style="float:right;width: 300px"/>
+<div style="width: 800px">
+	<h5>Compare "Open" and "Closed" Filaments.</h5>
+<ol style="font-size: 80%" start=36>
+	<li>Load "closed" filament (GDP bound), EMDB 5128, menu File / Open...</li>
+	<li>Flip closed map 180 degrees and fit to open map.</li>
+<li>Compute closed map on same grid as open map.
+	Command "vop resample #5 onGrid #0"</li>
+<li>Use Morph Map (Tools menu of volume dialog) to morph between maps.</li>
+</ol>
+</div>
+</section>
+
+<section
+	<div style="height:850px">
+	<video data-autoplay loop src="modules/chimera-maps/morph_map_big.mp4"></video>
+	</div>
+</section>
+
+<section>
+	<div style="height:850px">
+		<p><highlight>More Tutorials</highlight></p>
+		<ol>
+			<li><a href="http://www.cgl.ucsf.edu/chimera/data/hsp90-em-dec2017/hsp90em.html">Docking HSP90 in Negative-Stain Electron Microscopy</a></li>
+			<li><a href="https://www.cgl.ucsf.edu/chimera/data/singapore-jul2012/hiv.html">Chimera Tutorial: Visualizing Electron Tomography</a></li>
+			<li><a href="https://www.rbvi.ucsf.edu/chimera/data/tutorials/volumetour/volumetour.html">Guide to Volume Data Display in Chimera</a> (note that this is a little out-of-date)</li>
+		</uol>
+	</div>
+</section>

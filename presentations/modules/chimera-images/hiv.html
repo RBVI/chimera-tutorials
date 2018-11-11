@@ -1,0 +1,123 @@
+<html>
+<title>ET Maps</title>
+<body>
+
+<img src="images/hiv-em.jpg" align=right width=300>
+
+<h1>Chimera Tutorial:<br>
+Visualizing Electron Tomography</h1>
+
+<p>
+Tom Goddard<br>
+July 12, 2012
+</p>
+
+<p>
+This tutorial covers basic techniques for viewing, filtering, and segmenting
+noisy electron tomography maps using
+<a href="http://www.cgl.ucsf.edu/chimera/download.html">Chimera 1.6</a>.
+</p>
+<p>
+We will look at a map of HIV virus particles from the Fuller lab, 
+EM Databank <a href="http://www.ebi.ac.uk/emdb-srv/atlas/1155_summary.html">1155</a>.
+</p>
+
+<table>
+<tr>
+<th align=left>Displaying XY Planes
+<th align=left>Inverting Intensity Values
+<tr>
+<td><img src="images/hiv-plane.jpg" height=250>
+<td><img src="images/hiv-inverted.jpg" height=250>
+<tr>
+<td>
+<ol>
+<li>Open map emd_1155.map.
+<li>Volume dialog, Features / Planes, press One button.
+<li>Drag markers on histogram brightness yellow curve.
+<li>Move Plane slider to flip through planes.
+<li>Change plane axis to z and flip through planes.
+<li>Show all planes.
+</ol>
+<td>
+<ol start=7>
+<li>Note small map values are high density.  Want large map values for high density.
+<li>Volume dialog, Tools / Volume Filter, type Scale, scale -1, options turn off displayed subregion only, press Filter.
+<li>Hide original map by clicking "eye" icon above histogram.
+<li>Switch from surface style to solid, One plane.
+</ol>
+</table>
+
+<table>
+<tr>
+<th align=left>Hide Dust
+<th align=left>Gaussian Filtering
+<tr>
+<td><img src="images/hiv-hidedust.jpg" height=250>
+<td><img src="images/hiv-smooth.jpg" height=250>
+<tr>
+<td>
+<ol start=11>
+<li>Hide small surface blobs to reduce noise.
+<li>Volume style surface, All planes.
+<li>Volume dialog, Tools / Hide Dust, Surface emd_1155.map scaled, press Hide.
+<li>Drag vertical bar on volume dialog histogram to lower contour level.
+<li>Move size slider in hide dust dialog.
+<li>Press Unhide.
+</ol>
+<td>
+<ol start=17>
+<li>Smooth map to reveal large-scale features.
+<li>Volume dialog, Tools / Volume Filter, type Gaussian, width 30 Angstroms, value type float32, select scaled map in volume dialog, press Filter.
+<li>Planes One, depth 10, move plane slider.
+</ol>
+</table>
+
+<table>
+<tr>
+<th align=left>Extract One Virus
+<th align=left>Mask Virus Membrane
+<tr>
+<td><img src="images/hiv-crop.jpg" height=250>
+<td><img src="images/hiv-mask.jpg" height=250>
+<tr>
+<td>
+<ol start=20>
+<li>Volume dialog, Features / Subregion Selection, enable "Select subregions",
+drag box around middle virus particle, press Crop.
+<li>Click on green outline box face (not edge) and drag.  Press Crop.
+<li>Uncheck "Select subregions" to move map using mouse.
+<li>Can save map to new file with volume dialog, File / Save Map As....
+</ol>
+<td>
+<ol start=24>
+<li>Show command line using Favorites / Command Line
+<li>Enter command "shape sphere radius 550".
+<li>Click off "Active" sphere model #3 below command-line to stop mouse
+from moving sphere.
+<li>Move map to be centered on sphere.  Ctrl-middle-mouse moves in z direction.
+<li>Mesh display style can help see sphere inside map.
+<li>Create map for inside of sphere, command "mask #2 #3"
+<li>Hide sphere, Favorites / Model Panel, uncheck shown button for sphere.
+<li>Create map ouside sphere, command "mask #2 #3 invert true".
+<li>Color inside map red, command "volume #4 color red".
+</ol>
+</table>
+
+<table>
+<tr>
+<th align=left>Clip Virus Membrane
+<tr>
+<td><img src="images/hiv-clip.jpg" height=250>
+<tr>
+<td>
+<ol start=33>
+<li>Cut virus membrane in half to see inside.
+<li>Tools / Depiction / Per-Model Clipping, Model #5, check "Enable clipping".
+<li>Check "Adjust clipping with mouse", move clip plane by dragging with
+middle mouse button in graphics window.
+</ol>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+<html>
+<title>Fancy Images</title>
+<body>
+
+<img src="images/1mwk_5129_diff.png" align=right>
+
+<h1>Chimera Tutorial:<br>
+How to Make High Quality Images</h1>
+
+<p>
+Tom Goddard<br>
+July 12, 2012
+</p>
+
+<p>
+This tutorial shows settings for producing the best looking images in
+<a href="http://www.cgl.ucsf.edu/chimera/download.html">Chimera 1.6</a>.
+</p>
+
+<table>
+<tr>
+<th align=left>White Background Color
+<th align=left>Background Color Gradient
+<tr>
+<td><img src="images/shiny-white.jpg" height=250>
+<td><img src="images/shiny-gradient.jpg" height=250>
+<tr>
+<td>
+<ol>
+<li>Actions / Color / All Options...
+<li>Click coloring applies to "background".
+<li>Click color white.
+<li>Alternatively use Favorites / Command Line, command "set bg_color white".
+</ol>
+<td>
+<ol start=5>
+<li>Actions / Color / All Options...
+<li>Click background "More..." button.
+<li>Change Background Method from "solid" to "gradient".
+<li>Click blue gradient button to change color scheme.
+</ol>
+</table>
+
+<table>
+<tr>
+<th align=left>Volume Step Size 1
+<th align=left>Adjust Transparency
+<tr>
+<td><img src="images/shiny-step.jpg" height=250>
+<td><img src="images/shiny-transp.jpg" height=250>
+<tr>
+<td>
+<ol start=9>
+<li>Show full-resolution volume data.
+<li>Change volume dialog "step" to 1 (above histogram).
+<li>Equivalent command "volume all step 1"
+</ol>
+<td>
+<ol start=12>
+<li>Adjust surface transparency
+<li>Click top histogram in volume dialog to choose emd_5129.map.
+<li>Click volume dialog color button (square to right of "Color").
+<li>Slide "A" slider to control opacity, 0.5 good.
+</ol>
+</table>
+
+<table>
+<tr>
+<th align=left>Glossy Lighting
+<th align=left>Silhouette Edges
+<tr>
+<td><img src="images/shiny-glossy.jpg" height=250>
+<td><img src="images/shiny-silhouette.jpg" height=250>
+<tr>
+<td>
+<ol start=16>
+<li>Enable better quality "glossy" lighting.
+<li>Tools / Viewing Controls / Lighting, Quality "glossy".
+</ol>
+<td>
+<ol start=18>
+<li>Add black edges to surfaces.
+<li>Tools / Viewing Controls / Effects, turn on "Silhouettes"
+<li>Try silhouette width 3, press enter.  Width is in pixels.
+</ol>
+</table>
+
+<table>
+<tr>
+<th align=left>Save Large Image
+<th align=left>Shadows and Raytracing
+<tr>
+<td valign=top>
+<ol start=21>
+<li>Resize window to desired aspect ratio and border width.
+<li>File / Save Image...
+<li>Change width or height to larger size, 2000 pixels high, press Enter.
+<li>Press Save As.
+</ol>
+<img src="images/shiny-large.jpg">
+<td valign=top><img src="images/shiny-raytrace.png" height=500>
+<ol start=25>
+<li>File / Save Image... has "Raytracing" option which produces shadows.
+<li>Raytracing disadvantages:
+<ul>
+<li>Darkness and transparency will look different.
+<li>Trial and error required.
+<li>Slow to save image.
+<li>Multiple transparent surface layers always shown.
+<li>No silhouette edges.
+</ul>
+<li>Interactive shadows.  Tools / Viewing Controls / Effects.
+<ul>
+<li>Not available with some graphics card.  Not on Mac.
+<li>Shadows may have rough edges.
+<li>May not work with glossy lighting.
+</ul>
+</ol>
+</table>
+</table>
+
+</body>
+</html>
