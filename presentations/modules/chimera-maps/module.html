@@ -137,7 +137,8 @@ and map EMDB</li>
 <div style="width: 800px">
 <h5>Show Molecule and Map</h5>
 <ol style="font-size: 80%">
-	<li>Open PDB 1mwk, EMDB 5129.</li>
+	<li>Open EMDB 5129.</li>
+	<li>Open PDB 1mwk.</li>
 	<li>Show Command Line (Favorites menu).</li>
 	<li>Deactivate map (model 0) below command-line to move 1mwk away from map.</li>
 	<li>Command "rainbow chain" to color two ParM monomers.</li>
@@ -177,6 +178,8 @@ and map EMDB</li>
 	<li>Search for best fit using 30 tries with command "fit #1 #0 search 30"</li>
 <li>Fits appear all along filament, many are equivalent due to symmetry
 	of the filament.</li>
+<li>When the <b>Fit List</b> dialog appears, select all of the hits and click <b
+		>Place Copy</b></li>
 </ol>
 </div>
 </section>
@@ -263,7 +266,7 @@ selection to full molecules.  Menu Actions / Atoms / Delete to delete.</li>
 <h5>Difference Map</h5>
 <ol style="font-size: 80%" start=33>
 <li>Subtract two maps, scaling the second to minimize difference.
-	Command "vop subtract #0 #3 minRMS true"</li>
+	Command "vop subtract #0 #3 minRMS true" (note, your second map might have a different model number)</li>
 <li>Adjust difference map contour level.  Add negative contour with
 	ctrl-click on histogram.  Adjust contour colors.</li>
 <li>Hide molecular models with Model Panel (menu Favorites).</li>
