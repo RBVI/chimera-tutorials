@@ -1,0 +1,49 @@
+<section>
+	<h1>Movie Making for cryoEM</h1>
+	<div>
+		<p>At this point, there is no animation tool for ChimeraX, but there are several commands that support
+		movie making and more are being developed.</p>
+		<p>Coupled with ChimeraX's rendering, it's possible to create compelling animations</p>
+		<p><highlight>Hands-on exercise</highlight>: 
+		<a href="http://www.rbvi.ucsf.edu/chimera/data/sbgrid-apr2017/cryomovie.html">Movie Making for cryoEM using ChimeraX</a></p>
+	</div>
+</section>
+
+<!--section>
+	<h1>Movie Making for cryoEM</h1>
+	<div>
+	<p><highlight>Topics</highlight></p>
+	<ul>
+		<li>Ambient occlusion lighting</li>
+		<li>Morph atomic structure of virus</li>
+		<li>Show fit of each residue in cryoEM density</li>
+		<li>Cellphone virtual reality 360 degree movies</li>
+	</ul>
+	</div>
+</section>
+
+<section>
+	<h1>Ambient occlusion lighting</h1>
+	
+	<ul>
+	    <li>Rotavirus EMD 5199, 3.8 Angstrom, 1 octant of map, 500<sup>3</sup> grid points.
+	      <br><a href="cxcmd:open 5199 from emdb">open 5199 from emdb</a>
+	    <li>Adjust contour level using vertical bar on histogram.  Adjust step from 2 to 1 (full resolution).
+	      <br><a href="cxcmd:volume #1 level 0.1 step 1">volume #1 level 0.1 step 1</a>
+	    <li>Ambient shadows make indentations dark.
+	      <br><a href="cxcmd:light soft">light soft</a>
+	      	<img src="images/softlight.png" style="vertical-align:middle;" width=24 height=24>
+	    <li>Compare to simple lighting and single shadow.
+	      <br><a href="cxcmd:light simple">light simple</a>
+	      	<img src="images/simplelight.png" style="vertical-align:middle;" width=24 height=24>
+	      <br><a href="cxcmd:light shadow true">light shadow true</a>
+	      	<img src="images/shadow.png" style="vertical-align:middle;" width=24 height=24>
+	    <li>Fit atomic model PDB 4v7q, ambient lighting helps depth perception.
+	      <br><a href="cxcmd:open 4v7q">open 4v7q</a>
+	    <li>Color zone to color map to match atomic model.
+	      <br><a href="cxcmd:color zone #1 near #2 distance 5">color zone #1 near #2 distance 5</a>
+	    <li>Hide dust.
+	      <br><a href="cxcmd:surface dust #1 size 5">surface dust #1 size 5</a>
+
+	  </ul>
+</section-->
