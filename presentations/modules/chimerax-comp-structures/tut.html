@@ -1,0 +1,613 @@
+<!--
+--- UCSF Chimera Copyright ---
+Copyright (c) 2008-2018 Regents of the University of California.
+All rights reserved.  This software provided pursuant to a
+license agreement containing restrictions on its disclosure,
+duplication and use.  This notice must be embedded in or
+attached to all copies, including partial copies, of the
+software or any revisions or derivations thereof.
+--- UCSF Chimera Copyright ---
+-->
+
+<html><head>
+<title>Structure Analysis and Comparison Tutorial</title>
+
+<style type="text/css">
+A.nounder:link {text-decoration: none}
+A.nounder:visited {text-decoration: none}
+A.nounder:hover {text-decoration: underline; color: red;}
+</style>
+</head><body>
+
+<font size="-1">
+<a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/frametut.html" target="_top">Chimera Tutorials Index</a>
+</font>
+
+<a name="top"></a>
+<h2>Structure Analysis and Comparison Tutorial</h2>
+<p>
+This tutorial includes binding site analysis and comparison of related
+structures by superposition and morphing.  Internet connectivity is required 
+to fetch the structures <b>3w7f</b> and <b>2zco</b>.
+<ul>
+<li><a href="#setup">Background and Setup</a>
+<li><a href="#dists">Distances, H-Bonds, Contacts</a>
+<li><a href="#angles">Angles, Rotamers, Clashes</a>
+<li><a href="#surfaces">Surfaces and Attributes</a>
+<li><a href="#comparison">Superposition and Morphing</a>
+</ul>
+</p>
+
+<h3><a href="#top" class="nounder"><b>&larr;</b></a>
+<a name="setup">Background and Setup</a></h3>
+<p>
+The pathogenic organism <i>Staphylococcus aureus</i> makes a
+pigment called staphyloxanthin.  The pigment imparts a golden color 
+(hence <i>aureus</i>), but more importantly, contributes to virulence 
+by protecting the bacteria from being killed by the host immune system.
+The <i>S. aureus</i> enzyme CrtM may be a good drug target 
+because it catalyzes a key step in staphyloxanthin synthesis:
+<blockquote>
+<a href="http://www.ncbi.nlm.nih.gov/pubmed/18276850" target="_blank">
+A cholesterol biosynthesis inhibitor blocks <i>Staphylococcus aureus</i>
+virulence.</a>
+Liu CI, Liu GY, Song Y, Yin F, Hensler ME, Jeng WY, Nizet V, 
+Wang AH, Oldfield E.
+<i>Science.</i> 2008 Mar 7;319(5868):1391-4.
+</blockquote>
+We will view and compare different structures of this enzyme.
+</p><p>
+Start Chimera by clicking or doubleclicking the <b>Chimera</b> icon
+<img src="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/Chimera-icon.png" width="20px"> (depending on its location).
+Typically, this icon will be present on the desktop.
+The Chimera executable can also be run from its
+installation location (<a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../startup.html">details...</a>).
+</p><p>
+A splash screen will appear, to be replaced in a few seconds
+by the main Chimera <a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../chimerawindow.html">graphics window</a>
+or <a href="../rapid.html"><b>Rapid Access</b></a> interface (it does not
+matter which, the following instructions will work with either).
+If you like, resize the Chimera window by dragging its lower right corner.
+</p><p>
+Show the <a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../chimerawindow.html#emulator"><b>Command Line</b></a>
+(<b>Tools... General Controls... Command Line</b>) (On by default in ChimeraX).
+Choose <b>Favorites... Add to Favorites/Toolbar</b> to place some
+icons on the toolbar.  This opens the <b>Preferences</b>, set to
+<b>Category</b>: <a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../preferences.html#Tools"><b>Tools</b></a>.
+In the <b>On Toolbar</b> column, check the boxes for:
+<a name="toolicons"></a>
+<table align="center" style="margin:8px 8px 8px 8px">
+<tr><td valign="center">
+<ul>
+<li> <a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../sideview.html#sideview"><b>Side View</b></a> 
+	(In ChimeraX, look in <b>Tools&rarr;General&rarr;Side View</b>)
+<li> <a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../../ContributedSoftware/findhbond/findhbond.html">
+<b>HBond</b></a> (Structure Analysis)
+<li> <a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../../ContributedSoftware/findclash/findclash.html"><b>Find
+Clashes/Contacts</b></a> (Structure Analysis)
+<li> <a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../../ContributedSoftware/rotamers/rotamers.html">
+<b>Rotamers</b></a> (Structure Editing)
+<li> <a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../reply.html"><b>Log</b></a> 
+(Utilities, the last section)
+</ul>
+</td>
+<td valign="top"><img src="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../svicon.png"></td>
+<td valign="top">
+<img src="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../../ContributedSoftware/findhbond/findhbond.png"></td>
+<td valign="top">
+<img src="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../../ContributedSoftware/findclash/findclashicon.png"></td>
+<td valign="top">
+<img src="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../../ContributedSoftware/rotamers/rotamers-icon.png"></td>
+<td valign="top">
+<img src="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../replyicon.png"></td>
+</tr>
+</table>
+If you want these icons to appear in later uses of Chimera, click
+<b>Save</b> before closing the preferences.
+</p><p>
+Fetch a structure from the <a href="http://www.rcsb.org" 
+target="_blank">Protein Data Bank</a> and use the ribbons 
+<a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../menu.html#menupresets">preset</a>:
+<blockquote>
+	<i>Command</i>:&nbsp;<b><a href="cxcmd:open 3w7f">open 3w7f</a></b>
+<br>
+<i>Menu</i>:&nbsp;<b>Presets... Interactive 1 (ribbons)</b> (not in ChimeraX)
+</blockquote>
+<table align="right" style="margin:8px 8px 8px 8px">
+<tr><th align="center">
+<a name="fig1">active site</a></th></tr>
+<tr><td><img src="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/actsite.png"></td></tr>
+</table>
+This preset displays the two protein chains (A and B) as red and blue ribbons;
+bound molecules and nearby sidechains are shown as sticks.
+The two chains are two copies of the enzyme.  Delete chain B:
+<blockquote>
+	<i>Command</i>:&nbsp;<a href="cxcmd:delete /b"><b>delete /b</b></a>
+</blockquote>
+Move and scale structures 
+<a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../mouse.html">using the mouse</a> and
+<a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../sideview.html#sideview"><b>Side View</b></a> 
+as desired throughout the tutorial.
+</p><p>
+The enzyme combines two 15-carbon molecules of farnesyl pyrophosphate
+to form a 30-carbon lipid.  This structure contains 
+farnesyl <b><i>thio</i></b>pyrophosphate, 
+which differs from the substrate by having a sulfur in the place of one
+oxygen.  Sulfur atoms are shown in yellow, phosphorus orange, oxygen red, and
+nitrogen blue.  Label the ligand residues:
+<blockquote>
+	<i>Command</i>:&nbsp;<b><a href="cxcmd:label ligand residues">label ligand residues</a></b>
+</blockquote>
+In this structure, the farnesyl thiopyrophosphate molecules are named FPS.
+Three magnesium ions help to offset the negative charges on the phosphates.
+The ions are shown as greenish spheres; clicking into the Chimera window
+and hovering the mouse cursor over each shows information in a pop-up
+balloon.  Metal coordination bonds from FPS, water, and the protein 
+are shown with dashed purple lines.
+Lines drawn to indicate interactions other than
+covalent bonds are called <b><i>pseudobonds</i></b>.
+Hovering the cursor over a pseudobond or bond shows balloon information 
+about its end atoms and length.
+</p><p>
+Delete the water, label residues with displayed sidechains, and place the
+labels near &alpha;-carbons instead of residue centroids:
+<blockquote>
+	<i>Command</i>:&nbsp;<b><a href="cxcmd:delete solvent">delete solvent</a></b>
+<br>
+<i>Command</i>:&nbsp;<b><a href="cxcmd:label @@display residues">label @@display residues</a></b>
+</blockquote>
+Water could be included in the various analyses, 
+but is removed here to simplify the tutorial.
+</p>
+
+<h3><a href="#top" class="nounder"><b>&larr;</b></a>
+<a name="dists">Distances, H-Bonds, Contacts</a></h3>
+<p>
+It looks like several sidechains could be donating hydrogen bonds
+to phosphate oxygens.  (Although the structure does not include
+hydrogens, we know they are there!)  
+</p><p>
+One of the displayed residues is Ser 21.  To measure a distance:
+<ol>
+<li>Ctrl-click to pick the sidechain oxygen of Ser 21
+<li>Shift-Ctrl-doubleclick on the nearest phosphate oxygen
+<li>click <b>Show Distance</b> in the resulting context menu
+</ol>
+Similarly, measure the distance between the sidechain oxygen of Tyr 248
+and the same phosphate oxygen. 
+</p><p>
+The distances seem consistent with hydrogen bonds.  
+However, rather than measuring many distances and trying to remember the
+appropriate hydrogen-bonding distances for different types of atoms,
+just use <a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../../ContributedSoftware/findhbond/findhbond.html">
+<b>HBond</b></a>.  We will limit the search to H-bonds involving
+the FPS residues:
+<ol>
+<li>Select the FPS residues (for example, with <b>Select... Residue... FPS</b>
+	in the menu).</li>
+<li>Now, find all H-bonds connecting the ligand (currently selected) to any protein:
+<blockquote>
+	<i>Command</i>:&nbsp;<b><a href="cxcmd:hbonds sel restrict protein">hbonds sel restrict protein</a></b>
+</blockquote>
+</li>
+</ol>
+The H-bonds are shown as pseudobonds of the specified color and line width.
+Both measured distances were found to be consistent with hydrogen bonding.
+Details can be viewed in the <b>Log</b>, which can be opened by
+clicking its <a href="#toolicons">icon</a>.
+(In your own work, you may prefer to write the information to a file instead.)
+Remove the &ldquo;hydrogen bond&rdquo; pseudobonds:
+<blockquote>
+<i>Command</i>:&nbsp;<b><a href="cxcmd:~hbond">~hbond</a></b>
+</blockquote>
+<a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../../ContributedSoftware/findclash/findclash.html"><b>
+Clashes/Contacts</b></a> is similar to <b>HBond</b>
+but can also identify nonpolar interactions:
+<ul>
+<li><b><i>clashes</i></b> 
+- unfavorable interactions where atoms are too close together; close contacts
+<li><b><i>contacts</i></b> 
+- all kinds of direct interactions:
+polar and nonpolar, favorable and unfavorable (including clashes)
+</ul>
+We will identify contacts of the FPS residues:
+<ol>
+<img src="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../../ContributedSoftware/findclash/findclashicon.png" width="25">
+<li>With the FPS residues still selected:
+<blockquote>
+<i>Command</i>:&nbsp;<b><a href="cxcmd:contacts sel test others reveal true log true select true">contacts sel test others reveal true log true select true</a></b>
+</blockquote>
+This will show all of the contacts between the selected residues (FPS) and all others and show the side chains.
+</li>
+</ol>
+In the <b>Log</b>, the atom-atom contacts are listed in order of
+decreasing VDW <b><i>overlap</i></b>, the amount of 
+intersection of atomic van der Waals spheres: 0 if just touching, 
+positive if interpenetrating, negative if separated by space.
+Slightly separated spheres are still considered contacts by default.
+The distances between atomic centers are also given.
+</p>
+
+<p>
+One might simply want a list of the interacting residues rather than 
+the details of each atomic contact.  A list of the selected residues
+can be saved in the <b>Log</b>.  First, deselect the ligand residues and ions, 
+leaving the protein residues selected:
+<blockquote>
+	<i>Command</i>:&nbsp;<b><a href="cxcmd:~sel ligand">~sel ligand</a></b>
+<br>
+<i>Command</i>:&nbsp;<b><a href="cxcmd:~sel ions">~sel ions</a></b>
+</blockquote>
+Then, write the list of selected residues to the log:
+<blockquote>
+	<i>Command</i>:&nbsp;<b><a href="cxcmd:info residues sel">info residues sel</a></b>
+</blockquote>
+
+<h3><a href="#top" class="nounder"><b>&larr;</b></a>
+	<a name="angles">Angles, <i>Rotamers</i>, Clashes</a></h3>
+<!--
+	No way to get angles currently...
+<p>
+Amino acid torsion angle values can be viewed in the
+<a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../inspection.html"><b>Selection Inspector</b></a>.
+Focus on Tyr 248:
+<blockquote>
+<i>Command</i>:&nbsp;<b><a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../midas/focus.html">focus</a>&nbsp;:248</b>
+</blockquote>
+Ctrl-click to pick any atom or bond in Tyr 248.  
+This will replace (clear) any pre-existing selection.
+Open the <a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../inspection.html"><b>Selection Inspector</b></a>
+again if it is not already open.
+Inspecting <b>Residue</b> (instead of <b>Atom</b>)
+shows that the sidechain angles chi1 and chi2 in this residue 
+are approximately &ndash;107&deg; and &ndash;142&deg;, respectively.
+The backbone angles phi and psi are also given.
+<b>Close</b> the <b>Selection Inspector</b>.
+</p>
+-->
+<table align="right" style="margin:8px 8px 8px 8px">
+<tr><th align="center">
+<a name="fig2">clash checking</a></th></tr>
+<tr><td><img src="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/clash.png"></td></tr>
+</table>
+<p>
+We will set up clash checking and rotate the sidechain interactively.
+<ol>
+<li>Select residues within 4 &Aring; of Tyr 248:
+<blockquote>
+	<i>Command</i>:&nbsp;<b><a href="cxcmd:select zone :248 4 residues true">select zone :248 4 residues true</a></b>
+</blockquote>
+</li>
+<li>Now show the selected residues:
+<blockquote>
+	<i>Command</i>:&nbsp;<b><a href="cxcmd:show sel">show sel</a></b>
+</blockquote>
+</li>
+<li>Now, find and show all of the clashes using the clash command:
+<blockquote>
+	<i>Command</i>:&nbsp;<b><a href="cxcmd:clashes sel test others continuous true">clashes sel test others continuous true</a></b>
+</blockquote>
+</ol>
+No clashes are found in the current position. 
+To rotate the sidechain of Tyr 248 interactively:
+<ol>
+<li>Ctrl-click its CA-CB bond (the stick segment right next to the ribbon)
+<li>Enable the <b>Rotate Bond</b> mouse mode (dumbbell with an arrow)
+</ol>
+Now, the right mouse button will rotate the bond.  (Currently, the angles aren't recorded).
+</p>
+<!-- NOTE: no way to see the bond angles!!! -->
+<p>
+Use whichever method you prefer to rotate the bond.
+As the sidechain moves, yellow pseudobonds show any clashes, and the
+distance monitor updates automatically.
+The sidechain is fairly constrained; only chi1 angles of approximately 
+&ndash;(100&ndash;120)&deg; avoid clashes if only that bond is rotated.
+The sidechain can be frozen in a new position, but for tutorial purposes,
+simply restore it to its original position and disable clashes:
+<blockquote>
+	<i>Command</i>:&nbsp;<b><a href="cxcmd:~clashes">~clashes</a></b>
+</blockquote>
+</p>
+
+<!-- Add when rotamers are available in ChimeraX
+<p>
+Next, we will compare the conformation of Tyr 248 in the structure
+to tyrosine rotamers from a library.  This will indicate whether
+the sidechain is in a frequently observed conformation
+and whether other conformations might also fit into the structure.  
+</p><p>
+With part of Tyr 248 still selected (if not, Ctrl-click to
+to select any of its atoms or bonds), start 
+<a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../../ContributedSoftware/rotamers/rotamers.html">
+<b>Rotamers</b></a> by clicking its <a href="#toolicons">icon</a>
+<img src="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../../ContributedSoftware/rotamers/rotamers-icon.png" width="25">.
+Click <b>OK</b> to show <b>TYR</b>
+rotamers from the <a href="http://dunbrack.fccc.edu/bbdep2010/" 
+target="_blank"><b>Dunbrack 2010</b> backbone-dependent library</a>.
+The rotamers are shown in the wire representation and listed in another dialog.
+</p><p>
+The rotamer dialog reports chi1 and chi2 angles and probabilities
+from the library based on the residue's backbone conformation.
+Choosing a row (or rows) in the rotamer dialog displays just the 
+corresponding rotamer(s).
+From the chi angles in the dialog and the 3D display, it is evident
+that none of the rotamers match the conformation in the structure.
+Other than the backbone angles, 
+the probabilities given in the dialog do not take into account any interactions
+specific to this structure.  However, the rotamer dialog is integrated
+with clash and H-bond detection.  Choose <b>Columns... Add... Clashes</b> 
+and click <b>OK</b> to use the default settings; repeat with
+<b>Columns... Add... H-Bonds</b>.
+</p><p>
+The new columns show that each
+rotamer forms several clashes but no hydrogen bonds.  
+We showed above that Tyr 248 H-bonds with the ligand and avoids clashes, 
+which may compensate for its nonrotameric (presumably strained) conformation.
+</p><p>
+A sidechain can be replaced with a chosen rotamer.
+With a single rotamer shown, either click <b>OK</b> in the rotamer dialog
+to replace the sidechain with that rotamer and remove the others, 
+or simply <b>Close</b> the dialog 
+to remove the rotamers without replacing the sidechain.
+Although not done in this case, rotamers can be shown for a
+different amino acid type than in the structure, allowing
+for virtual mutations.
+</p><p>
+Unlike Tyr 248, Tyr 41 closely resembles the highest-probability tyrosine
+rotamer given its backbone angles.  If you like, focus on Tyr 41, 
+select one of its atoms or bonds, 
+and use <a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../../ContributedSoftware/rotamers/rotamers.html">
+<b>Rotamers</b></a> to show and evaluate rotamers of tyrosine 
+or some other amino acid at that position.
+</p><p>
+Clear the selection, unlabel the residues, zoom back out, and
+remove the distance pseudobonds:
+</p>
+<blockquote>
+<i>Command</i>:&nbsp;<b><a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../midas/select.html#newer">~sel</a></b>
+<br>
+<i>Command</i>:&nbsp;<b><a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../midas/rlabel.html">~rlab</a></b>
+<br>
+<i>Command</i>:&nbsp;<b><a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../midas/focus.html">focus</a></b>
+<br>
+<i>Command</i>:&nbsp;<b><a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../midas/distance.html">~dist</a></b>
+</blockquote>
+-->
+
+<h3><a href="#top" class="nounder"><b>&larr;</b></a>
+<a name="surfaces">Surfaces and Attributes</a></h3>
+<p>
+FPS and the natural substrate both have a highly polar/charged 
+&ldquo;head&rdquo; and a long hydrocarbon &ldquo;tail.&rdquo;
+The enzyme pocket is very large and deep,
+as needed to accommodate two of these molecules.  
+</p><p>
+A surface representation is best for showing the shape of the pocket.  
+Choose <b>Presets... Interactive 3 (hydrophobicity surface)</b> from the menu 
+to display a molecular surface color-coded by amino acid hydrophobicity.
+This <a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../menu.html#menupresets">preset</a> colors the surface
+ranging from dodger blue for the most polar residues to orange red for the 
+most hydrophobic, with white in between.
+</p><p>
+As one might expect, the mouth of the pocket near the phosphates and ions is 
+mostly polar, while the rest of the pocket is largely hydrophobic.  
+However, the pocket is so deep that it is hard to see when the whole surface 
+is shown.  Restricting the surface display to the pocket region allows it 
+to be viewed from the outside, as shown in the <a href="#fig3">figure</a>.
+</p><p>
+Hide the ribbon and the protein atoms, then show only surface near the ligand:
+</p>
+<table align="left" style="margin:8px 8px 8px 8px">
+<tr><th align="center">
+<a name="fig3">pocket surface</a></th></tr>
+<tr><td><img src="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/pocketsurf.png"></td></tr>
+</table>
+<blockquote>
+<i>Command</i>:&nbsp;<b><a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../midas/ribbon.html">~ribbon</a></b>
+<br>
+<i>Command</i>:&nbsp;<b><a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../midas/display.html">~disp</a> protein</b>
+<br>
+<i>Command</i>:&nbsp;<b><a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../midas/sop.html">sop</a> zone #0 ligand 5.0 max 1</b>
+</blockquote>
+<p>
+The <b><a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../midas/sop.html">sop</a></b> 
+(&ldquo;surface operations&rdquo;) command
+limits the display of surface #0 to a 5.0-&Aring; zone around the ligand 
+and shows only the largest resulting fragment.
+Without <b>max 1</b>, a few additional disconnected shards of surface
+would be shown. If you like, try different cutoff values;
+the <a href="#fig3">figure</a> shows results for a cutoff of 4.7 &Aring;.
+</p><p>
+Amino acid hydrophobicity is one example of an <b><i>attribute</i></b>.
+Another attribute commonly used in structure analysis is atomic
+B-factor.  B-factor values indicate which parts of the structure
+are more or less flexible or disordered.  
+</p><p>
+Display all atoms by choosing
+<b>Presets... Interactive 2 (all atoms)</b> from the menu.   
+Now the ligand atoms are shown as spheres and the protein as wires.
+Show the protein as sticks:
+<blockquote>
+<i>Command</i>:&nbsp;<b><a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../midas/represent.html">repr</a> stick protein</b>
+</blockquote>
+<a name="fig4"></a>
+<table border="1" align="right" style="margin:8px 8px 8px 8px" 
+cellspacing="0" cellpadding="0">
+<tr><td><img src="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/render-dialog.png"></td></tr>
+</table>
+The <a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../../ContributedSoftware/render/render.html#render"><b>Render
+by Attribute</b></a> tool shows attribute values with colors 
+and other visual cues.  Choose <b>Tools... Depiction...
+Render by Attribute</b> from the menu to start this tool.
+The dialog is set to <b>atoms</b> when it appears.  Choose
+<b>bfactor</b> from the attribute menu. The B-factor values are shown in a
+histogram, and the vertical bars on the histogram define a color mapping.
+These bars or <b><i>thresholds</i></b> can be dragged along the histogram 
+with the mouse, and their colors can be changed.  Clicking the square
+<a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../coloring.html#colorwell">color well</a> allows changing
+the <b>Color</b> of the threshold that was most recently clicked or moved.
+The colors can also be changed collectively by choosing a different 
+<b>Palette</b> or clicking the button to <b>Reverse threshold colors</b>.
+(The <a href="#fig4">figure</a> shows the dialog after a user has added more 
+thresholds, chosen the <b>Rainbow</b> palette, and then reversed the colors.)
+Adjust the color mapping as desired and <b>Apply</b> it to the structure.
+The lowest B-factors are in the protein core, the highest in a loop over
+the active site and the C-terminus on the opposite side.
+If any sidechain has been replaced with a rotamer, the new atoms will not have 
+B-factor values, but they can be assigned a <b>No-value color</b>.
+</p><p>
+In the <b>Render</b> dialog, switch from <b>atoms</b> to
+<b>residues</b> and show the histogram for the attribute
+<b>kdHydrophobicity</b>, the
+<a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../midas/hydrophob.html">Kyte-Doolittle hydrophobicity</a>
+of amino acids.  This is the same attribute as used by the surface 
+<a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../menu.html#menupresets">preset</a>,
+but different coloring schemes can be applied.
+Larger positive values correspond to more hydrophobic residues,
+negative values to hydrophilic residues.
+The <b>No-value color</b> pertains to residues without Kyte-Doolittle
+hydrophobicities, namely any that are not amino acids (such as the ligands
+in this structure). The colors can be changed as described above.
+Apply coloring by hydrophobicity if you like, then <b>Close</b> the dialog.
+</p>
+
+<h3><a href="#top" class="nounder"><b>&larr;</b></a>
+<a name="comparison">Superposition and Morphing</a></h3>
+<p>
+Comparing different structures of a protein is another way to evaluate
+flexibility.  We have been viewing a structure bound to substrate analogs,
+<b>3w7f</b>.  A structure of the same enzyme without ligands is also available.
+Fetch the &ldquo;empty&rdquo; structure and apply the ribbons preset:
+<blockquote>
+<i>Command</i>:&nbsp;<b><a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../midas/open.html">open</a>&nbsp;2zco</b>
+<br>
+<i>Command</i>:&nbsp;<b><a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../midas/preset.html">preset</a>&nbsp;apply&nbsp;int&nbsp;1</b>
+</blockquote>
+Now the first structure is tan and the new structure is sky blue, as shown in 
+the <a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../modelpanel.html"><b>Model Panel</b></a> 
+(<b>Tools... General Controls... Model Panel</b>).  
+</p><p>
+The structures are in completely different positions, 
+so the next step is to superimpose them.  This is easily accomplished with
+<a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../../ContributedSoftware/matchmaker/matchmaker.html"><b>MatchMaker</b></a>
+or its <a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../midas/mmaker.html">command equivalent</a>:
+<blockquote>
+<i>Command</i>:&nbsp;<b><a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../midas/mmaker.html">mm</a>&nbsp;#0&nbsp;#1&nbsp;show&nbsp;true</b>
+</blockquote>
+<b>MatchMaker</b> first generates a sequence alignment using residue types and 
+secondary structure (tries to align helix with helix and strand with strand),
+then fits the sequence-aligned residues in 3D by pairing their CA atoms.
+The <b>show true</b> option displays the sequence alignment.
+By default, the fit is iterated so that far-apart pairs are not included 
+in the final match.  This allows the most similar parts to superimpose
+more tightly and the dissimilar parts to stand out.
+Final match statistics are reported in the <b>Log</b>,
+and the pairs used in the final fit are shown with light orange boxes
+on the sequence alignment. The RMSD histogram
+above the sequences shows spatial variability, calculated as the
+root-mean-square deviation among the CA atoms of residues associated 
+with each column. In this case (only two structures),
+the RMSD value is the same as the CA-CA distance. 
+</p>
+<table align="right" style="margin:8px 8px 8px 8px">
+<tr><th align="center">
+<a name="fig5">different loop conformations</a></th></tr>
+<tr><td><img src="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/loopdiff.png"></td></tr>
+</table>
+<p>
+The structures are highly similar except for the loop at approximately 
+residues 52-56; you can see residue numbers by clicking into the
+sequence alignment window and hovering the cursor over the corresponding 
+one-letter codes.  Click any part of the light orange boxes 
+to select all the residues used in the final fit; 
+these form the common core, the most conformationally similar parts
+of the structures. The selection can be inverted if you want to do something
+to the less similar parts, for example:
+<blockquote>
+<i>Command</i>:&nbsp;<b><a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../midas/select.html#newer">sel</a>&nbsp;invert</b>
+<br>
+<i>Command</i>:&nbsp;<b><a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../midas/display.html">disp</a>&nbsp;sel&nbsp;&amp;&nbsp;protein</b>
+<br>
+<i>Command</i>:&nbsp;<b><a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../midas/select.html#newer">~sel</a></b>
+</blockquote>
+Morphing involves calculating a series of intermediate, interpolated
+structures between the original input structures.  In Chimera, the
+series of structures is treated as a trajectory that can be replayed,
+saved to a coordinate file, or saved as a movie using
+<a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../../ContributedSoftware/movie/framemovie.html"
+target="_top"><b>MD Movie</b></a>.
+</p><p>
+Start the <a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../../ContributedSoftware/morph/morph.html">morphing
+tool</a>:
+<blockquote>
+<i>Menu</i>:&nbsp;<b>Tools...&nbsp;Structure&nbsp;Comparison...&nbsp;Morph&nbsp;Conformations</b>
+</blockquote>
+Click <b>Add...</b> and in the resulting list of models, doubleclick
+to choose #0, #1, and #0 again, corresponding to a morph trajectory from the 
+ligand-bound structure to the empty structure and back.
+<b>Close</b> the model list.
+In the main <b>Morph Conformations</b> dialog, set the <b>Action on Create</b>
+to <b>hide Conformations</b>, and then click <b>Create</b>.
+</p><p>
+The progress of the calculation is reported in the
+<a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../chimerawindow.html#statusline">status line</a>.  
+When all the intermediate structures have been calculated, the input 
+structures are hidden, the trajectory is opened as a third model (#2), and the
+<a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../../ContributedSoftware/movie/framemovie.html"
+target="_top"><b>MD Movie</b></a>
+tool appears.  The trajectory can be played continuously or one step
+at a time by clicking buttons on the tool, 
+or a frame number can be entered directly.
+If the <b>MD Movie</b> playback dialog becomes obscured by other windows,
+it can be raised using its <a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../instances.html">instance
+in the <b>Tools</b> menu</a>
+(near the bottom of the menu, below the horizontal line).
+</p><p>
+The initial display of the morph trajectory is as ribbons rather than 
+all atoms, but all atoms that are present in both input structures 
+are also present in the morph.
+Their display can be controlled just as in any other structure, for example:
+<blockquote>
+<i>Command</i>:&nbsp;<b><a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../midas/display.html">disp</a>&nbsp;#2:52-56</b>
+</blockquote>
+Ligand residues were only present in one of the structures, so they are
+not included in the morph trajectory.  
+However, part or all of the original structures can be displayed 
+along with the trajectory.  Display of the other models can be re-enabled by
+checking the <b>S</b>(hown) boxes in the
+<a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../modelpanel.html"><b>Model Panel</b></a> (<b>Tools... 
+General Controls... Model Panel</b>) or with a command, for example:
+<blockquote>
+<i>Command</i>:&nbsp;<b><a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../midas/modeldisplay.html">modeldisp</a>&nbsp;#0</b>
+</blockquote>
+Then, to show only the ligand residues and ions from that model:
+<blockquote>
+<i>Command</i>:&nbsp;<b><a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../midas/ribbon.html">~ribbon</a>&nbsp;#0</b>
+<br>
+<i>Command</i>:&nbsp;<b><a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../midas/show.html">show</a>&nbsp;:fps,mg</b>
+</blockquote>
+In this case, the secondary structure does not change much between the input 
+structures. When conformational differences are larger and ribbons
+will be displayed, one may want to re-evaluate the secondary structure 
+at each step of the trajectory.  That can be done by putting the command
+<a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../midas/ksdssp.html"><b>ksdssp</b></a> in a
+<a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../../ContributedSoftware/movie/movie.html#per-frame">per-frame
+Chimera script</a> in
+<a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../../ContributedSoftware/movie/framemovie.html"
+target="_top"><b>MD Movie</b></a>.  Such scripts also allow performing
+actions (such as showing/hiding a ligand) at specific steps in the
+trajectory. 
+</p><p>
+The <a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../../ContributedSoftware/morph/morph.html"><b>Morph 
+Conformations</b></a> page lists a few additional
+<a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/../../ContributedSoftware/morph/morph.html#examples">example
+systems</a>.
+</p><p>
+When finished enjoying the morph trajectory,
+choose <b>File... Quit</b> from the menu to exit from Chimera.
+</p>
+<hr>
+<address>meng-at-cgl.ucsf.edu / April 2018</address>
+</body></html>
+
