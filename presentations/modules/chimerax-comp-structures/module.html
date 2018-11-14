@@ -1,0 +1,243 @@
+<section>
+<h1>Structure Analysis and Comparison</h1>
+	<p>
+	This tutorial includes binding site analysis and comparison of related
+	structures by superposition and morphing.  Internet connectivity is required 
+	to fetch the structures <b>3w7f</b> and <b>2zco</b>.
+	<ul>
+		<li><a href="#setup">Background and Setup</a></li>
+		<li><a href="#dists">Distances, H-Bonds, Contacts</a></li>
+		<li><a href="#angles">Angles, Rotamers, Clashes</a></li>
+		<li><a href="#surfaces">Surfaces and Attributes</a></li>
+		<li><a href="#comparison">Superposition and Morphing</a></li>
+	</ul>
+	</p>
+</section>
+
+<section id="setup">
+	<h1>Background</h1>
+	<div style="height:850px">
+<p style="font-size:80%">
+The pathogenic organism <i>Staphylococcus aureus</i> makes a
+pigment called staphyloxanthin.  The pigment imparts a golden color 
+(hence <i>aureus</i>), but more importantly, contributes to virulence 
+by protecting the bacteria from being killed by the host immune system.
+The <i>S. aureus</i> enzyme CrtM may be a good drug target 
+because it catalyzes a key step in staphyloxanthin synthesis:
+<blockquote style="font-size:70%;margin-left:50px;width:1100px">
+<a href="http://www.ncbi.nlm.nih.gov/pubmed/18276850" target="_blank">
+A cholesterol biosynthesis inhibitor blocks <i>Staphylococcus aureus</i>
+virulence.</a>
+Liu CI, Liu GY, Song Y, Yin F, Hensler ME, Jeng WY, Nizet V, 
+Wang AH, Oldfield E.
+<i>Science.</i> 2008 Mar 7;319(5868):1391-4.
+</blockquote>
+<p style="font-size:80%">
+We will view and compare different structures of this enzyme.
+</p>
+	</div>
+</section>
+
+<section>
+	<h1>Setup</h1>
+	<div style="height:850px">
+	<ol style="font-size:90%">
+		<li>Start by launching Chimerax</li>
+		<li>Once ChimeraX is launched, launch the <b>Side View</b> either by using the menu:
+			<b>Tools&rarr;General&rarr;Side View</b> or by using the command:
+			<blockquote>
+				<i>Command</i>:&nbsp;<b><a href="cxcmd:toolshed show \"Side View\"">toolshed show "Side View"</a></b>
+			</blockquote>
+		</li>
+		<li>Fetch the structure from the <a href="http://www.rcsb.org" target="_blank">Protein Data Bank</a>:
+		<blockquote>
+			<i>Command</i>:&nbsp;<b><a href="cxcmd:open 3w7f">open 3w7f</a></b>
+		</blockquote>
+		By default, the structure is opened with proteins shows as ribbons and ligands shown using a stick representation.  When appropriate metal coordinating bonds are also shown.
+		</li>
+		<li>Now delete one of the chains:
+			<blockquote>
+				<i>Command</i>:&nbsp;<a href="cxcmd:delete /b"><b>delete /b</b></a>
+			</blockquote>
+		</li>
+	</ol>
+	</div>
+</section>
+
+<section>
+	<h1>Setup</h1>
+			<img class="plain" src="modules/chimerax-comp-structures/3w7fA.png"/>
+</section>
+
+<section>
+	<h1>Setup</h1>
+	<div style="height:850px">
+		<p style="font-size; 80%">
+The enzyme combines two 15-carbon molecules of farnesyl pyrophosphate
+to form a 30-carbon lipid.  This structure contains 
+farnesyl <b><i>thio</i></b>pyrophosphate, 
+which differs from the substrate by having a sulfur in the place of one
+oxygen.  Sulfur atoms are shown in yellow, phosphorus orange, oxygen red, and
+nitrogen blue.</p>
+		<ol start="5" style="width:1100px;text-align:left;">
+			<li>Label the ligand residues:
+<blockquote>
+	<i>Command</i>:&nbsp;<b><a href="cxcmd:label ligand residues">label ligand residues</a></b>
+</blockquote>
+			</li>
+		</ol>
+	</div>
+</section>
+
+<section>
+	<h1>Setup</h1>
+	<div style="height:850px">
+		<p style="font-size:80%">In this structure, the farnesyl thiopyrophosphate molecules are named FPS.
+Three magnesium ions help to offset the negative charges on the phosphates.
+The ions are shown as greenish spheres; clicking into the ChimeraX window
+and hovering the mouse cursor over each shows information in a pop-up
+balloon.  Metal coordination bonds from FPS, water, and the protein 
+are shown with dashed purple lines.
+Lines drawn to indicate interactions other than
+covalent bonds are called <b><i>pseudobonds</i></b>.
+Hovering the cursor over a pseudobond or bond shows balloon information 
+about its end atoms and length.
+</p>
+	</div>
+</section>
+
+<section>
+	<h1>Setup</h1>
+	<div style="width:400px;float:right;margin-top:50px">
+			<img class="plain" src="modules/chimerax-comp-structures/labels.png"/>
+	</div>
+	<div style="height:850px;width:800px">
+		<ol start="6" style="font-size:80%;width:900px">
+			<li>Delete the water, label residues with displayed sidechains:
+<blockquote style="text-align:left;margin-left:10px">
+	<i>Command</i>:&nbsp;<b><a href="cxcmd:delete solvent">delete solvent</a></b>
+<br>
+<i>Command</i>:&nbsp;<b><a href="cxcmd:label @@display residues">label @@display residues</a></b>
+</blockquote>
+Water could be included in the various analyses, 
+but is removed here to simplify the tutorial.
+			</li>
+</ol>
+</section>
+
+<section id="dists">
+	<h1>Distances, H-Bonds, Contacts</h1>
+	<div style="height:850px; font-size:80%">
+		<p>It looks like several sidechains could be donating hydrogen bonds to phosphate 
+		oxygens. (Although the structure does not include hydrogens, we know they are there!) </p>
+		<p> One of the displayed residues is Ser 21. To measure a distance: 
+		<ol>
+			<li>Ctrl-click to pick the sidechain oxygen of Ser 21</li>
+			<li>Shift-Ctrl-doubleclick on the nearest phosphate oxygen</li>
+			<li>click Show Distance in the resulting context menu </li>
+		</ol>
+		</p>
+		<p>Similarly, measure the distance between the sidechain oxygen of Tyr 248 and the same phosphate oxygen.</p>
+	</div>
+</section>
+
+<section id="dists">
+	<h1>Distances, H-Bonds, Contacts</h1>
+	<div style="height:850px; font-size:80%">
+		<p>The distances seem consistent with hydrogen bonds. However, rather than measuring many 
+		distances and trying to remember the appropriate hydrogen-bonding distances for different 
+		types of atoms, just use the 
+		<b><a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/commands/hbonds.html">hbonds</a></b> 
+		command. We will limit the search to H-bonds involving the FPS residues:
+
+		<ol>
+			<li>Select the FPS residues (for example, with <b>Select... Residue... FPS</b> in the menu).</li>
+			<li>Find all of the H-Bonds to FPS:
+			<blockquote style="text-align:left;margin-left:10px;font-size:90%">
+				<i>Command</i>:&nbsp;<b><a href="cxcmd:hbonds sel restrict cross log true reveal true">
+					hbonds sel restrict cross log true reveal true</a></b>
+			</blockquote>
+			</li>
+		</ol>
+	</div>
+</section>
+
+<section id="dists">
+	<h1>Distances, H-Bonds, Contacts</h1>
+	<div style="height:850px; font-size:80%">
+		<p>The H-bonds are shown as pseudobonds with the default color and line width. 
+		Both measured distances were found to be consistent with hydrogen bonding. 
+		Details can be viewed in the <b>Log</b>. </p>
+		<p>Remove the “hydrogen bond” pseudobonds:
+			<blockquote style="text-align:left;margin-left:10px;font-size:90%">
+				<i>Command</i>:&nbsp;<b><a href="cxcmd:~hbonds">~hbond </a></b>
+			</blockquote>
+		</p>
+	</div>
+</section>
+
+<section id="dists">
+	<h1>Distances, H-Bonds, Contacts</h1>
+	<div style="height:850px; font-size:80%">
+		<p><b><a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/commands/clashes.html">Clashes/Contacts</a></b>
+	 	is similar to 
+		<b><a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/commands/hbonds.html">hbonds</a></b>
+	 	but can also identify nonpolar interactions:
+
+		<ul>
+			<li><i><b>clashes</b></i> - unfavorable interactions where atoms are too close together; close contacts</li>
+			<li><i><b>contacts </b></i>- all kinds of direct interactions: polar and nonpolar, 
+				favorable and unfavorable (including clashes) </li>
+		</ul>
+	</div>
+</section>
+
+<section id="dists">
+	<h1>Distances, H-Bonds, Contacts</h1>
+	<div style="height:850px; font-size:80%">
+		<p>We will identify contacts of the FPS residues.  Make sure the FPS residues 
+		are still selected and execute the 
+		<a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/commands/clashes.html">contact</a> command:
+			<blockquote style="text-align:left;margin-left:10px;font-size:90%">
+				<i>Command</i>:&nbsp;<b><a href="cxcmd:contacts sel test others reveal true log true select true">
+					contacts sel test others reveal true log true select true</a></b>
+			</blockquote>
+		</p>
+		<p>In the <b>Log</b>, the atom-atom contacts are listed in order of decreasing 
+		VDW <b><i>overlap</i></b>, the amount of intersection of atomic van der Waals spheres: 0 if 
+		just touching, positive if interpenetrating, negative if separated by space. 
+		Slightly separated spheres are still considered contacts by default. The distances 
+		between atomic centers are also given. </p>
+
+	</div>
+</section>
+
+<section>
+	<h1>Distances, H-Bonds, Contacts</h1>
+	<div style="height:850px; font-size:80%">
+		<p>One might simply want a list of the interacting residues rather than the 
+		details of each atomic contact. A list of the selected residues can be saved. 
+		First, deselect the ligand residues and ions, leaving the protein residues selected:
+			<blockquote style="text-align:left;margin-left:10px;font-size:90%">
+				<i>Command</i>:&nbsp;<b><a href="cxcmd:~sel ligand">~sel ligand</a></b><br/>
+				<i>Command</i>:&nbsp;<b><a href="cxcmd:~sel ions">~sel ions</a></b>
+			</blockquote>
+		</p>
+		<p>Now list all of the residues that are selected by using the <b>
+			<a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/commands/info.html#residues">info residues</a></b>
+		command:
+			<blockquote style="text-align:left;margin-left:10px;font-size:90%">
+				<i>Command</i>:&nbsp;<b><a href="cxcmd:info residues sel">info residues sel</a></b>
+			</blockquote>
+		</p>
+	</div>
+</section>
+
+<section id="angles">
+</section>
+
+<section id="surfaces">
+</section>
+
+<section id="comparison">
+</section>
