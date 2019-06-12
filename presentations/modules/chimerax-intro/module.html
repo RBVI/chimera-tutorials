@@ -204,7 +204,7 @@ atom name(case-insensitive)
 <section>
 	<h1>Core Features (cont.)</h1>
 	<div style="height:850px;font-size:70%; text-align:left">
-		<h4>Basic commands</h4>
+		<h4><highlight>Basic commands</highlight></h4>
 			<dl style="font-size: 80%">
 				<dt style="float:left; margin-right: 5px"><a href="https://www.rbvi.ucsf.edu/chimerax/docs/user/commands/delete.html" target="_blank">delete</a>:</dt>
 				<dd>deletes the specified atoms, bonds, or pseudobonds.  Note: this is not undoable!</dd>
@@ -226,7 +226,7 @@ atom name(case-insensitive)
 					 <li>select by zone (distance cutoff from specified items)</li>
 				 </ul>
 				</dd>
-				<dt style="float:left; margin-right: 5px"><a href="https://www.rbvi.ucsf.edu/chimerax/docs/user/commands/show.html">show,hide</a>:</dt>
+				<dt style="float:left; margin-right: 5px"><a href="https://www.rbvi.ucsf.edu/chimerax/docs/user/commands/show.html">show,hide</a> (disp,~disp):</dt>
 				<dd>
 				The commands <b>show</b> and <b>hide</b> display and undisplay the specified atoms, bonds, pseudobonds, cartoons, molecular 
 				surfaces, and entire models. Following the usual convention, a blank specification means “all.”  Both commands take an 
@@ -250,25 +250,36 @@ atom name(case-insensitive)
 <section>
 	<h1>Core Features (cont.)</h1>
 	<div style="height:850px;font-size:70%; text-align:left">
-		<h4>Depiction commands</h4>
-				<ul>
-					<li>cartoon</li>
-					<li>nucleotides</li>
-					<li>style</li>
-					<li>surface</li>
-					<li>color</li>
-				</ul>
-			</li>
-			<ul>
-				<li>Analyses:
-					<ul>
-						<li>hbonds</li>
-						<li>matchmaker</li>
-						<li>morph</li>
-					</ul>
-				</li>
-		</ul>
-	</ul>
+		<h4><highlight>Depiction commands</highlight></h4>
+			<dl style="font-size: 80%">
+				<dt style="float:left; margin-right: 5px"><a href="https://www.rbvi.ucsf.edu/chimerax/docs/user/commands/cartoon.html" target="_blank">cartoon</a> (ribbon):</dt>
+				<dd>
+				The cartoon or ribbon command shows a simplified backbone representation of the specified biopolymer residues.  The <b>cartoon style</b>
+				subcommand provides several options for the style of the representation, including width, thickness, and shape.
+				</dd>
+				<dt style="float:left; margin-right: 5px"><a href="https://www.rbvi.ucsf.edu/chimerax/docs/user/commands/nucleotides.html" target="_blank">nucleotides</a></dt>
+				<dd>
+				The nucleotides command generates special representations of nucleic acids, with choices for mode: <b>atoms, fill, ladder, stubs, tube/slab, slab</b>
+				</dd>
+				<dt style="float:left; margin-right: 5px"><a href="https://www.rbvi.ucsf.edu/chimerax/docs/user/commands/style.html" target="_blank">style</a>:</dt>
+				<dd>
+				The style command sets atom/bond display styles and the number of dashes per pseudobond. The style can be one of the following: <b>sphere, stick, </b>or <b>ball</b>.  The style command also provides options for ring fill as well as pseudobond dashes.
+				</dd>
+				<dt style="float:left; margin-right: 5px"><a href="https://www.rbvi.ucsf.edu/chimerax/docs/user/commands/surface.html" target="_blank">surface</a>:</dt>
+				<dd>
+				The surface command creates and displays molecular surfaces, either atomically detailed solvent-excluded surfaces (default) or lower-resolution Gaussian surfaces.  Surface display style (solid, mesh, or dot) can be adjusted with <b>surface style</b>.  There are several options that support
+				how the surface is created, including the atoms enclosed by the surface and the atoms incuded in the surface.
+				</dd>
+				<dt style="float:left; margin-right: 5px"><a href="https://www.rbvi.ucsf.edu/chimerax/docs/user/commands/color.html" target="_blank">color</a>:</dt>
+				<dd>
+				Depending on the type of coloring, color may apply to atomic models and their parts, including cartoon and molecular 
+				surface representations, and volume data (map) displays.  Subcommands include <b>color sequential</b> (rainbow) to support rainbow
+				coloring of atomic models, <b>color modify</b> to adjust the color for atomic models, <b>color byattribute</b> to color 
+				based on an atom, residue, or model attribute, and coloring by map values: <b>color sample, color electrostatic, </b>
+				and <b>color gradient</b>.  There are also subcommands to color surfaces by distance (<b>color radial</b>, <b>color cylindrical</b>,
+				<b>color height</b> and to color by zone (<b>color zone</b>).
+				</dd>
+			</dl>
 	</div>
 	<aside class="notes">
 	</aside>
@@ -276,62 +287,106 @@ atom name(case-insensitive)
 
 <section>
 	<h1>Core Features (cont.)</h1>
-	<ul>
-		<li>Useful tools</li>
+	<div style="height:850px;font-size:70%; text-align:left">
+		<h4><highlight>Analysis commands</highlight></h4>
+		<dl>
+			<dt style="float:left; margin-right: 5px"><a href="https://www.rbvi.ucsf.edu/chimerax/docs/user/commands/hbonds.html" target="_blank">hbonds</a>:</dt>
+			<dd>
+			The hbonds command uses atom types and geometric criteria to identify hydrogen bonds (H-bonds) involving the specified atoms. 
+			</dd>
+			<dt style="float:left; margin-right: 5px"><a href="https://www.rbvi.ucsf.edu/chimerax/docs/user/commands/matchmaker.html" target="_blank">matchmaker</a> (mmaker):</dt>
+			<dd>
+			The matchmaker (or mmaker) command superimposes
+			protein or nucleic acid structures by first
+			creating a pairwise sequence alignment,
+			then fitting the aligned residue pairs.
+			</dd>
+			<dt style="float:left; margin-right: 5px"><a href="https://www.rbvi.ucsf.edu/chimerax/docs/user/commands/morph.html" target="_blank">morph</a>:</dt>
+			<dd>
+			 The morph command creates a trajectory that morphs between two or more atomic models. 
+			 The trajectory can be played back with the 
+			 <a href="https://www.rbvi.ucsf.edu/chimerax/docs/user/commands/coordset.html" target="_blank">coordset</a>
+			 command or the slider graphical interface.
+			</dd>
+		</dl>
+	</div>
+	<aside class="notes">
+	</aside>
+</section>
+
+<section>
+	<h1>Core Features (cont.)</h1>
+	<div style="height:850px;font-size:70%; text-align:left">
+	<h4 style="text-align:left"><highlight>Useful tools</highlight></h4>
 		<ul>
-			<li>Side View</li>
+			<li><a href="https://www.rbvi.ucsf.edu/chimerax/docs/user/tools/log.html" target="_blank">Log</a></li>
+			<ul>
+				<li>Echoes commands that have been executed, with any truncations expanded</li>
+				<li>Shows messages and other output information, potentially including hyperlinks and
+					command-execution links</li>
+				<li>Context menu and 
+					<a href="https://www.rbvi.ucsf.edu/chimerax/docs/user/commands/log.html" target="_blank">log</a> command
+					provide support for:
+					<ul>
+						<li>Saving the log to an HTML file</li>
+						<li>Adding a thumbmnail image to the log</li>
+						<li>Adding metadata associated with a model to the log</li>
+						<li>Setting whether echoed commands should link to documentation or be execution links</li>
+					</ul>
+				</li>
+			</ul>
+	<div style="position: absolute; top:100px; left: 100px; width: 80%" data-autoslide="2000" class="fragment fade-in">
+		<img class="plain" src="modules/chimerax-intro/log1.png">
+	</div>
+	<div style="position: absolute; top:100px; left: 100px; width: 80%" class="fragment fade-in">
+		<img class="plain" src="modules/chimerax-intro/log2.png">
+	</div>
+	</div>
+	<aside class="notes">
+	</aside>
+</section>
+
+<section>
+	<h1>Core Features (cont.)</h1>
+	<div style="height:850px;font-size:70%; text-align:left">
+	<h4 style="text-align:left"><highlight>Useful tools</highlight></h4>
+		<ul>
+			<li style="Color: lightblue">Log</li>
+			<li><a href="https://www.rbvi.ucsf.edu/chimerax/docs/user/tools/modelpanel.html" target="_blank">Model Panel</a></li>
+			<ul>
+				<li>Shows model hierarchy of currently open models</li>
+				<li>Allows selective display of models</li>
+				<li>Can show/hide models or submodels</li>
+			</ul>
+		</ul>
+	<div style="position: absolute; top:100px; left: 100px; width: 80%" data-autoslide="2000" class="fragment fade-in">
+		<img class="plain" src="modules/chimerax-intro/modelPanel.png">
+	</div>
+	</div>
+	<aside class="notes">
+	</aside>
+</section>
+
+
+<section>
+	<h1>Core Features (cont.)</h1>
+	<div style="height:850px;font-size:70%; text-align:left">
+	<h4 style="text-align:left"><highlight>Useful tools</highlight></h4>
+		<ul>
+			<li style="Color: lightblue">Log</li>
+			<li style="Color: lightblue">Model Panel</li>
+			<li><a href="https://www.rbvi.ucsf.edu/chimerax/docs/user/tools/sideview.html" target="_blank">Side View</a></li>
 			<ul>
 				<li>Helps locate model in Z direction</li>
 				<li>Provides access to hither-and-yon clipping planes</li>
 			</ul>
 		</ul>
 	</ul>
-	<div style="position: absolute; top:100px; left: 0px; width: 80%" data-autoslide="2000" class="fragment fade-in">
-		<img class="plain" src="modules/intro-chimera/sv1.png">
+	<div style="position: absolute; top:100px; left: 100px; width: 80%" data-autoslide="2000" class="fragment fade-in">
+		<img class="plain" src="modules/chimerax-intro/sv1.png">
 	</div>
-	<div style="position: absolute; top:130px; left: 750px" class="fragment fade-in">
-		<img class="plain" src="modules/intro-chimera/sv2.png">
-	</div>
-	<aside class="notes">
-	</aside>
-</section>
-
-
-<section>
-	<h1>Core Features (cont.)</h1>
-	<ul>
-		<li>Useful tools</li>
-		<ul>
-			<li style="color: lightblue">Side View</li>
-			<li>Selection Inspector</li>
-			<ul>
-				<li>Provides information about currently selected:</li>
-				<ul>
-					<li>atom</li>
-					<li>residue</li>
-					<li>model </li>
-					<li>bond</li>
-					<li>pseudo-bond</li>
-					<li>surface</li>
-				</ul>
-				<li>Short-cut to changing representation of selected item</li>
-			</ul>
-		</ul>
-	</ul>
-	<div style="position: absolute; top:100px; left: 0px; width: 80%" class="fragment fade-in">
-		<img class="plain" src="modules/intro-chimera/si1.png">
-	</div>
-	<div style="position: absolute; top:130px; left: 800px" data-autoslide="5000" class="fragment fade-in">
-		<img class="plain" width="90%" src="modules/intro-chimera/si2.png">
-	</div>
-	<div style="position: absolute; top:130px; left: 800px" data-autoslide="5000" class="fragment fade-in">
-		<img class="plain" width="90%" src="modules/intro-chimera/si3.png">
-	</div>
-	<div style="position: absolute; top:130px; left: 800px" data-autoslide="5000" class="fragment fade-in">
-		<img class="plain" width="90%" src="modules/intro-chimera/si4.png">
-	</div>
-	<div style="position: absolute; top:130px; left: 800px" class="fragment fade-in">
-		<img class="plain" width="90%" src="modules/intro-chimera/si5.png">
+	<div style="position: absolute; top:100px; left: 100px; width: 80%" class="fragment fade-in">
+		<img class="plain" src="modules/chimerax-intro/sv2.png">
 	</div>
 	<aside class="notes">
 	</aside>
@@ -340,76 +395,23 @@ atom name(case-insensitive)
 
 <section>
 	<h1>Core Features (cont.)</h1>
-	<ul>
-		<li>Useful tools</li>
+	<div style="height:850px;font-size:70%; text-align:left">
+	<h4 style="text-align:left"><highlight>Useful tools</highlight></h4>
 		<ul>
-			<li style="color: lightblue">Side View</li>
-			<li style="color: lightblue">Selection Inspector</li>
-			<li>Model Panel</li>
-			<ul>
-				<li>Access to several attributes and actions of currently open models</li>
-				<li>Allows selective display of models</li>
-				<li>Allows selection of models that will respond to mouse motion <br/>(useful to move one model in relation to another)</li>
-			</ul>
-		</ul>
-	</ul>
-	<div style="position: absolute; top:100px; left: 0px; width: 80%" data-autoslide="2000" class="fragment fade-in">
-		<img class="plain" src="modules/intro-chimera/modelpanel1.png">
-	</div>
-	<div style="position: absolute; top:130px; left: 800px" class="fragment fade-in">
-		<img class="plain" src="modules/intro-chimera/modelpanel2.png">
-	</div>
-	<aside class="notes">
-	</aside>
-</section>
-
-
-<section>
-	<h1>Core Features (cont.)</h1>
-	<ul>
-		<li>Useful tools</li>
-		<ul>
-			<li style="color: lightblue">Side View</li>
-			<li style="color: lightblue">Selection Inspector</li>
+			<li style="Color: lightblue">Log</li>
 			<li style="Color: lightblue">Model Panel</li>
-			<li>Sequence</li>
+			<li style="color: lightblue">Side View</li>
+			<li><a href="https://www.rbvi.ucsf.edu/chimerax/docs/user/tools/sequenceviewer.html" target="_blank">Sequence Viewer</a></li>
 			<ul>
 				<li>Displays sequence of currently loaded structures</li>
 				<li>Selection linked to structure</li>
 				<li>Can display alignments</li>
-				<li>Access to several sequence-related tools:</li>
-				<ul>
-					<li>CDD &amp; Uniprot annotations</li>
-					<li><highlight>BLAST PDB</highlight></li> 
-					<li>sequence alignment calculations</li> 
-					<li>modeling </li>
-				</ul>
+				<li>Alignment headers can show conservation (AL2CO) as well as consensus</li>
 			</ul>
 		</ul>
-	</ul>
-	<div style="position: absolute; top:0px; left: 0px;" data-fragment-index="1" data-autoslide="2000" class="fragment fade-in">
-		<img class="plain" src="modules/intro-chimera/sequence1.png">
+	<div style="position: absolute; top:100px; left: 100px; width: 80%" class="fragment fade-in">
+		<img class="plain" src="modules/chimerax-intro/sequence.png">
 	</div>
-	<div style="position: absolute; top:40px; left: 0px; " data-fragment-index="2" data-autoslide="2000" class="fragment fade-in">
-		<img class="plain" src="modules/intro-chimera/sequence2.png">
-	</div>
-	<div style="position: absolute; top:40px; left: 0px;" data-fragment-index="3" data-autoslide="2000" class="fragment fade-in">
-		<img class="plain fragment fade-out" data-fragment-index="5" src="modules/intro-chimera/sequence3.png">
-	</div>
-	<div style="position: absolute; top:135px; left: 80px;" data-fragment-index="4" data-autoslide="2000" class="fragment fade-in">
-		<img class="plain fragment fade-out" width="75%" data-fragment-index="5" src="modules/intro-chimera/sequence4.png">
-	</div>
-	<div style="position: absolute; top:40px; left: 0px;" data-fragment-index="5" data-autoslide="2000" class="fragment fade-in">
-		<img class="plain" src="modules/intro-chimera/sequence5.png">
-	</div>
-	<div style="position: absolute; top:135px; left: 230px; width: 90%" data-fragment-index="6" data-autoslide="2000" class="fragment fade-in">
-		<img class="plain" width="35%" src="modules/intro-chimera/sequence6.png">
-	</div>
-	<div style="position: absolute; top:400px; left: 0px;" data-fragment-index="7" data-autoslide="2000" class="fragment fade-in">
-		<img class="plain" src="modules/intro-chimera/sequence7.png">
-	</div>
-	<div style="position: absolute; top:100px; left: 0px;" data-fragment-index="8" class="fragment fade-in">
-		<img class="plain" src="modules/intro-chimera/sequence8.png">
 	</div>
 	<aside class="notes">
 	</aside>
@@ -417,86 +419,42 @@ atom name(case-insensitive)
 
 <section>
 	<h1>Core Features (cont.)</h1>
-	<ul>
-		<li>Useful tools</li>
+	<div style="height:850px;font-size:70%; text-align:left">
+	<h4 style="text-align:left"><highlight>Useful tools</highlight></h4>
 		<ul>
+			<li style="Color: lightblue">Log</li>
+			<li style="Color: lightblue">Model Panel</li>
 			<li style="color: lightblue">Side View</li>
-			<li style="color: lightblue">Selection Inspector</li>
-			<li style="color: lightblue">Model Panel</li>
 			<li style="color: lightblue">Sequence</li>
-			<li>Animation Tool</li>
+			<li><a href="https://www.rbvi.ucsf.edu/chimerax/docs/user/tools/basicactions.html" target="_blank">Basic actions</a></li>
 			<ul>
-				<li>Easy keyframe-based animation</li>
-				<li>Take "snapshots" of current scene</li>
-				<li>Drop scenes on timeline to reorder and set timing</li>
-				<li>Tool interpolates color, position, etc. between scenes</li>
+				<li>Quick access to:
+					<ul>
+						<li>select named sets of atoms</li>
+						<li>show/hide or color atoms</li>
+						<li>show/hide or color cartoon segments</li>
+						<li>show/hide or color molecular surface patches</li>
+					</ul>
+				</li>
 			</ul>
 		</ul>
-	</ul>
-	<div style="position: absolute; top:0px; left: 0px;" class="fragment fade-in">
-		<img class="plain" src="modules/intro-chimera/animation1.png">
+	<div style="position: absolute; top:100px; left: 100px; width: 80%" class="fragment fade-in">
+		<img class="plain" src="modules/chimerax-intro/basicactions.png">
 	</div>
-	<div style="position: absolute; top:200px; left: 400px;" class="fragment fade-in">
-		<img class="plain" src="modules/intro-chimera/animation2.png">
-	</div>
-	<div style="position: absolute; top:0px; left: 0px;" class="fragment fade-in">
-		<img class="plain" src="modules/intro-chimera/animation3.png">
-	</div>
-	<div style="position: absolute; top:200px; left: 400px;" class="fragment fade-in">
-		<img class="plain" src="modules/intro-chimera/animation4.png">
-	</div>
-	<div style="position: absolute; top:0px; left: 0px;" class="fragment">
-		<video data-autoplay src="modules/intro-chimera/animation.mp4">
 	</div>
 	<aside class="notes">
 	</aside>
 </section>
 
 <section>
-	<h1>Commonly used tools</h1>
-	<ul>
-		<li>Depictions</li>
-		<ul>
-			<li>Nucleotides</li>
-			<li>Rainbow coloring</li>
-		</ul>
-		<li>Structure analysis</li>
-		<ul>
-			<li>FindHBond</li>
-			<li>Sequence</li>
-			<li>Distances</li>
-		</ul>
-		<li>Utilities</li>
-		<ul>
-			<li>2D Labels</li>
-			<li>Reply Log</li>
-			<li>Movie Recorder</li>
-		</ul>
-	</ul>
-	<aside class="notes">
-	</aside>
-</section>
-
-
-<section>
-	<h1>Extending Chimera</h1>
-	<ul>
-		<li>Incorporating user data </li>
-		<li>Scripting </li>
-		<li style="color: lightblue">Python extensions</li>
-	</ul>
-	<aside class="notes">
-	</aside>
-</section>
-
-<section>
-	<h1>Incorporating user data</h1>
-	<ul>
-		<li>Chimera supports user-defined attributes for atoms, <br/>residues and molecules</li>
-		<li>Once defined, these attributes may be used for selection <br/>and rendering using the “Render by Attribute” extension</li>
-	</ul>
+	<h1>Toolshed</h1>
+	<div style="height:850px;font-size:70%; text-align:left">
+		<p>The <a href="https://cxtoolshed.rbvi.ucsf.edu/apps/" target="_blank">ChimeraX toolshed</a> provides a mechanism
+		for other developers to add new tools and commands to ChimeraX.  Several additional tools are already available on the
+		toolshed, so users should check there for new content.  Also, the UCSF team will release updates to individual ChimeraX
+		components by publishing them to the toolshed.</p>
 	<div style="position: absolute; top:130px; left: 50px" class="fragment fade-in">
-		<img src="modules/intro-chimera/renderbyattribute.png">
+		<img src="modules/chimerax-intro/toolshed.png">
 	</div>
 	<aside class="notes">
 	</aside>
@@ -505,22 +463,42 @@ atom name(case-insensitive)
 
 <section>
 	<h1>Scripting</h1>
+	<div style="height:850px;font-size:70%; text-align:left">
 	<ul>
 		<li>Scripting is executing a set of commands from a file</li>
 		<ul>
 			<li>Useful for repetitive tasks</li>
 			<li>Can serve as documentation</li>
-			<li>Available in most visualization packages</li>
 		</ul>
-		<li>Chimera commands may be read in from a file or typed directly <br/>in the command line interface</li>
-		<li>Chimera “Demo” extension combines scripting with simple <br/>hypertext to create illustrations</li>
+		<li>ChimeraX commands may be read in from a file or typed directly in the command line interface</li>
+		<li>The ChimeraX browser combines scripting with simple HTML to create web interactions with ChimeraX.  To use,
+			simply add command links (e.g. "&lt;a href="cxcmd:open 1hgg"&gt;open 1hgg&lt;/a&gt;") in your html and open
+			the file using ChimeraX's web browser.
 	</ul>
 	<div style="position: absolute; top:130px; left: 50px" class="fragment fade-in">
-		<img src="modules/intro-chimera/scripting.png">
+		<img src="modules/chimerax-intro/html1.png">
+	</div>
+	<div style="position: absolute; top:130px; left: 50px" class="fragment fade-in">
+		<img src="modules/chimerax-intro/html2.png">
+	</div>
 	</div>
 	<aside class="notes">
 	</aside>
 </section>
 
-
+<section>
+	<h1>Getting Help</h1>
+	<div style="height:850px;font-size:70%; text-align:left">
+		<ul>
+			<li>The best, most up-to-date source for help is the user's guide.  It is available directly from
+				the ChimeraX help menu (<b>Help&rarr;User Guide</b>) or on the web
+				<a href="https://www.rbvi.ucsf.edu/chimerax/docs/user/index.html" target="_blank">https://www.rbvi.ucsf.edu/chimerax/docs/user/</a>.
+			</li>
+			<li>You can also subscribe to the e-mail list: 
+				<a href="http://plato.cgl.ucsf.edu/mailman/listinfo/chimerax-users" target="_blank">ChimeraX-users</a>, which is regularly
+				monitored by the ChimeraX team.
+			</li>
+		</ul>
+	</div>
+</section>
 
