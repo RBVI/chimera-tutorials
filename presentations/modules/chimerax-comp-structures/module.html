@@ -64,7 +64,7 @@ We will view and compare different structures of this enzyme.
 		<li>Once ChimeraX is launched, launch the <b>Side View</b> either by using the menu:
 			<b>Tools&rarr;General&rarr;Side View</b> or by using the command:
 			<blockquote>
-				<i>Command</i>:&nbsp;<b><a href="cxcmd:toolshed show \"Side View\"">toolshed show "Side View"</a></b>
+				<i>Command</i>:&nbsp;<b><a href="cxcmd:toolshed show 'Side View'">toolshed show "Side View"</a></b>
 			</blockquote>
 		</li>
 		<li>Fetch the structure from the <a href="http://www.rcsb.org" target="_blank">Protein Data Bank</a>:
@@ -137,10 +137,16 @@ about its end atoms and length.
 <br>
 <i>Command</i>:&nbsp;<b><a href="cxcmd:label @@display residues">label @@display residues</a></b>
 </blockquote>
-Water could be included in the various analyses, 
-but is removed here to simplify the tutorial.
+Water could be included in the various <br/>analyses, 
+but is removed here to simplify the tutorial.<br/>
+<br/>
+Note the <b>@@</b> in the label command.  This indicates <br/>
+an atom-level attribute
+called <b>display</b>, which indicates if the atom is displayed.  Essentially,
+the command is saying: "label all the residues that have any displayed atoms".
 			</li>
 </ol>
+	</div>
 </section>
 
 <section id="dists">
@@ -158,7 +164,12 @@ but is removed here to simplify the tutorial.
 			<li>click Show Distance in the resulting context menu </li>
 		</ol>
 		</p>
-		<p>Similarly, measure the distance between the sidechain oxygen of Tyr 248 and the same phosphate oxygen.</p>
+		<p>Similarly, measure the distance between the sidechain oxygen of Tyr 248 and the same phosphate oxygen. This
+		could also be done using a command:
+<blockquote style="text-align:left;margin-left:10px">
+	<i>Command</i>:&nbsp;<b><a href="cxcmd:distance :248@OH :302@O1B">distance :248@OH :302@O1B</a></b>
+</blockquote>
+		</p>
 	</div>
 </section>
 
@@ -196,6 +207,10 @@ but is removed here to simplify the tutorial.
 		<p>Remove the “hydrogen bond” pseudobonds:
 			<blockquote style="text-align:left;margin-left:10px;font-size:90%">
 				<i>Command</i>:&nbsp;<b><a href="cxcmd:~hbonds">~hbond </a></b>
+			</blockquote>
+			<p style="margin-top:0px;margin-bottom:0px">and the distances:</p>
+			<blockquote style="text-align:left;margin-left:10px;font-size:90%">
+				<i>Command</i>:&nbsp;<b><a href="cxcmd:~distance">~distance </a></b>
 			</blockquote>
 		</p>
 	</div>
@@ -253,17 +268,17 @@ but is removed here to simplify the tutorial.
 		</p>
 		<p>Now list all of the residues that are selected by using the <b>
 			<a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/commands/info.html#residues" target="_none">info residues</a></b>
-		command:
+		command:</p>
 			<blockquote style="text-align:left;margin-left:10px;font-size:90%">
 				<i>Command</i>:&nbsp;<b><a href="cxcmd:info residues sel">info residues sel</a></b>
 			</blockquote>
-		</p>
+			<p>And look in the Log for the list of residues.  </p>
 	</div>
 </section>
 
-<section id="angles">
+<!--section id="angles">
 	<!-- Can do angles, but not rotamers.  Not clear it's useful, yet, so skipping this section -->
-</section>
+</section-->
 
 <section id="surfaces">
 	<h1>Surfaces and Attributes</h1>
@@ -483,7 +498,7 @@ to the less similar parts, for example:
 			<br/>
 			<i>Command</i>:&nbsp;<a href="cxcmd:delete solvent"><b>delete solvent</b></a>
 			<br/>
-			<i>Command</i>:&nbsp;<a href="cxcmd:mm #3 to #0"><b>mm #3 to #0</b></a>
+			<i>Command</i>:&nbsp;<a href="cxcmd:mm #3 to #1"><b>mm #3 to #1</b></a>
 </blockquote>
 	</div>
 </section>
@@ -515,10 +530,14 @@ to save it as an <i>MP4</i> movie.  Note that you will need to move the slider t
 
 </section>
 <section>
+	<h1>Morph Movie</h1>
+	<p style="position:absolute;top:150px; left:220px; width: 400px">NOTE: won't play in Chimera's browser</p>
+	<div style="height:850px;position:absolute;top:0px; left:200px">
 	 <video controls autoplay loop>
   <source src="modules/chimerax-comp-structures/morph.mp4" type="video/mp4">
 Your browser does not support the video tag.
 </video>
+	</div>
 </section>
 
 <section>
@@ -546,11 +565,11 @@ General... Model Panel</b>) or with a command, for example:
 </blockquote>
 <p>Then, to show only the ligand residues and ions from that model:</p>
 <blockquote style="text-align:left;margin-left:10px;font-size:90%">
-<i>Command</i>:&nbsp;<b><a href="cxcmd:~ribbon #1">~ribbon</a>&nbsp;#1</b>
+	<i>Command</i>:&nbsp;<b><a href="cxcmd:~ribbon #1">~ribbon&nbsp;#1</a></b>
 </blockquote>
 <p>or</p>
 <blockquote style="text-align:left;margin-left:10px;font-size:90%">
-<i>Command</i>:&nbsp;<b><a href="cxcmd:~ribbon #1">hide</a>&nbsp;#1</b>
+	<i>Command</i>:&nbsp;<b><a href="cxcmd:hide #1">hide&nbsp;#1</a></b>
 <br>
 <i>Command</i>:&nbsp;<b><a href="cxcmd:show #1:fps,mg">show</a>&nbsp;#1:fps,mg</b>
 </blockquote>
@@ -558,8 +577,12 @@ General... Model Panel</b>) or with a command, for example:
 	</div>
 	</section>
 <section>
+	<h1>Final Morph Movie</h1>
+	<p style="position:absolute;top:150px; left:220px; width: 400px">NOTE: won't play in Chimera's browser</p>
+	<div style="height:850px;position:absolute;top:0px; left:200px">
 	 <video controls autoplay loop>
-  <source src="modules/chimerax-comp-structures/morph2.mp4" type="video/mp4">
+		 <source src="modules/chimerax-comp-structures/morph2.mp4" type="video/mp4" alt="Final morph movie">
 Your browser does not support the video tag.
 </video>
+	</div>
 </section>
