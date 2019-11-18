@@ -61,17 +61,20 @@ We will view and compare different structures of this enzyme.
 	<div style="height:850px">
 	<ol style="font-size:90%">
 		<li>Start by launching Chimerax</li>
-		<li>Once ChimeraX is launched, launch the <b>Side View</b> either by using the menu:
-			<b>Tools&rarr;General&rarr;Side View</b> or by using the command:
+		<li>Once ChimeraX is launched, show the <b>Side View</b>
+by clicking <img width="35px" src="modules/chimerax-comp-structures/sideview.png"/> in the 
+<a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/tools/graphics.html" target="_none"><b>Graphics</b></a> 
+tab of the toolbar or by using the command:
 			<blockquote>
 				<i>Command</i>:&nbsp;<b><a href="cxcmd:toolshed show 'Side View'">toolshed show "Side View"</a></b>
 			</blockquote>
+(can also be done with the menu: <b>Tools... General... Side View</b>)
 		</li>
 		<li>Fetch the structure from the <a href="http://www.rcsb.org" target="_blank">Protein Data Bank</a>:
 		<blockquote>
 			<i>Command</i>:&nbsp;<b><a href="cxcmd:open 3w7f">open 3w7f</a></b>
 		</blockquote>
-		By default, the structure is opened with proteins shows as ribbons and ligands shown using a stick representation.  When appropriate metal coordinating bonds are also shown.
+		By default, proteins are shown as ribbons, and ligands and nearby sidechains as sticks. Metal coordination bonds are also shown, if present.
 		</li>
 		<li>Now delete one of the chains:
 			<blockquote>
@@ -100,7 +103,11 @@ nitrogen blue.</p>
 		<ol start="5" style="width:1100px;text-align:left;">
 			<li>Label the ligand residues:
 <blockquote>
-	<i>Command</i>:&nbsp;<b><a href="cxcmd:label ligand residues">label ligand residues</a></b>
+	<i>Command</i>:&nbsp;<b><a href="cxcmd:label ligand">label ligand</a></b>
+</blockquote>
+Label height is 0.7&Aring; by default, but can be changed, for example:
+<blockquote>
+	<i>Command</i>:&nbsp;<b><a href="cxcmd:label height 1.0">label height 1.0</a></b>
 </blockquote>
 			</li>
 		</ol>
@@ -130,20 +137,21 @@ about its end atoms and length.
 			<img class="plain" src="modules/chimerax-comp-structures/labels.png"/>
 	</div>
 	<div style="height:850px;width:800px">
+<br/>
 		<ol start="6" style="font-size:80%;width:900px">
-			<li>Delete the water, label residues with displayed sidechains:
+			<li>Although water could be included in the various analyses, <br/>
+remove it to simplify the tutorial:
 <blockquote style="text-align:left;margin-left:10px">
 	<i>Command</i>:&nbsp;<b><a href="cxcmd:delete solvent">delete solvent</a></b>
-<br>
-<i>Command</i>:&nbsp;<b><a href="cxcmd:label @@display residues">label @@display residues</a></b>
 </blockquote>
-Water could be included in the various <br/>analyses, 
-but is removed here to simplify the tutorial.<br/>
-<br/>
-Note the <b>@@</b> in the label command.  This indicates <br/>
-an atom-level attribute
-called <b>display</b>, which indicates if the atom is displayed.  Essentially,
-the command is saying: "label all the residues that have any displayed atoms".
+			<li>Label residues with displayed sidechains:
+<blockquote style="text-align:left;margin-left:10px">
+<i>Command</i>:&nbsp;<b><a href="cxcmd:label @@display">label @@display</a></b>
+</blockquote>
+In this command, <b>@@display</b> refers to an atom-level attribute
+named <b>display</b> that indicates whether the atom is displayed. 
+Essentially, the command is saying: 
+&ldquo;label all residues with displayed atoms.&rdquo;
 			</li>
 </ol>
 	</div>
@@ -161,12 +169,13 @@ the command is saying: "label all the residues that have any displayed atoms".
 		<ol>
 			<li>Ctrl-click to pick the sidechain oxygen of Ser 21</li>
 			<li>Shift-Ctrl-doubleclick on the nearest phosphate oxygen</li>
-			<li>click Show Distance in the resulting context menu </li>
+			<li>click <b>Distance</b> in the resulting context menu </li>
 		</ol>
 		</p>
-		<p>Similarly, measure the distance between the sidechain oxygen of Tyr 248 and the same phosphate oxygen. This
-		could also be done using a command:
-<blockquote style="text-align:left;margin-left:10px">
+		<p>Similarly, measure the distance between the sidechain oxygen of Tyr 248 and the same phosphate oxygen. Equivalent commands would be:
+<blockquote>
+	<i>Command</i>:&nbsp;<b><a href="cxcmd:distance :21@OG :302@O1B">distance :21@OG :302@O1B</a></b>
+<br>
 	<i>Command</i>:&nbsp;<b><a href="cxcmd:distance :248@OH :302@O1B">distance :248@OH :302@O1B</a></b>
 </blockquote>
 		</p>
@@ -179,20 +188,37 @@ the command is saying: "label all the residues that have any displayed atoms".
 			<img class="plain" src="modules/chimerax-comp-structures/hbond.png"/>
 	</div>
 	<div style="height:400px; width:800px; font-size:80%">
-		<p>The distances seem consistent with hydrogen bonds. However, rather than measuring many 
+<p>
+Distance measurements are shown as yellow dashed pseudobonds.
+		The distances seem consistent with hydrogen bonds. However, rather than measuring many 
 		distances and trying to remember the appropriate hydrogen-bonding distances for different 
-		types of atoms, just use the 
+		types of atoms, you can just use the 
 		<b><a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/commands/hbonds.html" target="_none">hbonds</a></b> 
-		command. We will limit the search to H-bonds involving the FPS residues:
+		command 
+or <b><a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/tools/hbonds.html" target="_none">H-Bonds</a></b> tool.
 	</div>
-	<div style="height:500px; font-size:80%; position: relative; top:-50px">
+</section>
+
+<section>
+	<h1>Distances, H-Bonds, Contacts</h1>
+	<div style="height:500px; font-size:80%">
 		<ol>
-			<li>Select the FPS residues (for example, with <b>Select... Residue... FPS</b> in the menu).</li>
-			<li>Find all of the H-Bonds to FPS:
+			<li>To limit the search to H-bonds with FPS residues, first select them: 
 			<blockquote style="text-align:left;margin-left:10px;font-size:90%">
-				<i>Command</i>:&nbsp;<b><a href="cxcmd:hbonds sel restrict cross log true reveal true">
-					hbonds sel restrict cross log true reveal true</a></b>
+				<i>Command</i>:&nbsp;<b><a href="cxcmd:select :FPS">select :FPS</a></b>
 			</blockquote>
+(or menu: <b>Select... Residues... FPS</b>)
+			</li>
+			<li>Find H-bonds with one end selected:
+			<blockquote style="text-align:left;margin-left:10px;font-size:90%">
+				<i>Command</i>:&nbsp;<b><a href="cxcmd:hbonds sel restrict cross reveal true log true">hbonds sel restrict cross reveal true log true</a></b>
+			</blockquote>
+The same thing could be done using the
+<b><a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/tools/hbonds.html" target="_none">H-Bonds</a></b> tool
+(menu: <b>Tools... Structure Analysis... H-Bonds</b>)
+with options checked to <b>Reveal atoms of H-bonding residues</b>,
+<b>Limit by selection: with exactly one end selected</b>,
+and <b>Log</b>, other settings default.
 			</li>
 		</ol>
 	</div>
@@ -201,14 +227,14 @@ the command is saying: "label all the residues that have any displayed atoms".
 <section>
 	<h1>Distances, H-Bonds, Contacts</h1>
 	<div style="height:850px; font-size:80%">
-		<p>The H-bonds are shown as pseudobonds with the default color and line width. 
-		Both measured distances were found to be consistent with hydrogen bonding. 
+		<p>The H-bonds are shown as light blue dashed pseudobonds.
+		Both of the measured distances were found to be consistent with hydrogen bonding. 
 		Details can be viewed in the <b>Log</b>. </p>
 		<p>Remove the “hydrogen bond” pseudobonds:
 			<blockquote style="text-align:left;margin-left:10px;font-size:90%">
 				<i>Command</i>:&nbsp;<b><a href="cxcmd:~hbonds">~hbond </a></b>
 			</blockquote>
-			<p style="margin-top:0px;margin-bottom:0px">and the distances:</p>
+			<p style="margin-top:0px;margin-bottom:0px">and the distance measurements:</p>
 			<blockquote style="text-align:left;margin-left:10px;font-size:90%">
 				<i>Command</i>:&nbsp;<b><a href="cxcmd:~distance">~distance </a></b>
 			</blockquote>
@@ -225,8 +251,8 @@ the command is saying: "label all the residues that have any displayed atoms".
 	 	but can also identify nonpolar interactions:
 
 		<ul>
-			<li><i><b>clashes</b></i> - unfavorable interactions where atoms are too close together; close contacts</li>
-			<li><i><b>contacts </b></i>- all kinds of direct interactions: polar and nonpolar, 
+			<li><i><b>clashes</b></i> &ndash; unfavorable interactions where atoms are too close together; close contacts</li>
+			<li><i><b>contacts </b></i> &ndash; all kinds of direct interactions: polar and nonpolar, 
 				favorable and unfavorable (including clashes) </li>
 		</ul>
 	</div>
@@ -239,11 +265,11 @@ the command is saying: "label all the residues that have any displayed atoms".
 	</div>
 	<div style="height:850px; font-size:80%">
 		<p>We will identify contacts of the FPS residues.  Make sure the FPS residues 
-		are still selected and execute the 
-		<a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/commands/clashes.html" target="_none">contact</a> command:
+		are still selected, then execute the 
+		<a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/commands/clashes.html" target="_none">contacts</a> command:
 			<blockquote style="text-align:left;margin-left:10px;font-size:90%">
-				<i>Command</i>:&nbsp;<b><a href="cxcmd:contacts sel test others reveal true log true select true">
-					contacts sel test others reveal true log true select true</a></b>
+				<i>Command</i>:&nbsp;<b><a href="cxcmd:contacts sel restrict cross reveal true log true select true">
+					contacts sel restrict cross reveal true log true select true</a></b>
 			</blockquote>
 		</p>
 		<p>In the <b>Log</b>, the atom-atom contacts are listed in order of decreasing 
@@ -251,33 +277,42 @@ the command is saying: "label all the residues that have any displayed atoms".
 		just touching, positive if interpenetrating, negative if separated by space. 
 		Slightly separated spheres are still considered contacts by default. The distances 
 		between atomic centers are also given. </p>
-
+<p>
+The command included an option to select the contacting atoms. 
+We will use the selection to get a list of the protein residues 
+contacting FPS.
+</p>
 	</div>
 </section>
 
 <section>
 	<h1>Distances, H-Bonds, Contacts</h1>
 	<div style="height:850px; font-size:80%">
-		<p>One might simply want a list of the interacting residues rather than the 
-		details of each atomic contact. A list of the selected residues can be saved. 
-		First, deselect the ligand residues and ions, leaving the protein residues selected:
+		<p>The <b>Log</b> lists the details of each atomic contact, but one might want a simpler list of interacting residues instead.
+		First, deselect everything that is not protein:
 			<blockquote style="text-align:left;margin-left:10px;font-size:90%">
-				<i>Command</i>:&nbsp;<b><a href="cxcmd:~sel ligand">~sel ligand</a></b><br/>
-				<i>Command</i>:&nbsp;<b><a href="cxcmd:~sel ions">~sel ions</a></b>
+				<i>Command</i>:&nbsp;<b><a href="cxcmd:~sel ~protein">~sel ~protein</a></b><br/>
 			</blockquote>
 		</p>
-		<p>Now list all of the residues that are selected by using the <b>
+		<p>Now list the selected residues using the <b>
 			<a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/commands/info.html#residues" target="_none">info residues</a></b>
 		command:</p>
 			<blockquote style="text-align:left;margin-left:10px;font-size:90%">
 				<i>Command</i>:&nbsp;<b><a href="cxcmd:info residues sel">info residues sel</a></b>
 			</blockquote>
-			<p>And look in the Log for the list of residues.  </p>
+			<p>See the <b>Log</b> for the list of residues. 
+To clean up for the next section, remove the contact pseudobonds, clear the selection, and remove labels:</p>
+<!-- the following cleanup was in the rotamer part not yet in this tutorial  -->
+			<blockquote style="text-align:left;margin-left:10px;font-size:90%">
+				<i>Command</i>:&nbsp;<b><a href="cxcmd:~contacts">~contacts</a></b>
+				<br><i>Command</i>:&nbsp;<b><a href="cxcmd:select clear">select clear</a></b>
+				<br><i>Command</i>:&nbsp;<b><a href="cxcmd:label delete">label delete</a></b>
+			</blockquote>
 	</div>
 </section>
 
 <!--section id="angles">
-	<!-- Can do angles, but not rotamers.  Not clear it's useful, yet, so skipping this section -->
+	<!-- Can do angles, but not rotamers.  Not clear it's useful, yet, so skipping this section  -->
 </section-->
 
 <section id="surfaces">
@@ -293,10 +328,10 @@ as needed to accommodate two of these molecules.
 
 <p>
 A surface representation is best for showing the shape of the pocket.  
-ChimeraX provides a command that calculates the molecular lipophilicity potential (MLP) map for proteins.  To use this
-command, either click on the color by hydrophobicity <img width="30px" src="modules/chimerax-comp-structures/mlpbutton.png"/> button in the 
-<b>Coloring</b> section of the <a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/tools/moldisplay.html" target="_none"><b>Molecular Display</b></a> toolbar
-or use the 
+ChimeraX provides a command that calculates the molecular lipophilicity potential (MLP) map for proteins.
+Either click on the &ldquo;color by hydrophobicity&rdquo;
+<img width="30px" src="modules/chimerax-comp-structures/mlpbutton.png"/> icon
+in the <a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/tools/moldisplay.html" target="_none"><b>Molecule Display</b></a> tab of the toolbar or use the 
 <b><a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/commands/mlp.html" target="_none">mlp</a></b> command:
 			<blockquote style="text-align:left;margin-left:10px;font-size:90%">
 				<i>Command</i>:&nbsp;<b><a href="cxcmd:mlp">mlp</a></b>
@@ -322,23 +357,29 @@ most lipophilic, with white in between.
 As one might expect, the mouth of the pocket near the phosphates and ions is 
 mostly polar, while the rest of the pocket is largely hydrophobic.  
 However, the pocket is so deep that it is hard to see when the whole surface 
-is shown.  Restricting the surface display to the pocket region allows it 
-to be viewed from the outside, as shown in the figure to the right.
+is shown. Showing just the pocket region allows viewing it from the outside.
 </p><p>
-Hide the ribbon and the protein atoms, then show only surface near the ligand:
+Limit protein surface display to atoms within 6.3 &Aring; of ligand:
 </p>
 <blockquote style="text-align:left;margin-left:10px;font-size:90%">
-<i>Command</i>:&nbsp;<b><a href="cxcmd:~ribbon">~ribbon</a></b>
-<br>
-<i>Command</i>:&nbsp;<b><a href="cxcmd:~disp protein">~disp protein</a></b>
-<br>
-<i>Command</i>:&nbsp;<b><a href="cxcmd:surface ligand @<6 visible 1">surface ligand @&lt;6 visible 1</a></b>
+<i>Command</i>:&nbsp;<b><a href="cxcmd:surface ligand @<6.3">surface ligand @&lt;6.3</a></b>
 </blockquote>
+<!-- alternative command; bug with max option fixed 11/18/2019
 <p>
-The <a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/commands/surface.html" target="_none"><b>surface</b></a> 
-command limits the surface to a 6-&Aring; zone around the ligand
-and shows only the largest resulting fragment.
+Limit protein surface to display a 5-&Aring; zone around the ligand:
 </p>
+<blockquote style="text-align:left;margin-left:10px;font-size:90%">
+<i>Command</i>:&nbsp;<b><a href="cxcmd:surf zone #1 near ligand dist 5 max ">surf zone near ligand dist 5 max 1</a></b>
+</blockquote>
+-->
+<p>
+Hide the ribbon and the protein atoms: 
+</p>
+<blockquote style="text-align:left;margin-left:10px;font-size:90%">
+<i>Command</i>:&nbsp;<b><a href="cxcmd:hide ribbon">hide ribbon</a></b>
+<br>
+<i>Command</i>:&nbsp;<b><a href="cxcmd:hide protein">hide protein</a></b>
+</blockquote>
 	</div>
 </section>
 	
@@ -352,10 +393,14 @@ Another attribute commonly used in structure analysis is atomic
 B-factor.  B-factor values indicate which parts of the structure
 are more or less flexible or disordered.  
 </p><p>
-Display all atoms by choosing
-<b>Presets... Stick</b> from the menu.   
-Now the atoms are shown as sticks.
-Show the ligand as spheres:
+Display all atoms by choosing <b>Presets... Initial Styles... Sticks</b>
+from the menu or by using the command:
+</p>
+<blockquote style="text-align:left;margin-left:10px;font-size:90%">
+<i>Command</i>:&nbsp;<b><a href="cxcmd:preset sticks">preset sticks</a></b>
+</blockquote>
+<p>
+Now the atoms are shown as sticks. Show the ligands as spheres:
 <blockquote style="text-align:left;margin-left:10px;font-size:90%">
 <i>Command</i>:&nbsp;<b><a href="cxcmd:style ligand sphere">style ligand sphere</a></b>
 </blockquote>
@@ -370,18 +415,19 @@ Show the ligand as spheres:
 	</div>
 	<div style="height:850px; font-size:80%">
 <p>
-The <a href="https://www.cgl.ucsf.edu/chimerax/docs/user/commands/color.html"><b>color</b></a> command 
+The <a href="https://www.rbvi.ucsf.edu/chimerax/docs/user/commands/color.html" target="_none"><b>color</b></a> command 
 provides a number of options for coloring structures, including coloring by attribute.
 Color the structure by B-factor:
 </p>
 <blockquote style="text-align:left;margin-left:10px;font-size:90%">
 <i>Command</i>:&nbsp;<b><a href="cxcmd:color byattribute bfactor">color byattribute bfactor</a></b>
 </blockquote>
-<p>The lowest B-factors are in the protein core, the highest in a loop over the active site and the C-terminus on the opposite side.</p>
-
-<p>B-factor is an atomic level attribute, but there are also residue and model level attributes that can be used in conjunction
-with the <b>color</b> command.  For more information on attributes see:
-<b><i><a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/attributes.html" target="_none">attribute</a></i></b>.
+<p>The lowest B-factors are in the protein core, the highest in a loop over the active site and the C-terminus on the opposite side.
+</p><p>
+B-factor is an atomic attribute, but there are also residue and model 
+attributes that could be used with the
+<a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/commands/color.html#byattribute"
+target="_none"><b>color byattribute</b></a> command.
 </p>
 	</div>
 </section>
@@ -404,7 +450,7 @@ Fetch the &ldquo;empty&rdquo; structure and apply the default (original look) pr
 </blockquote>
 <p>
 Now the first structure is tan and the new structure is sky blue, as shown in 
-the <a href="https://www.cgl.ucsf.edu/chimerax/docs/user/tools/modelpanel.html"><b>Model Panel</b></a> 
+the <a href="https://www.rbvi.ucsf.edu/chimerax/docs/user/tools/modelpanel.html" target="_none"><b>Model Panel</b></a> 
 (<b>Tools... General... Model Panel</b>).  
 </p>
 	</div>
@@ -415,8 +461,8 @@ the <a href="https://www.cgl.ucsf.edu/chimerax/docs/user/tools/modelpanel.html">
 	<div style="height:850px; font-size:80%">
 <p>
 The structures are in completely different positions, 
-so the next step is to superimpose them.  This is easily accomplished with
-<a href="https://www.cgl.ucsf.edu/chimerax/docs/user/commands/matchmaker.html"><b>MatchMaker</b></a>
+so the next step is to superimpose them. This is easily accomplished with the
+<a href="https://www.rbvi.ucsf.edu/chimerax/docs/user/commands/matchmaker.html" target="_none"><b>matchmaker</b></a>
 command.
 <blockquote style="text-align:left;margin-left:10px;font-size:90%">
 	<i>Command</i>:&nbsp;<b><a href="cxcmd:mm #1 to #2 showAlignment true">mm #1 to #2 showAlignment true</a></b>
@@ -438,7 +484,10 @@ By default, the fit is iterated so that far-apart pairs are not included
 in the final match.  This allows the most similar parts to superimpose
 more tightly and the dissimilar parts to stand out.
 Final match statistics are reported in the <b>Log</b>,
-and the pairs used in the final fit are shown with light orange boxes
+and the pairs used in the final fit are shown with
+<font style="background:rgb(255,224,204);
+border:solid orangered 1px;padding:1px 3px">
+light orange boxes</font>
 on the sequence alignment. 
 <!--
 	The RMSD histogram
@@ -464,45 +513,27 @@ the RMSD value is the same as the CA-CA distance.
 The structures are highly similar except for the loop at approximately 
 residues 52-56; you can see residue numbers by clicking into the
 sequence alignment window and hovering the cursor over the corresponding 
-one-letter codes.  Click any part of the light orange boxes 
+one-letter codes. In that window, click any part of the
+<font style="background:rgb(255,224,204);
+border:solid orangered 1px;padding:1px 3px">
+light orange boxes</font>
 to select all the residues used in the final fit; 
 these form the common core, the most conformationally similar parts
 of the structures. The selection can be inverted if you want to do something
 to the less similar parts, for example:
 <blockquote style="text-align:left;margin-left:10px;font-size:90%">
-<i>Command</i>:&nbsp;<b><a href="cxcmd:select ~sel">select ~sel</a></b>
+<i>Command</i>:&nbsp;<b><a href="cxcmd:select ~sel">select &nbsp;~sel</a></b>
 <br>
 <i>Command</i>:&nbsp;<b><a href="cxcmd:disp sel & protein">disp sel &amp; protein</a></b>
 <br>
-<i>Command</i>:&nbsp;<b><a href="cxcmd:~sel">~sel</a></b>
+<i>Command</i>:&nbsp;<b><a href="cxcmd:select clear">select clear</a></b>
 </blockquote>
-<p>The command <b>select ~sel</b> selects all of the atoms that aren't selected and the command 
-	<b>disp sel &amp; protein</b> displays the selected atoms that are also part of a protein chain.
-	Taken together, these commands select all of the regions that are most dissimilar and shows the side chains
-	of the protein portions (see the image at the right).
+<p>The command <b>select ~sel</b> inverts the selection, and
+	<b>disp sel &amp; protein</b> displays the selected atoms that are also classified as protein.
+	The net effect is to show the side chains of the conformationally dissimilar loop.
 	</p>
 	</div>
-
 </section>
-
-<section>
-	<h1>Superposition and Morphing</h1>
-	<div style="height:850px; font-size:70%">
-		<p>In order to create a smooth morph, we want to move between two states, the <i>bound</i> state (<b>3w7f</b>) 
-		and the <i>empty</i> state (<b>2zco</b>).  The ChimeraX morph tool doesn't allow us to use the same structure twice, so
-		we need to open another copy of one of the structures:
-<blockquote style="text-align:left;margin-left:10px;font-size:90%">
-			<i>Command</i>:&nbsp;<b><a href="cxcmd:open 3w7f">open 3w7f</a></b>
-			<br/>
-			<i>Command</i>:&nbsp;<a href="cxcmd:delete #3/b"><b>delete #3/b</b></a> (assuming the new structure is #3)
-			<br/>
-			<i>Command</i>:&nbsp;<a href="cxcmd:delete solvent"><b>delete solvent</b></a>
-			<br/>
-			<i>Command</i>:&nbsp;<a href="cxcmd:mm #3 to #1"><b>mm #3 to #1</b></a>
-</blockquote>
-	</div>
-</section>
-			
 
 <section>
 	<h1>Superposition and Morphing</h1>
@@ -512,23 +543,31 @@ to the less similar parts, for example:
 
 	<div style="height:850px; font-size:70%">
 <p>
-We're now ready to morph the structures.  Morphing involves calculating a series of intermediate, interpolated
-structures between the original input structures.  In Chimera, the
+We want to morph between two states, the <i>bound</i> state (<b>3w7f</b>) 
+and the <i>empty</i> state (<b>2zco</b>), using the
+<b><i><a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/commands/morph.html" target="_none">morph</a></i></b> command.
+Morphing involves calculating a series of intermediate, interpolated
+structures between the original input structures. The
 series of structures is treated as a trajectory that can be replayed,
-saved to a coordinate file, or saved as a movie. The ChimeraX 
-<b><i><a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/commands/morph.html">morph</a></i></b> command
-allows us to do exactly that:
+saved to a coordinate file, or saved as a movie. 
 </p>
 <blockquote style="text-align:left;margin-left:10px;font-size:90%">
-			<i>Command</i>:&nbsp;<b><a href="cxcmd:morph #1,2,3 frames 60 hideModels true play true slider true">
-					morph #1,2,3 frames 60 hideModels true play true slider true</a></b>
+			<i>Command</i>:&nbsp;<b><a href="cxcmd:morph #1,2 wrap true frames 60">
+					morph #1,2 wrap true frames 60</a></b>
 </blockquote>
-<p>This will play a morph movie and will also add a slider to the right-hand panel.  The slider may be used to replay the movie or
-to save it as an <i>MP4</i> movie.  Note that you will need to move the slider to the beginning manually to record a movie</p>
+<p>
+The wrap option means to wrap around from the last model specified 
+to the first, in this case, to morph from the bound to empty state and
+then back to the bound state.
+The command plays the morph trajectory once and shows a slider interface
+that may be used to replay the trajectory or
+to save it as an <i>MP4</i> movie.
+Note that you will need to move the slider to the beginning manually 
+to record the whole trajectory as a movie file.
 	</p>
 	</div>
-
 </section>
+
 <section>
 	<h1>Morph Movie</h1>
 	<p style="position:absolute;top:150px; left:220px; width: 400px">NOTE: won't play in Chimera's browser</p>
@@ -544,34 +583,33 @@ Your browser does not support the video tag.
 	<h1>Superposition and Morphing</h1>
 	<div style="height:850px; font-size:60%">
 	<p>
-The initial display of the morph trajectory is as ribbons rather than 
-all atoms, but all atoms that are present in both input structures 
+Although not all of the atoms in the morph are displayed at first,
+all atoms that are present in both input structures 
 are also present in the morph.
-Their display can be controlled just as in any other structure, for example, to show the side chains in the variable
-region:
+Their display can be controlled just as in any other structure, for example:
 <blockquote style="text-align:left;margin-left:10px;font-size:90%">
-	<i>Command</i>:&nbsp;<b><a href="cxcmd:disp #4:52-56">disp&nbsp;#2:52-56</a></b>
+	<i>Command</i>:&nbsp;<b><a href="cxcmd:show #3:lys">show&nbsp;#3:lys</a></b>
+	<br><i>Command</i>:&nbsp;<b><a href="cxcmd:hide #3:lys">hide&nbsp;#3:lys</a></b>
 </blockquote>
 <p>
-Ligand residues were only present in one of the structures, so they are
-not included in the morph trajectory.  
-However, part or all of the original structures can be displayed 
-along with the trajectory.  Display of the other models can be re-enabled by
-checking the <img src="modules/chimerax-comp-structures/eye.png"/>(shown) boxes in the
-<a href="https://www.cgl.ucsf.edu/chimerax/docs/user/tools/modelpanel.html"><b>Model Panel</b></a> 
-General... Model Panel</b>) or with a command, for example:
+The ligand FPS was only present in one of the structures, <b>3w7f</b>,
+so it is not included in the morph trajectory.
+However, atoms from the original structures can be displayed 
+along with the trajectory. Display of <b>3w7f</b> (model #1) 
+can be re-enabled by checking the 
+<img src="modules/chimerax-comp-structures/eye.png"/ class="plain" width="25px"> (shown) box in the
+<a href="https://www.rbvi.ucsf.edu/chimerax/docs/user/tools/modelpanel.html"><target="_none">Model Panel</b></a> 
+or with the command:
 <blockquote style="text-align:left;margin-left:10px;font-size:90%">
-<i>Command</i>:&nbsp;<b><a href="cxcmd:show #1 target m">show #1 target m</a></b>
+<i>Command</i>:&nbsp;<b><a href="cxcmd:show #1 models">show #1 models</a></b>
 </blockquote>
 <p>Then, to show only the ligand residues and ions from that model:</p>
 <blockquote style="text-align:left;margin-left:10px;font-size:90%">
-	<i>Command</i>:&nbsp;<b><a href="cxcmd:~ribbon #1">~ribbon&nbsp;#1</a></b>
-</blockquote>
-<p>or</p>
-<blockquote style="text-align:left;margin-left:10px;font-size:90%">
-	<i>Command</i>:&nbsp;<b><a href="cxcmd:hide #1">hide&nbsp;#1</a></b>
+	<i>Command</i>:&nbsp;<b><a href="cxcmd:hide #1 surfaces">hide&nbsp;#1&nbsp;surfaces</a></b>
+	<br><i>Command</i>:&nbsp;<b><a href="cxcmd:hide #1 ribbons">hide&nbsp;#1&nbsp;ribbons</a></b>
+	<br><i>Command</i>:&nbsp;<b><a href="cxcmd:hide #1">hide&nbsp;#1</a></b>
 <br>
-<i>Command</i>:&nbsp;<b><a href="cxcmd:show #1:fps,mg">show</a>&nbsp;#1:fps,mg</b>
+<i>Command</i>:&nbsp;<b><a href="cxcmd:show #1:fps,mg">show&nbsp;#1:fps,mg</a></b>
 </blockquote>
 </p>
 	</div>
