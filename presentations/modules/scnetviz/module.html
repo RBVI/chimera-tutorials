@@ -1,0 +1,497 @@
+<section>
+<h1>scNetViz</h1>
+<h3>A Cytoscape App for Analyzing Single-Cell RNA Sequencing Data</h3>
+<h5 style="font-size:60%">Tutorial: November 2019</h5>
+<!-- add citation when available -->
+<aside class="notes">
+</aside>
+</section>
+
+<section>
+<h1>scNetViz: What Can It Do?</h1>
+<p>
+The <i>scNetViz</i> App allows you to:
+</p>
+<ul>
+<li>Browse publicly available sc-RNA-seq datasets, or import your own</li>
+<li>Specify cell groupings (cluster assignments or other classifications)
+for differential expression analysis</li>
+<li>Plot cells: t-SNE, UMAP</li>
+<li>Calculate the top differentially expressed genes</li>
+<li>Plot the top genes: heat maps, violin plots</li>
+<li>Show protein-protein networks for the top genes in Cytoscape</li>
+</ul>
+<aside class="notes">
+</aside>
+</section>
+
+<section>
+<h1>scNetViz Installation</h1>
+<ul>
+<li>Download <a href="http://www.cytoscape.org" target="_blank">Cytoscape</a>
+version 3.7.2 or newer</li>
+<li>Start Cytoscape, and choose from its menu: <b>Apps &rarr; App Manager</b></li>
+<li>In the <b>App Manager</b>, search for the name &ldquo;scnetviz&rdquo;</li>
+<li>Click to select this App, and then click the <b>Install</b> button</li>
+<li>Other Apps that scNetViz uses may be installed automatically,
+and restarting Cytoscape after installation may be required</li>
+</ul>
+</section>
+
+<section>
+<h1>scNetViz Tutorial Overview</h1>
+<ul>
+<li>Import a single-cell RNA sequencing &ldquo;experiment&rdquo; (dataset)
+from the <a href="https://www.ebi.ac.uk/gxa/sc/home"
+target="_blank"><b>Single Cell Expression Atlas</b></a>
+<img src="modules/scnetviz/sc_atlas_logo.png" width="30px" class="plain"
+style="margin: 1px -1px; vertical-align:middle">
+<li>Choose a &ldquo;category&rdquo; (classification of cells into groups)
+and analyze differential expression between the groups
+<li>Plot cells with UMAP
+<li>Show a heatmap of the top differentially expressed (DE) genes
+<li>Load protein-protein networks for the top DE genes into Cytoscape
+<li>Analyze network enrichment 
+</ul>
+</section>
+
+<section>
+<h1>Start Cytoscape</h1>
+<p style="font-size:75%">
+Start Cytoscape with <i>scNetViz</i> installed:
+</p>
+<div style="float:left; width:70%">
+<a href="modules/scnetviz/cytoscape.png">
+<img src="modules/scnetviz/cytoscape.png" title="click to enlarge..."></a>
+</div>
+<div style="float:right; width:28%;font-size:60%">
+Datasets can be imported from:
+<ul>
+<li><a href="https://www.ebi.ac.uk/gxa/sc/home"
+target="_blank">Single Cell Expression Atlas</a>
+<img src="modules/scnetviz/sc_atlas_logo.png" width="20px" class="plain"
+style="margin: 1px -1px; vertical-align:middle">
+<li><a href="https://data.humancellatlas.org/" 
+target="_blank">Human Cell Atlas</a>
+<img src="modules/scnetviz/hca.png" width="20px" class="plain"
+style="margin: 1px -1px; vertical-align:middle">
+<li>local files
+</ul>
+</div>
+</section>
+
+<section>
+<h1>Browse Experiments in the SCEA</h1>
+<p style="font-size:75%">
+Click <img class="plain" src="modules/scnetviz/sc_atlas_logo.png" height="30px">
+near the top of the Cytoscape window, or use Cytoscape menu:
+<b>Apps &rarr; scNetViz &rarr; Load&nbsp;Experiment &rarr; 
+From&nbsp;Single&nbsp;Cell&nbsp;Expression&nbsp;Atlas</b>
+to show the experiment browser
+</p>
+<div style="float:left; width:70%">
+<a href="modules/scnetviz/scea-browser.png">
+<img src="modules/scnetviz/scea-browser.png" title="click to enlarge..."></a>
+</div>
+<div style="float:right; width:28%;font-size:60%">
+<ul>
+<li>Sort a column: click header, <i>e.g.</i> <b>Cells</b></li>
+<li>Adjust column widths: drag dividers between headers</li>
+<li>Reorder columns: drag headers</li>
+<li>In any <i>scNetViz</i> dialog, click <b>Help</b> to show the
+<a href="http://www.rbvi.ucsf.edu/cytoscape/scNetViz/index.shtml"
+target="_blank">documentation</a></li>
+<li>Find and single-click the <b>E-GEOD-84465</b> experiment
+to choose it, as shown in the figure</li>
+<li>Click the <b>View Data</b> button to show the <b>Experiment Table</b>
+for the chosen dataset</li>
+</ul>
+</div>
+</section>
+
+<section>
+<h1>Tutorial Dataset</h1>
+<p style="font-size:75%">
+The
+<a href="https://www.ebi.ac.uk/gxa/sc/experiments/E-GEOD-84465/results/tsne"
+target="_blank">page at SCEA</a> for <b>E-GEOD-84465</b>
+gives the associated publication:
+<blockquote style="font-size:75%">
+<a href="https://www.sciencedirect.com/science/article/pii/S2211124717314626"
+target="_blank">
+Single-Cell RNA-Seq Analysis of Infiltrating Neoplastic Cells
+at the Migrating Front of Human Glioblastoma.</a>
+<br>
+Darmanis S, Sloan SA, Croote D, Mignardi M, Chernikova S, Samghababi P, Zhang Y, Neff N, Kowarsky M, Caneda C, Li G, Chang SD, Connolly ID, Li Y, Barres BA, Gephart MH, Quake SR.
+<br>
+<i>Cell Rep.</i> 2017 Oct 31;<b>21</b>(5):1399-1410.
+</blockquote>
+</p>
+</section>
+
+<section>
+<h1>Experiment Table: Categories</h1>
+<p style="font-size:75%">
+The <b>Experiment Table</b> appears with the <b>Categories</b> tab shown.
+Categories are classifications or groupings of the cells available for
+differential expression (DE) analysis.
+Clusterings are often used for DE analysis, but since this experiment is
+already annotated with inferred cell types, we will use those instead.
+</p>
+<div style="float:left; width:70%">
+<a href="modules/scnetviz/categories-cluster.png">
+<img src="modules/scnetviz/categories-cluster.png" 
+title="click to enlarge..."></a>
+</div>
+<div style="float:right; width:28%;font-size:60%">
+<ul>
+<li>The <b>TPM</b> tab contains expression values in 
+<b>T</b>ranscripts <b>P</b>er <b>M</b>illion (gene &times; cell matrix)</li>
+<li>The <b>DiffExp</b> tab is not yet available because differential expression
+has not yet been analyzed</li>
+<li>Clicking the 
+<img src="modules/scnetviz/cogwheel.png" width="15px" class="plain">
+icon shows the <b>Settings</b> (for now, just keep the defaults)</li>
+<li>In the <b>Categories</b> tab,
+change the <b>Available categories</b> setting from <b>Cluster</b>
+to <b>Design/Factors</b></li>
+</ul>
+</div>
+</section>
+
+<section>
+<h1>Experiment Table: Categories</h1>
+<p style="font-size:75%">
+Now several other types of metadata for this experiment are shown.
+</p>
+<div style="float:left; width:70%">
+<a href="modules/scnetviz/categories-design.png">
+<img src="modules/scnetviz/categories-design.png" 
+title="click to enlarge..."></a>
+</div>
+<div style="float:right; width:28%;font-size:60%">
+<ul>
+<li>Make the <b>Category</b> column wider so that you can see the
+different descriptions</li>
+<li>Click to choose the row for the category 
+<b>Sample Characteristic [inferred cell type]</b>,
+as shown in the figure</li>
+<li>In the <b>New Cell Plot</b> menu, choose <b>UMAP</b> to plot the cells 
+with default settings</li>
+</ul>
+</div>
+</section>
+
+<section>
+<h1>Cell Plot: UMAP</h1>
+<div style="float:left; width:60%">
+<a href="modules/scnetviz/umap-category.png">
+<img src="modules/scnetviz/umap-category.png" 
+title="click to enlarge..."></a>
+</div>
+<div style="float:right; width:36%;font-size:70%">
+<p></p>
+<ul>
+<li>Cells are color-coded by the chosen category: inferred cell type</li>
+<li>Information about individual cells is shown on mouseover</li>
+<li>An existing cell plot can be recolored by the expression level of a gene
+by clicking the row for that gene in the
+<b>TPM</b> tab of the <b>Experiment Table</b> and then clicking the
+<b>View UMAP</b> button (or <b>View tSNE</b>, <i>etc.</i>, according to the
+type of plot that was made)</li>
+</ul>
+</div>
+</section>
+
+<section>
+<h1>Experiment Table: Categories</h1>
+<p style="font-size:75%">
+If the <b>Experiment Table</b> gets hidden at any point,
+it can be shown again with the Cytoscape menu:
+<b>Apps &rarr; scNetViz &rarr; Show Experiment Tables</b>.
+</p>
+<div style="float:left; width:70%">
+<a href="modules/scnetviz/categories-design.png">
+<img src="modules/scnetviz/categories-design.png" 
+title="click to enlarge..."></a>
+</div>
+<div style="float:right; width:28%;font-size:60%">
+<ul>
+<li>Click the <b>Calculate Diff Exp</b> button
+to analyze the differential expression for the chosen category:
+inferred cell type</li>
+</ul>
+</div>
+</section>
+
+<section>
+<h1>Experiment Table: DiffExp</h1>
+<p style="font-size:75%">
+</p>
+<p style="font-size:75%">
+When the calculation is done,
+the <b>DiffExp</b> tab shows several columns for each pairwise comparison
+(each inferred cell type <i>vs.</i> the set of all others):
+</p>
+<div style="float:left; width:70%">
+<a href="modules/scnetviz/diffexp.png">
+<img src="modules/scnetviz/diffexp.png" 
+title="click to enlarge..."></a>
+</div>
+<div style="float:right; width:30%;font-size:50%">
+<ul style="list-style-type:none">
+<li><b>MTC</b>: mean transcript count, average over all cells in group 
+<li><b>Min.pct</b>: % of cells with gene detected
+in the group or comparison set, whichever is greater
+<li><b>MDTC</b>: mean (data-available) transcript count, average 
+over cells in group with gene detected
+<li><b>log2FC</b>: log2 of the fold change (MTC ratio) 
+<li><b>pValue</b>: statistical significance
+<li><b>FDR</b>: <a href="https://en.wikipedia.org/wiki/False_discovery_rate"
+target="_blank">false discovery rate</a>
+</ul>
+<br>&nbsp;
+</div>
+<div style="float:right; width:28%;font-size:60%">
+<ul>
+<li>In the <b>View Plots</b> menu, choose <b>Heatmap</b>
+to plot the top DE genes by log2FC magnitude</li>
+</ul>
+</div>
+</section>
+
+<section>
+<h1>Heatmap of Top DE Genes</h1>
+<div style="float:left; width:45%">
+<a href="modules/scnetviz/heatmap.png">
+<img src="modules/scnetviz/heatmap.png" 
+title="click to enlarge..."></a>
+</div>
+<div style="float:right; width:51%;font-size:70%">
+<p></p>
+<ul>
+<li>Red indicates positive log2FC (&uarr;&nbsp;expression), 
+blue negative log2FC (&darr;&nbsp;expression)</li>
+<li>Columns: comparisons of one category label (in this case, 
+each inferred cell type) <i>vs.</i> all others</li> 
+<li>Rows: the 10 largest-magnitude log2FC
+genes of each sign from each comparison;
+a given gene may appear more than once in the overall plot</li>
+<li>Information about individual genes is shown on mouseover</li>
+</ul>
+</div>
+</section>
+
+<section>
+<h1>Experiment Table: DiffExp</h1>
+<div style="float:left; width:70%">
+<a href="modules/scnetviz/diffexp-gene.png">
+<img src="modules/scnetviz/diffexp-gene.png" 
+title="click to enlarge..."></a>
+</div>
+<div style="float:right; width:28%;font-size:60%">
+<p align="left">In the <b>DiffExp</b> tab:</p>
+<ul>
+<li>Doubleclick any identifier in the <b>Gene</b> column (far left)
+to show search results such as gene name at
+<a href="http://www.ensembl.org" target="_blank">Ensembl</a>
+</li>
+<li>Click the <b>Create Networks</b> button to fetch protein networks 
+from <a href="https://string-db.org/" target="_blank">STRING</a>
+for the top DE genes by log2FC magnitude</li>
+</ul>
+</section>
+
+<section>
+<h1>Protein Networks from STRING</h1>
+<p style="font-size:75%">
+Eight networks are loaded: one for each DE comparison
+(each of the seven inferred cell types <i>vs.</i> all others)
+and another that is the union of the seven.
+</p>
+<div style="float:left; width:70%">
+<a href="modules/scnetviz/network-neuron.png">
+<img src="modules/scnetviz/network-neuron.png"
+title="click to enlarge..."></a>
+</div>
+<div style="float:right; width:27%;font-size:60%">
+<ul>
+<li>Nodes represent proteins corresponding to the top DE genes</li>
+<li>Edges represent protein-protein interactions from
+from <a href="https://string-db.org/" target="_blank">STRING</a></li>
+<li>Node coloring is from red for positive log2FC to blue for negative,
+as in the heatmap</li>
+<li>Some genes in the heatmap may be missing from the network 
+because there is no corresponding protein in STRING 
+(for example, noncoding RNA)</li>
+</ul>
+</div>
+</section>
+
+<section>
+<h1>Protein Networks from STRING</h1>
+<p style="font-size:70%">
+Show the <b>oligodendrocyte</b> network.
+Most of the nodes are blue, indicating genes with lower transcript levels 
+in oligodendrocytes than in other cells. 
+Creating networks with <b>Positive only</b> nodes instead
+would give more of the characteristic genes for each cell type. 
+Note also that different measures give different
+&ldquo;top&rdquo; genes, as discussed on the next slide.
+</p>
+<div style="float:left; width:70%">
+<a href="modules/scnetviz/network.png">
+<img src="modules/scnetviz/network.png" title="click to enlarge..."></a>
+</div>
+<div style="float:right; width:28%;font-size:60%">
+<ul>
+<li>Close all eight networks: choose them in the lefthand panel by 
+clicking the first, Shift-clicking the last,
+and then use Cytoscape menu: <b>Edit &rarr; Destroy Networks</b></li>
+<p></p>
+<li>In either the <b>Reanalyze</b> section of the <b>scNetViz Results Panel</b>
+(right side of the figure) or the <b>DiffExp</b> tab of the 
+<b>Experiment Table</b>, turn on the <b>Positive only</b> option
+and click <b>Create Networks</b> again</li>
+</ul>
+</div>
+</section>
+
+<section>
+<h1>Measures of Differential Expression</h1>
+<p style="font-size:75%">
+<i>scNetViz</i> ranks by <b>log2FC magnitude</b> to identify top DE genes.
+However, different genes may be ranked as &ldquo;top&rdquo; if
+<b>pValue</b> or <b>FDR</b> is used instead, as can be seen by sorting the 
+respective columns in the <b>DiffExp</b> tab of the <b>Experiment Table</b>.
+</p>
+<p style="font-size:75%">
+Most of the <b>oligodendrocyte</b> top genes have negative log2FC.
+When both signs of log2FC are included in the network, 
+the <b>Node Table</b> below the network gives 
+<i>scNetViz</i> <b>oligodendrocyte Rank</b> values of 2 and 35 
+for the two largest positive log2FC:
+<!-- 5th and 42nd in the Experiment Table -->
+</p>
+<ul style="font-size:60%">
+<li>ENSG00000197430 &ndash;
+OPALIN, oligodendrocytic myelin paranodal and inner loop protein,
+log2FC 16.6 and FDR 1E-32</li>
+<li>ENSG00000167755 &ndash;
+KLK6, kallikrein-related peptidase 6, log2FC 12.6 and FDR 1E-30</li>
+</ul>
+<p style="font-size:75%">
+...whereas the genes with the most significant FDR values 
+(from the <b>Experiment Table</b>,
+since only the first one made it into the network) have positive log2FC:
+<!-- PLP1 has log2FC rank 177 -->
+</p>
+<ul style="font-size:60%">
+<li>ENSG00000123560 &ndash;
+PLP1, myelin proteolipid protein, log2FC 8.6 and FDR 6E-51</li>
+<li>ENSG00000244274 &ndash;
+DBNDD2, dysbindin domain containing 2, log2FC 6.9 and FDR 1E-50</li>
+<li>ENSG00000091513 &ndash;
+TF, transferrin, log2FC 7.4 and FDR 3E-49</li>
+<li>ENSG00000197971 &ndash;
+MBP, myelin basic protein, log2FC 6.2 and FDR 3E-49</li>
+</ul>
+<!-- "best" negative log2FC -4.9 at FDR 2E-40 for 
+ENSG00000101439, CST3 cystatin 3 -->
+</section>
+
+<section>
+<h1>Positive-Only Networks</h1>
+<p style="font-size:75%">
+When the positive-only networks have been loaded, show the 
+<b>oligodendrocyte</b> one.
+</p>
+<div style="float:left; width:70%">
+<a href="modules/scnetviz/network-positive.png">
+<img src="modules/scnetviz/network-positive.png"
+title="click to enlarge..."></a>
+</div>
+<div style="float:right; width:28%;font-size:60%">
+<ul>
+<li>Enrichment analysis identifies annotation terms that are enriched
+in the network as compared to the whole genome of the organism,
+in this case <i>Homo sapiens</i></li>
+<p></p>
+<li>Under <b>Get Enrichment</b> in the <b>scNetViz Results Panel</b>,
+choose <b>Entire network</b> (or equivalently, <b>Positive only</b>),
+and click the <b>Retrieve Table</b> button</li>
+<p></p>
+<li>Although <b>Positive only</b> enrichment could have been applied
+to the previous, mostly-negative network, there were too few positive 
+nodes for a good sample</li>
+</ul>
+</div>
+</section>
+
+<section>
+<h1>Enrichment from STRING</h1>
+<p style="font-size:75%">
+Now the network shows colored &ldquo;donut charts&rdquo; around many of
+the nodes, indicating annotation terms enriched in the network
+relative to the human genome, with details and color key in the 
+<b>String Enrichment</b> table at the bottom.
+</p>
+<div style="float:left; width:70%">
+<a href="modules/scnetviz/network-enriched.png">
+<img src="modules/scnetviz/network-enriched.png" title="click to enlarge..."></a>
+</div>
+<div style="float:right; width:28%;font-size:60%">
+<ul>
+<li>The most-enriched annotations make sense for oligodendrocytes:
+membrane, myelin sheath, myelination, <i>etc.</i></li>
+<p></p>
+<li>Click the row in the <b>String Enrichment</b> table with
+description &ldquo;myelination&rdquo; to select the corresponding nodes</li>
+</ul>
+</div>
+</section>
+
+<section>
+<h1>Cytoscape Node Table</h1>
+<p style="font-size:75%">
+Nodes annotated with GO process &ldquo;myelination&rdquo; are now
+selected and highlighted in yellow.
+Click the <b>Node Table</b> tab at the bottom of the window;
+this table lists the selected nodes (or all nodes, when none are selected),
+with several columns of associated information.
+</p>
+<div style="float:left; width:70%">
+<a href="modules/scnetviz/network-enriched-myelin.png">
+<img src="modules/scnetviz/network-enriched-myelin.png" title="click to enlarge..."></a>
+</div>
+<div style="float:right; width:28%;font-size:60%">
+<p align="left">
+<b>Node Table</b> columns include:
+</p>
+<ul>
+<li>From <a href="https://string-db.org/" target="_blank">STRING</a>,
+the stringdb canonical name of the protein
+(<a href="https://www.uniprot.org/" target="_blank">UniProt</a> ID), a text
+description, sequence, structures (<a href="https://www.rcsb.org/"
+target="_blank">Protein Data Bank</a> IDs), <i>etc.</i>
+<li>From <i>scNetViz</i>, the same columns of information as shown in the
+<b>Experiment Table</b> as well as the <b>Rank</b> by log2FC magnitude
+for each category label, in this case, each inferred cell type</li>
+</ul>
+</div>
+</section>
+
+<section>
+<h1>Extra Credit</h1>
+<div style="font-size:75%">
+<ul>
+<li>View the positive-only network for another inferred cell type</li>
+<li>What genes are ranked as top (by log2FC) for this type?
+<br>(Hint: sort by the corresponding <b>Rank</b> column in the
+<b>Node Table</b>)</li>
+<li>What annotation terms are enriched in this network as compared to the
+human genome?</li>
+</ul>
+</div>
+</section>
+
