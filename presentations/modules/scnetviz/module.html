@@ -97,10 +97,11 @@ to show the experiment browser
 <ul>
 <li>Sort a column: click header, <i>e.g.</i> <b>Cells</b></li>
 <li>Adjust column widths: drag dividers between headers</li>
-<li>Reorder columns: drag headers</li>
 <li>In any <i>scNetViz</i> dialog, click <b>Help</b> to show the
 <a href="http://www.rbvi.ucsf.edu/cytoscape/scNetViz/index.shtml"
-target="_blank">documentation</a></li>
+target="_blank">documentation</a> or
+<img src="modules/scnetviz/cogwheel.png" width="15px" class="plain">
+to show <b>Settings</b> (keep defaults for now)</li>
 <li>Find and single-click the <b>E-GEOD-84465</b> experiment
 to choose it, as shown in the figure</li>
 <li>Click the <b>View Data</b> button to show the <b>Experiment Table</b>
@@ -132,7 +133,8 @@ Darmanis S, Sloan SA, Croote D, Mignardi M, Chernikova S, Samghababi P, Zhang Y,
 <section>
 <h1>Experiment Table: Categories</h1>
 <p style="font-size:75%">
-The <b>Experiment Table</b> appears with the <b>Categories</b> tab shown.
+When the experiment has been loaded,
+the <b>Experiment Table</b> appears with <b>Categories</b> tab shown.
 Categories are classifications or groupings of the cells available for
 differential expression (DE) analysis.
 Clusterings are often used for DE analysis, but since this experiment is
@@ -149,9 +151,11 @@ title="click to enlarge..."></a>
 <b>T</b>ranscripts <b>P</b>er <b>M</b>illion (gene &times; cell matrix)</li>
 <li>The <b>DiffExp</b> tab is not yet available because differential expression
 has not yet been analyzed</li>
+<!--
 <li>Clicking the 
 <img src="modules/scnetviz/cogwheel.png" width="15px" class="plain">
 icon shows the <b>Settings</b> (for now, just keep the defaults)</li>
+-->
 <li>In the <b>Categories</b> tab,
 change the <b>Available categories</b> setting from <b>Cluster</b>
 to <b>Design/Factors</b></li>
@@ -176,8 +180,8 @@ different descriptions</li>
 <li>Click to choose the row for the category 
 <b>Sample Characteristic [inferred cell type]</b>,
 as shown in the figure</li>
-<li>In the <b>New Cell Plot</b> menu, choose <b>UMAP</b> to plot the cells 
-with default settings</li>
+<li>In the <b>New Cell Plot</b> menu, choose <b>UMAP</b> and then
+click <b>OK</b> to plot the cells with default settings</li>
 </ul>
 </div>
 </section>
@@ -217,7 +221,7 @@ title="click to enlarge..."></a>
 </div>
 <div style="float:right; width:28%;font-size:60%">
 <ul>
-<li>Click the <b>Calculate Diff Exp</b> button
+<li>In the <b>Categories</b> tab, click the <b>Calculate Diff Exp</b> button
 to analyze the differential expression for the chosen category:
 inferred cell type</li>
 </ul>
@@ -292,9 +296,10 @@ title="click to enlarge..."></a>
 <div style="float:right; width:28%;font-size:60%">
 <p align="left">In the <b>DiffExp</b> tab:</p>
 <ul>
-<li>Doubleclick any identifier in the <b>Gene</b> column (far left)
-to show search results such as gene name at
+<li>Doubleclick any identifier in the far left <b>Gene</b> column
+to show search results for it at
 <a href="http://www.ensembl.org" target="_blank">Ensembl</a>
+(gene name, <i>etc.</i>)
 </li>
 <li>Click the <b>Create Networks</b> button to fetch protein networks 
 from <a href="https://string-db.org/" target="_blank">STRING</a>
@@ -331,8 +336,8 @@ because there is no corresponding protein in STRING
 <section>
 <h1>Protein Networks from STRING</h1>
 <p style="font-size:70%">
-Show the <b>oligodendrocyte</b> network.
-Most of the nodes are blue, indicating genes with lower transcript levels 
+Click in the lefthand panel to show the <b>oligodendrocyte</b> network.
+Most of its nodes are blue, indicating genes with lower transcript levels 
 in oligodendrocytes than in other cells. 
 Creating networks with <b>Positive only</b> nodes instead
 would give more of the characteristic genes for each cell type. 
@@ -349,9 +354,9 @@ Note also that different measures give different
 clicking the first, Shift-clicking the last,
 and then use Cytoscape menu: <b>Edit &rarr; Destroy Networks</b></li>
 <p></p>
-<li>In either the <b>Reanalyze</b> section of the <b>scNetViz Results Panel</b>
-(right side of the figure) or the <b>DiffExp</b> tab of the 
-<b>Experiment Table</b>, turn on the <b>Positive only</b> option
+<li>In the <b>DiffExp</b> tab of the <b>Experiment Table</b> (or
+in the <b>Reanalyze</b> section of the <b>scNetViz Results Panel</b>,
+right side of figure), turn on the <b>Positive only</b> option
 and click <b>Create Networks</b> again</li>
 </ul>
 </div>
@@ -366,11 +371,12 @@ However, different genes may be ranked as &ldquo;top&rdquo; if
 respective columns in the <b>DiffExp</b> tab of the <b>Experiment Table</b>.
 </p>
 <p style="font-size:75%">
-Most of the <b>oligodendrocyte</b> top genes have negative log2FC.
-When both signs of log2FC are included in the network, 
+Most of the <b>oligodendrocyte</b> top genes by log2FC magnitude
+have negative values (blue nodes).
+When both signs are included in the network, 
 the <b>Node Table</b> below the network gives 
 <i>scNetViz</i> <b>oligodendrocyte Rank</b> values of 2 and 35 
-for the two largest positive log2FC:
+for the two largest positive values:
 <!-- 5th and 42nd in the Experiment Table -->
 </p>
 <ul style="font-size:60%">
@@ -381,9 +387,9 @@ log2FC 16.6 and FDR 1E-32</li>
 KLK6, kallikrein-related peptidase 6, log2FC 12.6 and FDR 1E-30</li>
 </ul>
 <p style="font-size:75%">
-...whereas the genes with the most significant FDR values 
-(from the <b>Experiment Table</b>,
-since only the first one made it into the network) have positive log2FC:
+...whereas the genes with the most significant FDR values
+(from the <b>Experiment Table</b>, as only the first one
+made it into the network) have positive log2FC values:
 <!-- PLP1 has log2FC rank 177 -->
 </p>
 <ul style="font-size:60%">
@@ -413,16 +419,16 @@ title="click to enlarge..."></a>
 </div>
 <div style="float:right; width:28%;font-size:60%">
 <ul>
-<li>Enrichment analysis identifies annotation terms that are enriched
-in the network as compared to the whole genome of the organism,
+<li>Enrichment analysis identifies annotations that are enriched
+in the network compared to the whole genome of the organism,
 in this case <i>Homo sapiens</i></li>
 <p></p>
 <li>Under <b>Get Enrichment</b> in the <b>scNetViz Results Panel</b>,
 choose <b>Entire network</b> (or equivalently, <b>Positive only</b>),
 and click the <b>Retrieve Table</b> button</li>
 <p></p>
-<li>Although <b>Positive only</b> enrichment could have been applied
-to the previous, mostly-negative network, there were too few positive 
+<li>Although <b>Positive only</b> enrichment could have been applied to
+the previous, mostly negative network, there were too few positive 
 nodes for a good sample</li>
 </ul>
 </div>
@@ -432,7 +438,7 @@ nodes for a good sample</li>
 <h1>Enrichment from STRING</h1>
 <p style="font-size:75%">
 Now the network shows colored &ldquo;donut charts&rdquo; around many of
-the nodes, indicating annotation terms enriched in the network
+the nodes, indicating annotations enriched in the network
 relative to the human genome, with details and color key in the 
 <b>String Enrichment</b> table at the bottom.
 </p>
@@ -445,8 +451,8 @@ relative to the human genome, with details and color key in the
 <li>The most-enriched annotations make sense for oligodendrocytes:
 membrane, myelin sheath, myelination, <i>etc.</i></li>
 <p></p>
-<li>Click the row in the <b>String Enrichment</b> table with
-description &ldquo;myelination&rdquo; to select the corresponding nodes</li>
+<li>Click the row in the <b>String Enrichment</b> table for GO process
+&ldquo;myelination&rdquo; to select the corresponding nodes</li>
 </ul>
 </div>
 </section>
@@ -470,12 +476,14 @@ with several columns of associated information.
 </p>
 <ul>
 <li>From <a href="https://string-db.org/" target="_blank">STRING</a>,
-the stringdb canonical name of the protein
-(<a href="https://www.uniprot.org/" target="_blank">UniProt</a> ID), a text
-description, sequence, structures (<a href="https://www.rcsb.org/"
-target="_blank">Protein Data Bank</a> IDs), <i>etc.</i>
+the protein canonical name
+(<a href="https://www.uniprot.org/" target="_blank">UniProt</a> ID),
+description, sequence, <i>etc.</i>
+<!-- structures (<a href="https://www.rcsb.org/" target="_blank">Protein Data Bank</a> IDs) -->
+</li>
+<p></p>
 <li>From <i>scNetViz</i>, the same columns of information as shown in the
-<b>Experiment Table</b> as well as the <b>Rank</b> by log2FC magnitude
+<b>Experiment Table</b>, as well as the <b>Rank</b> by log2FC magnitude
 for each category label, in this case, each inferred cell type</li>
 </ul>
 </div>
@@ -488,7 +496,7 @@ for each category label, in this case, each inferred cell type</li>
 <li>View the positive-only network for another inferred cell type</li>
 <li>What genes are ranked as top (by log2FC) for this type?
 <br>(Hint: sort by the corresponding <b>Rank</b> column in the
-<b>Node Table</b>)</li>
+<b>Node Table</b> when nothing is selected)</li>
 <li>What annotation terms are enriched in this network as compared to the
 human genome?</li>
 </ul>
