@@ -61,11 +61,10 @@
 
 <section>
    <h1>Morphing</h2>
-	 <div style="float: right">
+	 <div style="position: absolute; left: 900px; top: 200px; width: 300px">
 	<a href="modules/chimerax-movies/dwvmorph.mp4"><img src="modules/chimerax-movies/matchmaker.png" height=300></a>
 	 </div>
-	 <div style="width: 700px"
-    <p>
+    <p style="text-align: left; font-size: 80%">
       Deformed wing virus is a honey bee pathogen, which has been associated with colony collapse disorder.
     </p>
 
@@ -82,21 +81,19 @@
 	<br><a href="cxcmd:coordset #3 1,21">coordset #3 1,21</a>
       <li>Different conformations of surface domain of VP3, moves 39 A and rotates 145 degrees.
       <li>Record a movie:
+	 <br><a href="cxcmd:movie record ; coord #3 1,21 ; wait 25 ; movie encode ~/Desktop/dwv.mp4">movie record ; coord #3 1,21 ; wait 25 ; movie encode ~/Desktop/dwv.mp4</a>
     </ul>
-	 </div>
-	 <p style="font-size: 70%"><a href="cxcmd:movie record ; coord #3 1,21 ; wait 25 ; movie encode ~/Desktop/dwv.mp4">movie record ; coord #3 1,21 ; wait 25 ; movie encode ~/Desktop/dwv.mp4</a>
 </section>
 
 <section>
     <h1>Morph full virus capsid</h1>
-		<div style="float:right">
-			<a href="modules/chimerax-movies/dwv.mp4"><img src="modules/chimerax-movies/dwv.png" width="400px"/></a>
+		<div style="position: absolute;left:900px;top:150px">
+			<a href="modules/chimerax-movies/dwv.mp4"><img src="modules/chimerax-movies/dwv.png" width="300px"/></a>
 		</div>
-		<div style="width: 700px">
     <ul style="font-size: 70%">
       <li>Show morph of full virus capsid.
 	<br><a href="cxcmd:sym #3 i,222">sym #3 i,222</a>
-      <li>Hide ribbon, show atoms as spheres, turn on ambient shadows (use toolbar icons instead of commands).
+      <li style="width: 800px">Hide ribbon, show atoms as spheres, turn on ambient shadows (use toolbar icons instead of commands).
 	<br><a href="cxcmd:hide ribbon">hide ribbon</a>
 	<img src="modules/chimerax-movies/ribhide.png" style="vertical-align:middle;" width=24 height=24>
 	<br><a href="cxcmd:show atoms">show atoms</a>
@@ -114,13 +111,11 @@
 	<img src="modules/chimerax-movies/fulllight.png" style="vertical-align:middle;"  width=24 height=24>
 	<br><a href="cxcmd:movie record ; coord #3 1,21 ; wait 25 ; movie encode ~/Desktop/dwv.mp4">movie record ; coord #3 1,21 ; wait 25 ; movie encode ~/Desktop/dwv.mp4</a>
     </ul>
-		</div>
 </section>
 
 <section>
 	  <h1> Show residues fit in cryoEM density</h1>
-		<img src="modules/chimerax-movies/resfit.png" style="float: right" width="400px"/>
-		<div style="width: 600px">
+		<img src="modules/chimerax-movies/resfit.png" style="position: absolute;left:800px;top:150px" width="400px"/>
 	  <ul style="font-size: 70%">
 	    <li>Close previous structures.
 	      <br><a href="cxcmd:close">close</a>
@@ -138,5 +133,4 @@
 	      <a href="modules/chimerax-movies/resfit.mp4">resfit.mp4</a>
 	      on desktop.
 	  </ul>
-		</div>
 </section>
