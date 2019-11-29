@@ -4,13 +4,14 @@
 		<p>At this point, there is no animation tool for ChimeraX, but there are several commands that support
 		movie making and more are being developed.</p>
 		<p>Coupled with ChimeraX's rendering, it's possible to create compelling animations</p>
-		<p><highlight>Hands-on exercise</highlight>: 
-		<a href="http://www.rbvi.ucsf.edu/chimera/data/sbgrid-apr2017/cryomovie.html">Movie Making for cryoEM using ChimeraX</a></p>
+		<!--p><highlight>Hands-on exercise</highlight>: 
+		<a href="http://www.rbvi.ucsf.edu/chimera/data/sbgrid-apr2017/cryomovie.html">Movie Making for cryoEM using ChimeraX</a></p-->
 	</div>
 </section>
 
-<!--section>
+<section>
 	<h1>Movie Making for cryoEM</h1>
+	<img src="modules/chimerax-movies/emd5199_color_zone.png" style="float: right" width="400px">
 	<div>
 	<p><highlight>Topics</highlight></p>
 	<ul>
@@ -24,20 +25,29 @@
 
 <section>
 	<h1>Ambient occlusion lighting</h1>
+	<p><highlight>Ambient occlusion</highlight> is a method to approximate how bright light 
+	should be shining on any specific part of a surface, based on the light and it's environment. 
+	This is used to add realism, but more specifically for molecular visualizations, improve the perception
+	of depth.  We'll look at a cryoEM map of a rotavirus to experiment with this visualization approach.
+	</p>
+</section>
 	
-	<ul>
+<section>
+	<img src="modules/chimerax-movies/4v7q.png" style="float: right" width="400px"/>
+	<div style="width:700px">
+	<ul style="font-size: 70%">
 	    <li>Rotavirus EMD 5199, 3.8 Angstrom, 1 octant of map, 500<sup>3</sup> grid points.
 	      <br><a href="cxcmd:open 5199 from emdb">open 5199 from emdb</a>
 	    <li>Adjust contour level using vertical bar on histogram.  Adjust step from 2 to 1 (full resolution).
 	      <br><a href="cxcmd:volume #1 level 0.1 step 1">volume #1 level 0.1 step 1</a>
 	    <li>Ambient shadows make indentations dark.
 	      <br><a href="cxcmd:light soft">light soft</a>
-	      	<img src="images/softlight.png" style="vertical-align:middle;" width=24 height=24>
+	      	<img src="modules/chimerax-movies/softlight.png" style="vertical-align:middle;" width=24 height=24>
 	    <li>Compare to simple lighting and single shadow.
 	      <br><a href="cxcmd:light simple">light simple</a>
-	      	<img src="images/simplelight.png" style="vertical-align:middle;" width=24 height=24>
+	      	<img src="modules/chimerax-movies/simplelight.png" style="vertical-align:middle;" width=24 height=24>
 	      <br><a href="cxcmd:light shadow true">light shadow true</a>
-	      	<img src="images/shadow.png" style="vertical-align:middle;" width=24 height=24>
+	      	<img src="modules/chimerax-movies/shadow.png" style="vertical-align:middle;" width=24 height=24>
 	    <li>Fit atomic model PDB 4v7q, ambient lighting helps depth perception.
 	      <br><a href="cxcmd:open 4v7q">open 4v7q</a>
 	    <li>Color zone to color map to match atomic model.
@@ -46,4 +56,87 @@
 	      <br><a href="cxcmd:surface dust #1 size 5">surface dust #1 size 5</a>
 
 	  </ul>
-</section-->
+	</div>
+</section>
+
+<section>
+   <h1>Morphing</h2>
+	 <div style="float: right">
+	<a href="modules/chimerax-movies/dwvmorph.mp4"><img src="modules/chimerax-movies/matchmaker.png" height=300></a>
+	 </div>
+	 <div style="width: 700px"
+    <p>
+      Deformed wing virus is a honey bee pathogen, which has been associated with colony collapse disorder.
+    </p>
+
+    <ul style="font-size: 70%">
+      <li>cryoEM virus capsid structure 5mv5 (3.1 A, EMDB 3574)
+	<br><a href="cxcmd:open 5mv5">open 5mv5</a>
+      <li>x-ray structure 5g52 (3.8 A)
+	<br><a href="cxcmd:open 5g52">open 5g52</a>
+      <li>Align structures with matchmaker
+	<br><a href="cxcmd:matchmaker #2 to #1">matchmaker #2 to #1</a>
+      <li>Morph to show large domain motion.
+	<br><a href="cxcmd:morph #1,2">morph #1,2</a>
+	<br><a href="cxcmd:color #3 bychain">color #3 bychain</a>
+	<br><a href="cxcmd:coordset #3 1,21">coordset #3 1,21</a>
+      <li>Different conformations of surface domain of VP3, moves 39 A and rotates 145 degrees.
+      <li>Record a movie:
+    </ul>
+	 </div>
+	 <p style="font-size: 70%"><a href="cxcmd:movie record ; coord #3 1,21 ; wait 25 ; movie encode ~/Desktop/dwv.mp4">movie record ; coord #3 1,21 ; wait 25 ; movie encode ~/Desktop/dwv.mp4</a>
+</section>
+
+<section>
+    <h1>Morph full virus capsid</h1>
+		<div style="float:right">
+			<a href="modules/chimerax-movies/dwv.mp4"><img src="modules/chimerax-movies/dwv.png" width="400px"/></a>
+		</div>
+		<div style="width: 700px">
+    <ul style="font-size: 70%">
+      <li>Show morph of full virus capsid.
+	<br><a href="cxcmd:sym #3 i,222">sym #3 i,222</a>
+      <li>Hide ribbon, show atoms as spheres, turn on ambient shadows (use toolbar icons instead of commands).
+	<br><a href="cxcmd:hide ribbon">hide ribbon</a>
+	<img src="modules/chimerax-movies/ribhide.png" style="vertical-align:middle;" width=24 height=24>
+	<br><a href="cxcmd:show atoms">show atoms</a>
+	<img src="modules/chimerax-movies/atomshow.png" style="vertical-align:middle;" width=24 height=24>
+	<br><a href="cxcmd:style sphere">style sphere</a>
+	<img src="modules/chimerax-movies/sphere.png" style="vertical-align:middle;" width=24 height=24>
+	<br><a href="cxcmd:light full">light full</a>
+	<img src="modules/chimerax-movies/fulllight.png" style="vertical-align:middle;" width=24 height=24>
+      <li>Show morph.  Slow with ambient shadows (1 second per frame), so use simple lighting.
+	<br><a href="cxcmd:light simple">light simple</a>
+	<img src="modules/chimerax-movies/simplelight.png" style="vertical-align:middle;" width=24 height=24>
+	<br><a href="cxcmd:coordset #3 1,21">coordset #3 1,21</a>
+      <li>Record a movie with full lighting.  <a href="modules/chimerax-movies/dwv.mp4">Movie</a>.
+	<br><a href="cxcmd:light full">light full</a>
+	<img src="modules/chimerax-movies/fulllight.png" style="vertical-align:middle;"  width=24 height=24>
+	<br><a href="cxcmd:movie record ; coord #3 1,21 ; wait 25 ; movie encode ~/Desktop/dwv.mp4">movie record ; coord #3 1,21 ; wait 25 ; movie encode ~/Desktop/dwv.mp4</a>
+    </ul>
+		</div>
+</section>
+
+<section>
+	  <h1> Show residues fit in cryoEM density</h1>
+		<img src="modules/chimerax-movies/resfit.png" style="float: right" width="400px"/>
+		<div style="width: 600px">
+	  <ul style="font-size: 70%">
+	    <li>Close previous structures.
+	      <br><a href="cxcmd:close">close</a>
+	    <li>Open atomic model and EMDB map.
+	      <br><a href="cxcmd:open 5mv5">open 5mv5</a>
+	      <br><a href="cxcmd:open 3574 from emdb">open 3574 from emdb</a>
+	    <li>Start residue fit display for chain A.
+	      <br><a href="cxcmd:resfit #1/A map #2">resfit #1/A map #2</a>
+	    <li>Use slider and play buttons to display each residue in sequence.
+	    <li>Record a movie. Press record button
+	      <img src="modules/chimerax-movies/record.png" style="vertical-align:middle;">
+	      then stop button
+	      <img src="modules/chimerax-movies/stop.png" style="vertical-align:middle;">
+	      to make
+	      <a href="modules/chimerax-movies/resfit.mp4">resfit.mp4</a>
+	      on desktop.
+	  </ul>
+		</div>
+</section>
