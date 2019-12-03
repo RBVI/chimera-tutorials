@@ -4,8 +4,8 @@
 		<li>Structure analysis:
 			<ul>
 				<li>Hydrogen bonds and contacts</li>
-				<!--li>Amino acid sidechain conformations (rotamers)</li-->
-				<li>Properties (B-factor, hydrophobicity, etc)</li>
+				<li>Amino acid sidechain conformations (rotamers)</li>
+				<li>Properties (B-factor, hydrophobicity, <i>etc.</i>)</li>
 			</ul>
 		</li>
 		<li>Structural comparison:
@@ -14,12 +14,11 @@
 				<li>Morphing between structures</li>
 			</ul>
 		</li>
-		<li>Others...</li>
 	</ul>
 	<!--
 	<p>
 	This tutorial includes binding site analysis and comparison of related
-	structures by superposition and morphing.  Internet connectivity is required 
+	structures by superposition and morphing. Internet connectivity is required 
 	to fetch the structures <b>3w7f</b> and <b>2zco</b>.
 	<ul>
 		<li><a href="#setup">Background and Setup</a></li>
@@ -60,23 +59,23 @@ We will view and compare different structures of this enzyme.
 	<h1>Setup</h1>
 	<div style="height:850px">
 	<ol style="font-size:90%">
-		<li>Start by launching Chimerax</li>
-		<li>Once ChimeraX is launched, show the <b>Side View</b>
-by clicking <img width="35px" src="modules/chimerax-comp-structures/sideview.png"/> in the 
+		<li>Launch ChimeraX</li>
+		<li>Show the <b>Side View</b> by clicking 
+<img width="35px" src="modules/chimerax-comp-structures/sideview.png"/> in the 
 <a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/tools/graphics.html" target="_none"><b>Graphics</b></a> 
-tab of the toolbar or by using the command:
+tab of the toolbar, or using the menu (<b>Tools... General... Side View</b>),
+or using a command:
 			<blockquote>
 				<i>Command</i>:&nbsp;<b><a href="cxcmd:toolshed show 'Side View'">toolshed show "Side View"</a></b>
 			</blockquote>
-(can also be done with the menu: <b>Tools... General... Side View</b>)
 		</li>
 		<li>Fetch the structure from the <a href="http://www.rcsb.org" target="_blank">Protein Data Bank</a>:
 		<blockquote>
 			<i>Command</i>:&nbsp;<b><a href="cxcmd:open 3w7f">open 3w7f</a></b>
 		</blockquote>
-		By default, proteins are shown as ribbons, and ligands and nearby sidechains as sticks. Metal coordination bonds are also shown, if present.
+		The protein is shown as ribbons, with ligands and nearby residues as sticks. 
 		</li>
-		<li>Now delete one of the chains:
+		<li>There are two copies of the enzyme, chains A and B. Delete chain B:
 			<blockquote>
 				<i>Command</i>:&nbsp;<a href="cxcmd:delete /b"><b>delete /b</b></a>
 			</blockquote>
@@ -97,13 +96,13 @@ tab of the toolbar or by using the command:
 The enzyme combines two 15-carbon molecules of farnesyl pyrophosphate
 to form a 30-carbon lipid.  This structure contains 
 farnesyl <b><i>thio</i></b>pyrophosphate, 
-which differs from the substrate by having a sulfur in the place of one
-oxygen.  Sulfur atoms are shown in yellow, phosphorus orange, oxygen red, and
-nitrogen blue.</p>
+which differs from the substrate by having a sulfur (yellow) in the place of one
+oxygen.
 		<ol start="5" style="width:1100px;text-align:left;">
-			<li>Label the ligand residues:
+			<li>Focus the view on the ligand residues and label them:
 <blockquote>
-	<i>Command</i>:&nbsp;<b><a href="cxcmd:label ligand">label ligand</a></b>
+	<i>Command</i>:&nbsp;<b><a href="cxcmd:view ligand">view ligand</a></b>
+	<br><i>Command</i>:&nbsp;<b><a href="cxcmd:label ligand">label ligand</a></b>
 </blockquote>
 Label height is 0.7&Aring; by default, but can be changed, for example:
 <blockquote>
@@ -117,7 +116,8 @@ Label height is 0.7&Aring; by default, but can be changed, for example:
 <section>
 	<h1>Setup</h1>
 	<div style="height:850px">
-		<p style="font-size:80%">In this structure, the farnesyl thiopyrophosphate molecules are named FPS.
+		<p style="font-size:80%">
+In this structure, the farnesyl thiopyrophosphate molecules are named FPS.
 Three magnesium ions help to offset the negative charges on the phosphates.
 The ions are shown as greenish spheres; clicking into the ChimeraX window
 and hovering the mouse cursor over each shows information in a pop-up
@@ -144,7 +144,7 @@ remove it to simplify the tutorial:
 <blockquote style="text-align:left;margin-left:10px">
 	<i>Command</i>:&nbsp;<b><a href="cxcmd:delete solvent">delete solvent</a></b>
 </blockquote>
-			<li>Label residues with displayed sidechains:
+			<li>Label the residues with sidechains shown:
 <blockquote style="text-align:left;margin-left:10px">
 <i>Command</i>:&nbsp;<b><a href="cxcmd:label @@display">label @@display</a></b>
 </blockquote>
@@ -203,13 +203,13 @@ or <b><a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/tools/hbonds.html" ta
 	<h1>Distances, H-Bonds, Contacts</h1>
 	<div style="height:500px; font-size:80%">
 		<ol>
-			<li>To limit the search to H-bonds with FPS residues, first select them: 
+			<li>To limit the H-bond search, first select the FPS residues: 
 			<blockquote style="text-align:left;margin-left:10px;font-size:90%">
 				<i>Command</i>:&nbsp;<b><a href="cxcmd:select :FPS">select :FPS</a></b>
 			</blockquote>
 (or menu: <b>Select... Residues... FPS</b>)
 			</li>
-			<li>Find H-bonds with one end selected:
+			<li>Find H-bonds with one end selected, and report the results in the <b>Log</b>:
 			<blockquote style="text-align:left;margin-left:10px;font-size:90%">
 				<i>Command</i>:&nbsp;<b><a href="cxcmd:hbonds sel restrict cross reveal true log true">hbonds sel restrict cross reveal true log true</a></b>
 			</blockquote>
@@ -228,13 +228,13 @@ and <b>Log</b>, other settings default.
 	<h1>Distances, H-Bonds, Contacts</h1>
 	<div style="height:850px; font-size:80%">
 		<p>The H-bonds are shown as light blue dashed pseudobonds.
-		Both of the measured distances were found to be consistent with hydrogen bonding. 
+		The two measured distances were found to be consistent with hydrogen bonding. 
 		Details can be viewed in the <b>Log</b>. </p>
 		<p>Remove the “hydrogen bond” pseudobonds:
 			<blockquote style="text-align:left;margin-left:10px;font-size:90%">
-				<i>Command</i>:&nbsp;<b><a href="cxcmd:~hbonds">~hbond </a></b>
+				<i>Command</i>:&nbsp;<b><a href="cxcmd:~hbonds">~hbonds</a></b>
 			</blockquote>
-			<p style="margin-top:0px;margin-bottom:0px">and the distance measurements:</p>
+			<p style="margin-top:0px;margin-bottom:0px">Remove the distance measurements:</p>
 			<blockquote style="text-align:left;margin-left:10px;font-size:90%">
 				<i>Command</i>:&nbsp;<b><a href="cxcmd:~distance">~distance </a></b>
 			</blockquote>
@@ -245,9 +245,10 @@ and <b>Log</b>, other settings default.
 <section>
 	<h1>Distances, H-Bonds, Contacts</h1>
 	<div style="height:850px; font-size:80%">
-		<p><b><a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/commands/clashes.html" target="_none">Clashes/Contacts</a></b>
+		<p>
+<b><a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/tools/clashes.html" target="_none">Clashes/Contacts</a></b>
 	 	is similar to 
-		<b><a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/commands/hbonds.html" target="_none">hbonds</a></b>
+<b><a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/tools/hbonds.html" target="_none">H-Bonds</a></b>
 	 	but can also identify nonpolar interactions:
 
 		<ul>
@@ -268,19 +269,21 @@ and <b>Log</b>, other settings default.
 		are still selected, then execute the 
 		<a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/commands/clashes.html" target="_none">contacts</a> command:
 			<blockquote style="text-align:left;margin-left:10px;font-size:90%">
-				<i>Command</i>:&nbsp;<b><a href="cxcmd:contacts sel restrict cross reveal true log true select true">
-					contacts sel restrict cross reveal true log true select true</a></b>
+				<i>Command</i>:&nbsp;<b><a href="cxcmd:contacts sel restrict cross reveal t log t select t">
+					contacts sel restrict cross reveal t log t select t</a></b>
 			</blockquote>
 		</p>
+<p>(This could also be done with the
+<b><a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/tools/clashes.html" target="_none">Contacts</a></b> tool, in the menu under <b>Tools... Structure Analysis</b>.)
 		<p>In the <b>Log</b>, the atom-atom contacts are listed in order of decreasing 
-		VDW <b><i>overlap</i></b>, the amount of intersection of atomic van der Waals spheres: 0 if 
-		just touching, positive if interpenetrating, negative if separated by space. 
-		Slightly separated spheres are still considered contacts by default. The distances 
-		between atomic centers are also given. </p>
+		VDW <b><i>overlap</i></b>: 
+positive where the atomic VDW spheres are intersecting, 
+zero if just touching, negative if separated by space. 
+		By default, slightly separated spheres are still considered contacts. Distances 
+		between the atomic centers are also given. </p>
 <p>
-The command included an option to select the contacting atoms. 
-We will use the selection to get a list of the protein residues 
-contacting FPS.
+We will use the atoms selected by the command to get a list 
+of the contacting residues.
 </p>
 	</div>
 </section>
@@ -291,33 +294,173 @@ contacting FPS.
 		<p>The <b>Log</b> lists the details of each atomic contact, but one might want a simpler list of interacting residues instead.
 		First, deselect everything that is not protein:
 			<blockquote style="text-align:left;margin-left:10px;font-size:90%">
-				<i>Command</i>:&nbsp;<b><a href="cxcmd:~sel ~protein">~sel ~protein</a></b><br/>
+				<i>Command</i>:&nbsp;<b><a href="cxcmd:~sel ~protein">~sel&nbsp;&nbsp;~protein</a></b><br/>
 			</blockquote>
 		</p>
-		<p>Now list the selected residues using the <b>
+		<p>Now list the selected residues in the <b>Log</b> using the <b>
 			<a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/commands/info.html#residues" target="_none">info residues</a></b>
 		command:</p>
 			<blockquote style="text-align:left;margin-left:10px;font-size:90%">
 				<i>Command</i>:&nbsp;<b><a href="cxcmd:info residues sel">info residues sel</a></b>
 			</blockquote>
-			<p>See the <b>Log</b> for the list of residues. 
-To clean up for the next section, remove the contact pseudobonds, clear the selection, and remove labels:</p>
-<!-- the following cleanup was in the rotamer part not yet in this tutorial  -->
+<p>
+You can see Ser 21, Tyr 248, and several others in the list.
+To clean up for the next section, remove the contact pseudobonds
+and clear the selection:
 			<blockquote style="text-align:left;margin-left:10px;font-size:90%">
 				<i>Command</i>:&nbsp;<b><a href="cxcmd:~contacts">~contacts</a></b>
 				<br><i>Command</i>:&nbsp;<b><a href="cxcmd:select clear">select clear</a></b>
-				<br><i>Command</i>:&nbsp;<b><a href="cxcmd:label delete">label delete</a></b>
 			</blockquote>
 	</div>
 </section>
 
-<!--section id="angles">
-	<!-- Can do angles, but not rotamers.  Not clear it's useful, yet, so skipping this section  -->
-</section-->
+<section id="angles">
+	<h1>Angles, Rotamers, Clashes</h1>
+	<div style="height:850px; font-size:80%">
+		<p>Focus the view on Tyr 248:
+			<blockquote style="text-align:left;margin-left:10px;font-size:90%">
+				<i>Command</i>:&nbsp;<b><a href="cxcmd:view :248">view :248</a></b>
+                        </blockquote>
+		<p>Ctrl-click to select any atom in Tyr 248, then press the up arrow key on the keyboard to promote the selection to the whole residue (if the initial selection is a bond instead of an atom, you will need to press the up arrow twice).
+Alternatively, you can select the whole residue with the following command:
+<blockquote style="text-align:left;margin-left:10px;font-size:90%">
+                                <i>Command</i>:&nbsp;<b><a href="cxcmd:select :248">select :248</a></b>
+                        </blockquote>
+</section>
+
+<section>
+	<h1>Angles, Rotamers, Clashes</h1>
+	<div style="height:850px; font-size:80%">
+<p>
+We will set up clash checking and rotate the sidechain interactively.
+Start the 
+<b><a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/tools/clashes.html" target="_none">Clashes</a></b> tool 
+from the menu under <b>Tools... Structure Analysis</b>, or use the command:
+			<blockquote style="text-align:left;margin-left:10px;font-size:90%">
+				<i>Command</i>:&nbsp;<b><a href="cxcmd:toolshed show Clashes">toolshed show Clashes</a></b>
+			</blockquote>
+<p>
+In the <b>Clashes</b> dialog, keep most options as defaults, except:
+<ul>
+<li>Turn on the option to <b>Limit by selection</b>, set to: <b>with exactly one atom selected</b>
+<li>Turn on the option to <b>Reveal atoms...</b> 
+<li>Set the <b>Frequency of checking</b> to 
+<b>continuously (until dialog closed)</b>
+<br>(...and do not <b>Close</b> the dialog yet, although it can be moved aside)
+</ul>
+<p>
+Alternatively, this setup could be done with the command:
+<blockquote style="text-align:left;margin-left:10px;font-size:90%">
+                                <i>Command</i>:&nbsp;<b><a href="cxcmd:clashes sel restrict cross reveal t continuous t">clashes sel restrict cross reveal t continuous t</a></b>
+                        </blockquote>
+</section>
+
+<section>
+	<h1>Angles, Rotamers, Clashes</h1>
+	<div style="height:850px; font-size:80%">
+<p>
+As reported in the <b>Log</b>,
+no clashes with Tyr 248 are found in its initial position.
+<p>
+Set the function of the right mouse button 
+(= trackpad + Alt on Windows, trackpad + 
+<img class="plain" width="20px" src="modules/chimerax-comp-structures/icon-clover.png"> on Mac) 
+to bond rotation by clicking
+<img width="35px" src="modules/chimerax-comp-structures/bondrot.png"/> in the 
+<a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/tools/mousemodes.html" target="_none"><b>Right Mouse</b></a> 
+tab of the toolbar or using the command:
+			<blockquote style="text-align:left;margin-left:10px;font-size:90%">
+<i>Command</i>:&nbsp;<b><a href="cxcmd:mouse right bond">mouse right bond</a></b>
+			</blockquote>
+<p>
+With the right mouse button or the trackpad equivalent,
+click on the Tyr 248 CA-CB bond (closest to the ribbon) or CB-CG bond
+(the next one out, adjacent to the ring) and drag to rotate it interactively.
+Any clashes are shown as bright purple pseudobonds and updated automatically
+as the bond is rotated.
+</section>
+
+<section>
+	<h1>Angles, Rotamers, Clashes</h1>
+	<div style="height:850px; font-size:80%">
+<p><b>Close</b> the <b>Clashes</b> dialog.
+If clash pseudobonds are still shown, remove them:
+			<blockquote style="text-align:left;margin-left:10px;font-size:90%">
+				<i>Command</i>:&nbsp;<b><a href="cxcmd:~clashes">~clashes</a></b>
+			</blockquote>
+<p>
+Restore the original chi1 and chi2 angles of Tyr248:
+			<blockquote style="text-align:left;margin-left:10px;font-size:90%">
+				<i>Command</i>:&nbsp;<b><a href="cxcmd:torsion :248@n,ca,cb,cg -106.801">torsion :248@n,ca,cb,cg -106.801</a></b>
+				<br><i>Command</i>:&nbsp;<b><a href="cxcmd:torsion :248@ca,cb,cg,cd1 -142.054">torsion :248@ca,cb,cg,cd1 -142.054</a></b>
+			</blockquote>
+<p>
+Next, we will compare the conformation of Tyr 248 in the structure to tyrosine 
+rotamers from a library. With Tyr 248 still selected (if not, Ctrl-click it), 
+start the
+<b><a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/tools/rotamers.html" target="_none">Rotamers</a></b> tool:
+			<blockquote style="text-align:left;margin-left:10px;font-size:90%">
+				<i>Command</i>:&nbsp;<b><a href="cxcmd:toolshed show Rotamers">toolshed show Rotamers</a></b>
+			</blockquote>
+<p>In the resulting dialog,
+click <b>OK</b> to show TYR rotamers from the Dunbrack library.
+</section>
+
+<section>
+	<h1>Angles, Rotamers, Clashes</h1>
+	<div style="height:850px; font-size:80%">
+<p>
+The rotamer list gives sidechain (chi) angles and probabilities 
+from the library. The rotamers are displayed, and you can see none 
+match the conformation of Tyr 248 in the structure. 
+Specific rotamers can be shown by clicking/dragging 
+to choose rows in the list.
+<p>
+The probabilities are based only on the residue's backbone conformation
+<!-- currently only "swapaa" reports phi,psi; "swapaa interactive" does not 
+<i>i.e.</i>, the phi and psi angles reported in the <b>Log</b>,
+-->
+and do not reflect interactions with the rest of the structure.
+Use the rotamer dialog options to calculate
+<b>H-bonds</b> and <b>Clashes</b> with default settings.
+The added columns indicate that each rotamer forms several clashes but no 
+hydrogen bonds. Earlier in the tutorial, we found
+that Tyr 248 both H-bonds with the ligand and avoids clashes, 
+which may compensate for its nonrotameric (presumably strained) conformation.
+<p>
+A sidechain can be replaced with a rotamer of the same or a different 
+amino acid type. With a single rotamer chosen in the dialog, 
+either click <b>OK</b> to replace the sidechain 
+with that rotamer or <b>Cancel</b> to simply close the dialog.
+</section>
+
+<section>
+	<h1>Angles, Rotamers, Clashes</h1>
+	<div style="height:850px; font-size:80%">
+<p>
+Unlike Tyr 248, Tyr 41 resembles the two highest-probability tyrosine 
+rotamers given its backbone angles. If you like, 
+<a href="cxcmd:view :41">focus the view on Tyr 41</a>, 
+Ctrl-click to select one of its atoms or bonds, and
+<a href="cxcmd:toolshed show Rotamers">use <b>Rotamers</b></a>
+to show and evaluate rotamers of tyrosine 
+or some other amino acid at that position. 
+<p>
+When finished with
+<b><a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/tools/rotamers.html" target="_none">Rotamers</a></b>, click <b>Cancel</b> on
+the rotamer dialog to close it.
+<p>
+Clean up for the next section and zoom back out:
+			<blockquote style="text-align:left;margin-left:10px;font-size:90%">
+				<i>Command</i>:&nbsp;<b><a href="cxcmd:select clear">select clear</a></b>
+				<br><i>Command</i>:&nbsp;<b><a href="cxcmd:label delete">label delete</a></b>
+				<br><i>Command</i>:&nbsp;<b><a href="cxcmd:~hbonds; ~clashes">~hbonds; ~clashes</a></b>
+				<br><i>Command</i>:&nbsp;<b><a href="cxcmd:view">view</a></b>
+			</blockquote>
+</section>
 
 <section id="surfaces">
 	<h1>Surfaces and Attributes</h1>
-	<!-- Show surfaces and render byattribute, but can't show hydrophobicity -->
 	<div style="height:850px; font-size:80%">
 <p>
 FPS and the natural substrate both have a highly polar/charged 
@@ -338,10 +481,9 @@ in the <a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/tools/moldisplay.htm
 			</blockquote>
 </p>
 <p>
-to display a molecular surface color-coded by amino acid hydrophobicity.
-This colors the surface
-ranging from dark cyan for the most hydrophilic residues to dark goldenrod for the 
-most lipophilic, with white in between.
+This shows a molecular surface and colors it
+from dark cyan for most hydrophilic (least hydrophobic) areas, through white,
+to dark goldenrod for the most lipophilic (most hydrophobic).
 </p>
 	</div>
 </section>
@@ -354,7 +496,7 @@ most lipophilic, with white in between.
 	<div style="height:850px; font-size:80%">
 
 <p>
-As one might expect, the mouth of the pocket near the phosphates and ions is 
+As expected, the mouth of the pocket near the phosphates and ions is 
 mostly polar, while the rest of the pocket is largely hydrophobic.  
 However, the pocket is so deep that it is hard to see when the whole surface 
 is shown. Showing just the pocket region allows viewing it from the outside.
@@ -393,7 +535,7 @@ Another attribute commonly used in structure analysis is atomic
 B-factor.  B-factor values indicate which parts of the structure
 are more or less flexible or disordered.  
 </p><p>
-Display all atoms by choosing <b>Presets... Initial Styles... Sticks</b>
+Display all atoms by choosing <b>Presets... Sticks</b>
 from the menu or by using the command:
 </p>
 <blockquote style="text-align:left;margin-left:10px;font-size:90%">
@@ -422,13 +564,15 @@ Color the structure by B-factor:
 <blockquote style="text-align:left;margin-left:10px;font-size:90%">
 <i>Command</i>:&nbsp;<b><a href="cxcmd:color byattribute bfactor">color byattribute bfactor</a></b>
 </blockquote>
-<p>The lowest B-factors are in the protein core, the highest in a loop over the active site and the C-terminus on the opposite side.
-</p><p>
-B-factor is an atomic attribute, but there are also residue and model 
-attributes that could be used with the
-<a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/commands/color.html#byattribute"
-target="_none"><b>color byattribute</b></a> command.
-</p>
+<p>The lowest B-factors (blue) are in the protein core, the highest (red)
+in a loop over the active site and the C-terminus on the opposite side.
+Different color mappings could be applied, for example:
+<blockquote style="text-align:left;margin-left:10px;font-size:90%">
+<i>Command</i>:&nbsp;<b><a href="cxcmd:color byattribute bfactor palette rainbow range 25,75">color byattribute bfactor palette rainbow range 25,75</a></b>
+</blockquote>
+<p>
+B-factor is an atom attribute, but residue and model attributes can also
+be used for coloring.
 	</div>
 </section>
 
@@ -463,9 +607,10 @@ the <a href="https://www.rbvi.ucsf.edu/chimerax/docs/user/tools/modelpanel.html"
 The structures are in completely different positions, 
 so the next step is to superimpose them. This is easily accomplished with the
 <a href="https://www.rbvi.ucsf.edu/chimerax/docs/user/commands/matchmaker.html" target="_none"><b>matchmaker</b></a>
-command.
+command (same as
+<a href="https://www.rbvi.ucsf.edu/chimerax/docs/user/commands/matchmaker.html" target="_none"><b>mmaker</b></a>).
 <blockquote style="text-align:left;margin-left:10px;font-size:90%">
-	<i>Command</i>:&nbsp;<b><a href="cxcmd:mm #1 to #2 showAlignment true">mm #1 to #2 showAlignment true</a></b>
+	<i>Command</i>:&nbsp;<b><a href="cxcmd:mm #2 to #1 showAlignment true">mm #2 to #1 showAlignment true</a></b>
 </blockquote>
 <img class="plain" width="700px" src="modules/chimerax-comp-structures/mm.png"/>
 	</div>
@@ -476,12 +621,13 @@ command.
 
 	<div style="height:850px; font-size:70%">
 		<h3 style="text-align:left">Matchmaker details</h3>
-<p><b>MatchMaker</b> first generates a sequence alignment using residue types and 
+<p><b>MatchMaker</b> first generates a sequence alignment using both
+residue types and 
 secondary structure (tries to align helix with helix and strand with strand),
 then fits the sequence-aligned residues in 3D by pairing their CA atoms.
 The <b>showAlignment true</b> option displays the sequence alignment.
 By default, the fit is iterated so that far-apart pairs are not included 
-in the final match.  This allows the most similar parts to superimpose
+in the final match. This allows the most similar parts to superimpose
 more tightly and the dissimilar parts to stand out.
 Final match statistics are reported in the <b>Log</b>,
 and the pairs used in the final fit are shown with
@@ -603,13 +749,10 @@ or with the command:
 <blockquote style="text-align:left;margin-left:10px;font-size:90%">
 <i>Command</i>:&nbsp;<b><a href="cxcmd:show #1 models">show #1 models</a></b>
 </blockquote>
-<p>Then, to show only the ligand residues and ions from that model:</p>
+<p>Then, show only the ligand residues and ions from that model:</p>
 <blockquote style="text-align:left;margin-left:10px;font-size:90%">
-	<i>Command</i>:&nbsp;<b><a href="cxcmd:hide #1 surfaces">hide&nbsp;#1&nbsp;surfaces</a></b>
-	<br><i>Command</i>:&nbsp;<b><a href="cxcmd:hide #1 ribbons">hide&nbsp;#1&nbsp;ribbons</a></b>
-	<br><i>Command</i>:&nbsp;<b><a href="cxcmd:hide #1">hide&nbsp;#1</a></b>
-<br>
-<i>Command</i>:&nbsp;<b><a href="cxcmd:show #1:fps,mg">show&nbsp;#1:fps,mg</a></b>
+	<i>Command</i>:&nbsp;<b><a href="cxcmd:hide #1 surfaces,ribbons,atoms">hide&nbsp;#1&nbsp;surfaces,ribbons,atoms</a></b>
+	<br><i>Command</i>:&nbsp;<b><a href="cxcmd:show #1:fps,mg">show&nbsp;#1:fps,mg</a></b>
 </blockquote>
 </p>
 	</div>
