@@ -250,11 +250,10 @@ and <b>Log</b>, other settings default.
 	 	is similar to 
 <b><a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/tools/hbonds.html" target="_none">H-Bonds</a></b>
 	 	but can also identify nonpolar interactions:
-
-		<ul>
+		<ul style="padding:10px 50px">
 			<li><i><b>clashes</b></i> &ndash; unfavorable interactions where atoms are too close together; close contacts</li>
 			<li><i><b>contacts </b></i> &ndash; all kinds of direct interactions: polar and nonpolar, 
-				favorable and unfavorable (including clashes) </li>
+				favorable and unfavorable, including clashes</li>
 		</ul>
 	</div>
 </section>
@@ -353,14 +352,27 @@ Alternatively, this setup could be done with the command:
 <blockquote style="text-align:left;margin-left:10px;font-size:90%">
                                 <i>Command</i>:&nbsp;<b><a href="cxcmd:clashes sel restrict cross reveal t continuous t">clashes sel restrict cross reveal t continuous t</a></b>
                         </blockquote>
+<p>
+As reported in the <b>Log</b>,
+no clashes with Tyr 248 are found in its initial position.
 </section>
 
 <section>
 	<h1>Angles, Rotamers, Clashes</h1>
 	<div style="height:850px; font-size:80%">
 <p>
-As reported in the <b>Log</b>,
-no clashes with Tyr 248 are found in its initial position.
+Measure the sidechain chi1 and chi2 angles of Tyr 248:
+			<blockquote style="text-align:left;margin-left:10px;font-size:90%">
+				<i>Command</i>:&nbsp;<b><a href="cxcmd:torsion :248@n,ca,cb,cg">torsion :248@n,ca,cb,cg</a></b>
+				<br><i>Command</i>:&nbsp;<b><a href="cxcmd:torsion :248@ca,cb,cg,cd1">torsion :248@ca,cb,cg,cd1</a></b>
+			</blockquote>
+<p>
+The <b>Log</b> reports chi1 and chi2 as 
+&ndash;106.801&deg; and &ndash;142.054&deg;, respectively.
+</section>
+<section>
+	<h1>Angles, Rotamers, Clashes</h1>
+	<div style="height:850px; font-size:80%">
 <p>
 Set the function of the right mouse button 
 (= trackpad + Alt on Windows, trackpad + 
@@ -373,9 +385,10 @@ tab of the toolbar or using the command:
 <i>Command</i>:&nbsp;<b><a href="cxcmd:mouse right bond">mouse right bond</a></b>
 			</blockquote>
 <p>
-With the right mouse button or the trackpad equivalent,
-click on the Tyr 248 CA-CB bond (closest to the ribbon) or CB-CG bond
-(the next one out, adjacent to the ring) and drag to rotate it interactively.
+With the assigned button,
+click on the Tyr 248 CA-CB bond (closest to the ribbon) and drag to change chi1
+interactively,
+or on the CB-CG bond (the next one out, adjacent to the ring) to change chi2.
 Any clashes are shown as bright purple pseudobonds and updated automatically
 as the bond is rotated.
 </section>
@@ -409,34 +422,39 @@ click <b>OK</b> to show TYR rotamers from the Dunbrack library.
 <section>
 	<h1>Angles, Rotamers, Clashes</h1>
 	<div style="height:850px; font-size:80%">
+<a href="modules/chimerax-comp-structures/rotamer-list.png">
+<img class="plain" style="border: solid black 1px" width="400px" align="right"
+title="click to enlarge..."
+src="modules/chimerax-comp-structures/rotamer-list.png"/></a>
 <p>
-The rotamer list gives sidechain (chi) angles and probabilities 
-from the library. The rotamers are displayed, and you can see none 
-match the conformation of Tyr 248 in the structure. 
-Specific rotamers can be shown by clicking/dragging 
-to choose rows in the list.
+The dialog lists rotamer
+sidechain (chi) angles and probabilities from the library.
+The rotamers are displayed, and you can see that none
+matches the original conformation of Tyr 248
+(chi1 &ndash;107&deg;, chi2 &ndash;142&deg;). 
+Specific rotamers can be shown by clicking/dragging to choose rows in the list.
 <p>
-The probabilities are based only on the residue's backbone conformation
-<!-- currently only "swapaa" reports phi,psi; "swapaa interactive" does not 
-<i>i.e.</i>, the phi and psi angles reported in the <b>Log</b>,
--->
-and do not reflect interactions with the rest of the structure.
-Use the rotamer dialog options to calculate
+The probabilities are based only on the residue's backbone angles
+(given in the <b>Log</b>: phi &ndash;74&deg; and psi &ndash;32.2&deg;),
+NOT on any interactions with the rest of the structure.
+Use the rotamer dialog to calculate
 <b>H-bonds</b> and <b>Clashes</b> with default settings.
-The added columns indicate that each rotamer forms several clashes but no 
-hydrogen bonds. Earlier in the tutorial, we found
-that Tyr 248 both H-bonds with the ligand and avoids clashes, 
+The new columns show that each rotamer forms several clashes but no H-bonds.
+Earlier in the tutorial, we found
+that Tyr 248 H-bonds with ligand and avoids clashes, 
 which may compensate for its nonrotameric (presumably strained) conformation.
-<p>
-A sidechain can be replaced with a rotamer of the same or a different 
-amino acid type. With a single rotamer chosen in the dialog, 
-either click <b>OK</b> to replace the sidechain 
-with that rotamer or <b>Cancel</b> to simply close the dialog.
 </section>
 
 <section>
 	<h1>Angles, Rotamers, Clashes</h1>
 	<div style="height:850px; font-size:80%">
+<p>
+A sidechain can be replaced with a rotamer of the same amino acid type
+or &ldquo;mutated&rdquo; to a different type. 
+With a single rotamer chosen in the dialog,
+either click <b>OK</b> to replace the sidechain 
+with that rotamer or <b>Cancel</b> to close the dialog
+without changing the structure.
 <p>
 Unlike Tyr 248, Tyr 41 resembles the two highest-probability tyrosine 
 rotamers given its backbone angles. If you like, 
@@ -444,13 +462,11 @@ rotamers given its backbone angles. If you like,
 Ctrl-click to select one of its atoms or bonds, and
 <a href="cxcmd:toolshed show Rotamers">use <b>Rotamers</b></a>
 to show and evaluate rotamers of tyrosine 
-or some other amino acid at that position. 
+or some other type of amino acid at that position. 
 <p>
 When finished with
 <b><a href="http://www.rbvi.ucsf.edu/chimerax/docs/user/tools/rotamers.html" target="_none">Rotamers</a></b>, click <b>Cancel</b> on
-the rotamer dialog to close it.
-<p>
-Clean up for the next section and zoom back out:
+the rotamer dialog. Clean up for the next section and zoom back out:
 			<blockquote style="text-align:left;margin-left:10px;font-size:90%">
 				<i>Command</i>:&nbsp;<b><a href="cxcmd:select clear">select clear</a></b>
 				<br><i>Command</i>:&nbsp;<b><a href="cxcmd:label delete">label delete</a></b>
