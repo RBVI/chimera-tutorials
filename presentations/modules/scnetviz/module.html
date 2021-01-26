@@ -1,7 +1,7 @@
 <section>
 <h1>scNetViz</h1>
 <h3>A Cytoscape App for Analyzing Single-Cell RNA Sequencing Data</h3>
-<h5 style="font-size:60%">Tutorial: November 2019</h5>
+<h5 style="font-size:60%">Tutorial: January 2021</h5>
 <!-- add citation when available -->
 <aside class="notes">
 </aside>
@@ -89,11 +89,11 @@ near the top of the Cytoscape window, or use Cytoscape menu:
 From&nbsp;Single&nbsp;Cell&nbsp;Expression&nbsp;Atlas</b>
 to show the experiment browser
 </p>
-<div style="float:left; width:70%">
+<div style="float:left; width:68%">
 <a href="modules/scnetviz/scea-browser.png">
 <img src="modules/scnetviz/scea-browser.png" title="click to enlarge..."></a>
 </div>
-<div style="float:right; width:28%;font-size:60%">
+<div style="float:right; width:30%;font-size:60%">
 <ul>
 <li>Sort a column: click header, <i>e.g.</i> <b>Cells</b></li>
 <li>Adjust column widths: drag dividers between headers</li>
@@ -178,7 +178,7 @@ title="click to enlarge..."></a>
 <li>Make the <b>Category</b> column wider so that you can see the
 different descriptions</li>
 <li>Click to choose the row for the category 
-<b>Sample Characteristic [inferred cell type]</b>,
+<b>Sample Characteristic [inferred cell type - ontology labels]</b>,
 as shown in the figure</li>
 <li>In the <b>New Cell Plot</b> menu, choose <b>UMAP</b> and then
 click <b>OK</b> to plot the cells with default settings</li>
@@ -266,12 +266,12 @@ to plot the top DE genes by log2FC magnitude</li>
 
 <section>
 <h1>Heatmap of Top DE Genes</h1>
-<div style="float:left; width:45%">
+<div style="float:left; width:50%">
 <a href="modules/scnetviz/heatmap.png">
 <img src="modules/scnetviz/heatmap.png" 
 title="click to enlarge..."></a>
 </div>
-<div style="float:right; width:51%;font-size:70%">
+<div style="float:right; width:45%;font-size:70%">
 <p></p>
 <ul>
 <li>Red indicates positive log2FC (&uarr;&nbsp;expression), 
@@ -372,38 +372,30 @@ respective columns in the <b>DiffExp</b> tab of the <b>Experiment Table</b>.
 </p>
 <p style="font-size:75%">
 Most of the <b>oligodendrocyte</b> top genes by log2FC magnitude
-have negative values (blue nodes).
-When both signs are included in the network, 
-the <b>Node Table</b> below the network gives 
-<i>scNetViz</i> <b>oligodendrocyte Rank</b> values of 2 and 35 
-for the two largest positive values:
-<!-- 5th and 42nd in the Experiment Table -->
+have negative values (blue nodes). 
+After the positive-only networks have been shown, however,
+the <i>scNetViz</i> <b>oligodendrocyte Rank</b> column in the
+<b>Node Table</b> below the <b>oligodendrocyte</b> network gives the
+genes with the largest positive values. Ranks 1 and 2 are:
 </p>
 <ul style="font-size:60%">
 <li>ENSG00000197430 &ndash;
 OPALIN, oligodendrocytic myelin paranodal and inner loop protein,
-log2FC 16.6 and FDR 1E-32</li>
+log2FC 16.6 and FDR 7E-33</li>
 <li>ENSG00000167755 &ndash;
-KLK6, kallikrein-related peptidase 6, log2FC 12.6 and FDR 1E-30</li>
+KLK6, kallikrein-related peptidase 6, log2FC 12.6 and FDR 6E-30</li>
 </ul>
 <p style="font-size:75%">
-...whereas the genes with the most significant FDR values
-(from the <b>Experiment Table</b>, as only the first one
-made it into the network) have positive log2FC values:
-<!-- PLP1 has log2FC rank 177 -->
+...whereas the genes with the most significant <b>oligodendrocyte FDR</b> values
+(from sorting that column in the <b>Experiment Table</b>)
+have smaller positive log2FC values:
 </p>
 <ul style="font-size:60%">
 <li>ENSG00000123560 &ndash;
-PLP1, myelin proteolipid protein, log2FC 8.6 and FDR 6E-51</li>
-<li>ENSG00000244274 &ndash;
-DBNDD2, dysbindin domain containing 2, log2FC 6.9 and FDR 1E-50</li>
-<li>ENSG00000091513 &ndash;
-TF, transferrin, log2FC 7.4 and FDR 3E-49</li>
+PLP1, myelin proteolipid protein, log2FC 8.6 and FDR 8E-51</li>
 <li>ENSG00000197971 &ndash;
-MBP, myelin basic protein, log2FC 6.2 and FDR 3E-49</li>
+MBP, myelin basic protein, log2FC 6.8 and FDR 3E-50</li>
 </ul>
-<!-- "best" negative log2FC -4.9 at FDR 2E-40 for 
-ENSG00000101439, CST3 cystatin 3 -->
 </section>
 
 <section>
